@@ -1,0 +1,673 @@
+<title>Ombra Prime Simulator</title>
+<style>
+  /* ---------------------------------------------------------------
+     Två röster bär hela sidan, för de är sakens kärna:
+     MONO + tabellsiffror = instrumenten. SERIF = krönikan.
+     Ingen webbfont laddas — CSP blockerar CDN och en tyst reserv
+     hade slagit ut hela poängen.
+     --------------------------------------------------------------- */
+  :root {
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    /* Ljust läge: sval papper, inte kräm. */
+    --ground:  #E7E9ED;
+    --surface: #FFFFFF;
+    --sunk:    #DDE0E6;
+    --line:    #C9CEd6;
+    --line-2:  #AEB5C0;
+    --text:    #12161C;
+    --dim:     #4E5765;
+    --muted:   #6E7887;
+
+    --amber:   #8A5713;   /* Vitalis */
+    --amber-2: #B8792A;
+    --cold:    #1F5A7A;   /* instrument */
+    --good:    #2E6B4F;
+    --bad:     #8C2F2F;
+
+    --glow: rgba(138, 87, 19, .10);
+    --rule: 1px solid var(--line);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:  #0A0D12;
+      --surface: #12161D;
+      --sunk:    #0D1117;
+      --line:    #1E2530;
+      --line-2:  #2C3543;
+      --text:    #DDE3EA;
+      --dim:     #97A1B0;
+      --muted:   #798494;
+
+      --amber:   #E0A24B;
+      --amber-2: #F0BC72;
+      --cold:    #6FA8C7;
+      --good:    #6FBF8F;
+      --bad:     #D97070;
+
+      --glow: rgba(224, 162, 75, .13);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:  #0A0D12;
+    --surface: #12161D;
+    --sunk:    #0D1117;
+    --line:    #1E2530;
+    --line-2:  #2C3543;
+    --text:    #DDE3EA;
+    --dim:     #97A1B0;
+    --muted:   #798494;
+    --amber:   #E0A24B;
+    --amber-2: #F0BC72;
+    --cold:    #6FA8C7;
+    --good:    #6FBF8F;
+    --bad:     #D97070;
+    --glow: rgba(224, 162, 75, .13);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+  .col  { max-width: 68ch; }
+
+  section { padding: 84px 0; border-top: var(--rule); }
+  section:first-of-type { border-top: none; }
+
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+
+  .eyebrow {
+    font: 600 11px/1 var(--mono);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.6vw, 40px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -.015em;
+    margin-bottom: 18px;
+  }
+  h3 {
+    font: 600 15px/1.3 var(--sans);
+    letter-spacing: -.005em;
+  }
+
+  p { margin: 0 0 18px; color: var(--dim); }
+  p.lead { font-size: 20px; line-height: 1.6; color: var(--text); }
+  strong { color: var(--text); font-weight: 600; }
+  a { color: var(--amber); }
+
+  .num { font-variant-numeric: tabular-nums; font-family: var(--mono); }
+
+  /* ---------- HERO: omvandlingen, som är hela tesen ---------- */
+
+  header.hero { padding: 76px 0 88px; }
+
+  .ship-id {
+    font: 600 11px/1 var(--mono);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  }
+  .ship-id .pip {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 4px var(--glow);
+    animation: breathe 3.6s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: .45; }
+    50%      { opacity: 1; }
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6.4vw, 74px);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -.03em;
+    margin: 26px 0 22px;
+  }
+  h1 em { font-style: italic; color: var(--amber); }
+
+  .hero-sub { font-size: 19px; line-height: 1.6; color: var(--dim); max-width: 60ch; }
+
+  /* Instrumentet till vänster, prosan till höger. Formen ÄR argumentet. */
+  .transform {
+    margin-top: 54px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1.15fr);
+    align-items: center;
+    gap: 0;
+    border: var(--rule);
+    border-radius: 3px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .t-side { padding: 30px 32px; min-width: 0; }
+  .t-label {
+    font: 600 10px/1 var(--mono);
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px;
+  }
+  .t-machine { background: var(--sunk); }
+  .t-reading {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1;
+    letter-spacing: -.03em;
+    color: var(--cold);
+  }
+  .t-reading small { font-size: .38em; letter-spacing: 0; color: var(--muted); }
+  .t-meta {
+    margin-top: 14px; font: 12px/1.6 var(--mono); color: var(--muted);
+  }
+  .t-prose {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.62;
+    color: var(--text);
+  }
+  .t-prose cite {
+    display: block; margin-top: 14px;
+    font: 11px/1.5 var(--mono); font-style: normal;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  }
+
+  .t-arrow {
+    align-self: stretch;
+    display: grid; place-items: center;
+    background: var(--sunk);
+    border-left: var(--rule); border-right: var(--rule);
+    color: var(--amber);
+  }
+  .t-arrow svg { display: block; }
+
+  @media (max-width: 800px) {
+    .transform { grid-template-columns: 1fr; }
+    .t-arrow { padding: 10px 0; border: none; border-top: var(--rule); border-bottom: var(--rule); transform: rotate(90deg); }
+  }
+
+  /* ---------- KEDJAN ---------- */
+
+  .chain { display: grid; gap: 0; margin-top: 40px; }
+  .step {
+    display: grid;
+    grid-template-columns: 132px minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: 28px;
+    padding: 26px 0;
+    border-top: var(--rule);
+    align-items: start;
+  }
+  .step:last-child { border-bottom: var(--rule); }
+  .step-k {
+    font: 600 11px/1.5 var(--mono);
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--amber);
+    padding-top: 3px;
+  }
+  .step-k b { display: block; color: var(--muted); font-weight: 600; letter-spacing: .14em; }
+  .step h3 { margin-bottom: 6px; }
+  .step p { margin: 0; font-size: 15.5px; }
+  .step-data {
+    font: 13px/1.6 var(--mono);
+    color: var(--dim);
+    background: var(--sunk);
+    border: var(--rule);
+    border-radius: 3px;
+    padding: 12px 14px;
+    overflow-x: auto;
+  }
+  .step-data .k { color: var(--muted); }
+  .step-data .v { color: var(--cold); }
+  .step-data .q { font-family: var(--serif); font-size: 15px; color: var(--text); }
+
+  @media (max-width: 860px) {
+    .step { grid-template-columns: 1fr; gap: 14px; }
+  }
+
+  /* ---------- SKEPPET: sju sektorer, TOPP -> BOTTEN ---------- */
+
+  .sectors { margin-top: 40px; border: var(--rule); border-radius: 3px; overflow: hidden; background: var(--surface); }
+  .sector {
+    display: grid;
+    grid-template-columns: 5px 78px minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 0;
+    border-top: var(--rule);
+    align-items: center;
+  }
+  .sector:first-child { border-top: none; }
+  .sector .rail { align-self: stretch; background: var(--sc); }
+  .sector .no {
+    font: 600 13px/1 var(--mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    padding: 20px 0 20px 22px;
+  }
+  .sector .nm { padding: 20px 18px 20px 6px; }
+  .sector .nm b { display: block; font-size: 16px; letter-spacing: -.01em; }
+  .sector .nm span { font: 11px/1.5 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .sector .fl {
+    padding: 20px 24px 20px 8px;
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--dim);
+    border-left: var(--rule);
+  }
+  @media (max-width: 720px) {
+    .sector { grid-template-columns: 5px 58px minmax(0, 1fr); }
+    .sector .fl { grid-column: 2 / -1; padding: 0 20px 18px 6px; border-left: none; }
+    .sector .nm { padding-bottom: 10px; }
+  }
+
+  .gradient-note {
+    display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap;
+    margin-top: 14px;
+    font: 11px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ---------- TABELL: vad som är AI ---------- */
+
+  .tblwrap { overflow-x: auto; margin-top: 34px; border: var(--rule); border-radius: 3px; }
+  table { border-collapse: collapse; width: 100%; min-width: 540px; background: var(--surface); }
+  th, td { text-align: left; padding: 13px 20px; border-top: var(--rule); font-size: 15px; }
+  thead th {
+    border-top: none;
+    font: 600 10px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); padding-top: 16px; padding-bottom: 14px;
+  }
+  td.who { font-family: var(--mono); font-size: 13px; color: var(--dim); }
+  .tag {
+    display: inline-block; font: 600 10px/1 var(--mono);
+    letter-spacing: .12em; text-transform: uppercase;
+    padding: 5px 8px; border-radius: 2px; white-space: nowrap;
+  }
+  .tag.ai   { color: var(--amber); border: 1px solid var(--amber); }
+  .tag.code { color: var(--muted); border: 1px solid var(--line-2); }
+
+  /* ---------- SIFFROR ---------- */
+
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px; background: var(--line);
+    border: var(--rule); border-radius: 3px; overflow: hidden;
+    margin-top: 34px;
+  }
+  .stat { background: var(--surface); padding: 22px 20px; }
+  .stat b {
+    display: block;
+    font-family: var(--mono); font-variant-numeric: tabular-nums;
+    font-size: 30px; line-height: 1; letter-spacing: -.03em;
+    color: var(--text);
+  }
+  .stat span {
+    display: block; margin-top: 9px;
+    font: 11px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ---------- KORT ---------- */
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; margin-top: 34px; }
+  .card { background: var(--surface); border: var(--rule); border-radius: 3px; padding: 22px 24px; }
+  .card h3 { margin-bottom: 8px; }
+  .card p { margin: 0; font-size: 15px; }
+  .card .mk {
+    font: 600 10px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase;
+    color: var(--amber); display: block; margin-bottom: 12px;
+  }
+
+  /* ---------- CITAT ---------- */
+
+  blockquote {
+    margin: 34px 0 0;
+    padding: 26px 30px;
+    background: var(--surface);
+    border: var(--rule);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 3px 3px 0;
+    font-family: var(--serif);
+    font-size: 18.5px;
+    line-height: 1.62;
+    color: var(--text);
+  }
+  blockquote p { color: inherit; }
+  blockquote p:last-child { margin-bottom: 0; }
+  blockquote footer {
+    margin-top: 16px;
+    font: 11px/1.5 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  }
+
+  ul.plain { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
+  ul.plain li {
+    display: grid; grid-template-columns: 18px 1fr; gap: 12px;
+    font-size: 15.5px; color: var(--dim);
+  }
+  ul.plain li::before {
+    content: ""; width: 7px; height: 7px; margin-top: 9px;
+    background: var(--amber); border-radius: 50%;
+  }
+
+  footer.end {
+    border-top: var(--rule);
+    padding: 40px 0 64px;
+    font: 12px/1.7 var(--mono); color: var(--muted);
+  }
+
+  /* Avslöjning vid scroll — en gång, lågmält. */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.on { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .ship-id .pip { animation: none; opacity: 1; }
+  }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="ship-id">
+      <span class="pip" aria-hidden="true"></span>
+      <span>Ombra Prime</span>
+      <span>16 km · 100 000 invånare</span>
+      <span>skeppstid 0342-227</span>
+    </div>
+
+    <h1>En värld som skriver sig själv, driven av <em>verkliga</em> mätvärden.</h1>
+
+    <p class="hero-sub">Ombra Prime Simulator läser sensorer i den fysiska världen — elförbrukningen i ett hus, svarstiden mot ett nätverk — och översätter dem till händelser ombord på ett generationsskepp. En lokal AI skriver scenerna. Ingen sitter och matar in vad som ska hända.</p>
+
+    <div class="transform">
+      <div class="t-side t-machine">
+        <div class="t-label">Vad instrumentet såg</div>
+        <div class="t-reading num">18.44<small> ms</small></div>
+        <div class="t-meta">
+          net.uplink.jitter<br>
+          z = +1.9 mot tvåtimmarsbaslinjen<br>
+          avläst 0342-227 · 09:34
+        </div>
+      </div>
+
+      <div class="t-arrow" aria-hidden="true">
+        <svg width="22" height="14" viewBox="0 0 22 14" fill="none">
+          <path d="M0 7h19M14 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="t-side">
+        <div class="t-label">Vad som stod i krönikan</div>
+        <p class="t-prose" style="margin:0">”Min syster har ett Vitalis-organ och hon vaknade klockan fyra och sa att det gnisslade. Jag sa att organ inte gnisslar. Hon sa att jag skulle känna efter själv, och jag kände ingenting — men hon satt uppe till skiftet började ändå.”
+          <cite>Stifur Mandrattur, tekniker · sektor 03</cite>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">Grundidén</div>
+      <h2>Skeppet är givet. Berättelsen är det inte.</h2>
+      <p class="lead">Sju sektorer och tretton huvudpersoner är förutbestämda och ändras aldrig. Allt annat — verkstäder, korridorer, bifigurer, konflikter — växer fram ur scenerna allteftersom de skrivs.</p>
+      <p>Krönikören hittar på en odlingsring i en scen. En annan agent läser scenen, plockar ut platsen och föreslår den. En tredje godkänner den och skriver in den i kanon. Nästa scen i samma sektor får se att odlingsringen finns, och kan använda den igen.</p>
+      <p>Så växer världen av sig själv, utan att någon tappar tråden — och utan att någon behöver komma ihåg vad som redan hänt.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">Kedjan</div>
+      <h2>Från ett tal till en scen, i sex steg.</h2>
+      <p>Varje led har ett eget jobb och lämnar ifrån sig något det nästa kan använda. Allt sparas, i ordning, så att vilken mening som helst i krönikan går att spåra tillbaka till avläsningen som orsakade den.</p>
+    </div>
+
+    <div class="chain">
+      <div class="step">
+        <div class="step-k">Signal<b>var 30:e sek</b></div>
+        <div>
+          <h3>Verkligheten mäts</h3>
+          <p>En sensor läser av något fysiskt. Nätsvar mot 1.1.1.1, elmätaren i huset, partiklar i luften. Råvärdet i sig betyder ingenting — det som räknas är avvikelsen från en glidande baslinje.</p>
+        </div>
+        <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> · <span class="k">zscore</span> <span class="v">+1.9</span></div>
+      </div>
+
+      <div class="step">
+        <div class="step-k">Omen<b>21 regler</b></div>
+        <div>
+          <h3>Talet får betydelse</h3>
+          <p>En regel i en YAML-fil översätter avvikelsen till något som händer ombord. Det är här — och bara här — som meningen bor. Ingen modell inblandad; det är en tröskel och en text.</p>
+        </div>
+        <div class="step-data"><span class="k">rule</span> <span class="v">vitalis-frequencies-drift</span><br><span class="k">concept</span> <span class="v">”frekvenserna glider isär”</span><br><span class="k">severity</span> <span class="v">2/5</span> · <span class="k">domain</span> <span class="v">bio</span></div>
+      </div>
+
+      <div class="step">
+        <div class="step-k">Beat<b>4 av 37 släpps</b></div>
+        <div>
+          <h3>Regin avgör om det blir en scen</h3>
+          <p>De flesta omen stoppas, och det är meningen. Fyra spärrar: allvarsgrad, vila mellan scener, dagsbudget, zonfokus. Passerar omenet tävlar de aktiva trådarna om det, och ett viktat hjul lottar vilken sektor scenen hamnar i.</p>
+        </div>
+        <div class="step-data"><span class="k">tråd</span> <span class="v">Oris tystnad</span> <span class="k">(0.9 p)</span><br><span class="k">sektor</span> <span class="v">03 EZ Aqua Core</span> <span class="k">(24 % chans)</span></div>
+      </div>
+
+      <div class="step">
+        <div class="step-k">Rykte<b>djungeltelegraf</b></div>
+        <div>
+          <h3>En människa för det vidare</h3>
+          <p>Innan scenen skrivs berättar någon ombord vad de hört. De var inte där, de ser aldrig instrumenten, och <strong>de får ha fel.</strong> Det är världens enda plats där något tillåts vara osant — och det är därför den känns bebodd.</p>
+        </div>
+        <div class="step-data"><span class="k">berättare</span> <span class="v">Stifur Mandrattur, tekniker</span><br><span class="q">”…hon vaknade klockan fyra och sa att det gnisslade.”</span><br><span class="k">har fel om:</span> <span class="v">avfärdar systerns iakttagelse</span></div>
+      </div>
+
+      <div class="step">
+        <div class="step-k">Scen<b>~450 ord</b></div>
+        <div>
+          <h3>Krönikören skriver</h3>
+          <p>En lokal modell får ryktet, rollistan, tråden, sektorns stämningsbeskrivning ur världsbibeln — och sina egna senaste inledningar, med uppmaning att inte göra om dem. Den vet <em>inte</em> vad instrumenten visade.</p>
+        </div>
+        <div class="step-data"><span class="k">modell</span> <span class="v">gemma4:26b</span> <span class="k">lokalt, ~10 s</span><br><span class="k">skrivs till</span> <span class="v">chronicle/0342/…</span> <span class="k">append-only</span></div>
+      </div>
+
+      <div class="step">
+        <div class="step-k">Kanon<b>280 entiteter</b></div>
+        <div>
+          <h3>Världen växer</h3>
+          <p>En arkivarie läser scenen och föreslår det som är nytt. En väktare avgör vad som blir sanning, slår ihop dubbletter och avvisar det som bryter mot världens lagar. Först då finns det på riktigt.</p>
+        </div>
+        <div class="step-data"><span class="k">förslag</span> <span class="v">plats · Hydroponikring 4-C</span><br><span class="k">förankras i</span> <span class="v">sektor 03</span> <span class="k">— obligatoriskt</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">Skeppet</div>
+      <h2>Sju sektorer, uppifrån och ner.</h2>
+      <p>Ombra Prime är vertikalt organiserat. Varje sektor har inte bara en funktion utan en <strong>stämning</strong> — hur det känns för en människa att stå där — och den texten går in i prompten varje gång en scen skrivs där. Det är därför en scen i Hangaren smakar metall och en i The Crypt smakar ozon.</p>
+    </div>
+
+    <div class="sectors">
+      <div class="sector" style="--sc:#E0A24B">
+        <div class="rail"></div><div class="no">01</div>
+        <div class="nm"><b>The Pearl</b><span>Biosfär</span></div>
+        <div class="fl">Du kliver genom membranen och plötsligt minns du vad Jorden kändes som. Dina axlar sjunker utan att du märker det.</div>
+      </div>
+      <div class="sector" style="--sc:#C9A05C">
+        <div class="rail"></div><div class="no">02</div>
+        <div class="nm"><b>Främre Kommandobrygga</b><span>Kommando</span></div>
+        <div class="fl">Kontrollerad adrenalin. Den skarpa doften av kaffe och gamla skärmar, blå skuggor på ansikten som inte har sovit på timmar.</div>
+      </div>
+      <div class="sector" style="--sc:#A8A070">
+        <div class="rail"></div><div class="no">03</div>
+        <div class="nm"><b>EZ Aqua Core</b><span>Agrikultur</span></div>
+        <div class="fl">Ljudet av vatten — alltid vatten. Du kunde falla i sömn stående. Fuktigheten är en andra hud.</div>
+      </div>
+      <div class="sector" style="--sc:#86A08A">
+        <div class="rail"></div><div class="no">04</div>
+        <div class="nm"><b>Metropolis</b><span>Habitat</span></div>
+        <div class="fl">Pulseringen. Tusentals fotsteg skapar en rytm under dig. Du kunde vara vem som helst här. Du kunde bli vem som helst.</div>
+      </div>
+      <div class="sector" style="--sc:#6C9CA0">
+        <div class="rail"></div><div class="no">05</div>
+        <div class="nm"><b>Hangaren</b><span>Transport</span></div>
+        <div class="fl">Luften smakar metall och bränsle och mänsklig ansträngning. Du är i skeppets hals.</div>
+      </div>
+      <div class="sector" style="--sc:#5590B4">
+        <div class="rail"></div><div class="no">06</div>
+        <div class="nm"><b>The Crypt</b><span>Industri · Oris</span></div>
+        <div class="fl">Surret är överallt. Du känner det i tänderna, i bröstbenet. Du är i närvaron av något som inte behöver dig för att överleva.</div>
+      </div>
+      <div class="sector" style="--sc:#4680BE">
+        <div class="rail"></div><div class="no">07</div>
+        <div class="nm"><b>The Spire</b><span>Forskning</span></div>
+        <div class="fl">Klinisk precision. Luften smakar som ingenting. Vetenskapen här är inte för att förstå — den är för att kontrollera.</div>
+      </div>
+    </div>
+
+    <div class="gradient-note">
+      <span>Varmt · levande</span>
+      <span aria-hidden="true">————————</span>
+      <span>Funktionellt</span>
+      <span aria-hidden="true">————————</span>
+      <span>Kallt · mekaniskt</span>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">Ärlighet</div>
+      <h2>Vad som är AI, och vad som inte är det.</h2>
+      <p>Den vanligaste frågan, och den viktigaste. Det mesta av systemet är vanlig kod och konfiguration. Modellerna används bara där språk faktiskt ska skapas — allt som handlar om <em>vad som får hända</em> är deterministiskt, granskningsbart och gratis.</p>
+    </div>
+
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>Steg</th><th>Modell?</th><th>Vem gör det</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sensor → signal</td><td><span class="tag code">Nej</span></td><td class="who">mätning + glidande baslinje</td></tr>
+          <tr><td>Signal → omen</td><td><span class="tag code">Nej</span></td><td class="who">21 regler i YAML</td></tr>
+          <tr><td>Grinden: blir det en scen?</td><td><span class="tag code">Nej</span></td><td class="who">Director — kod</td></tr>
+          <tr><td>Trådval och sektorlottning</td><td><span class="tag code">Nej</span></td><td class="who">poängsättning + viktad slump</td></tr>
+          <tr><td>Insatsen: vems scen är detta</td><td><span class="tag ai">Ja</span></td><td class="who">Director → gemma4:26b</td></tr>
+          <tr><td>Ryktet</td><td><span class="tag ai">Ja</span></td><td class="who">Rumor → gemma4:26b</td></tr>
+          <tr><td>Scenen</td><td><span class="tag ai">Ja</span></td><td class="who">Chronicler → gemma4:26b</td></tr>
+          <tr><td>Nyhetssändningen</td><td><span class="tag ai">Ja</span></td><td class="who">Anchor → gemma4:26b</td></tr>
+          <tr><td>Plocka ut ny kanon ur scenen</td><td><span class="tag ai">Ja</span></td><td class="who">Extractor → mistral-nemo</td></tr>
+          <tr><td>Förslag → sanning</td><td><span class="tag code">Nej</span></td><td class="who">Keeper — regler och trösklar</td></tr>
+          <tr><td>Granskning av kontinuitet</td><td><span class="tag code">Nej</span></td><td class="who">Watcher — mekaniska kontroller</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:22px;font-size:15px">Allt körs lokalt på ett grafikkort. Ingen API-nyckel, ingen molntjänst, ingen kostnad per scen.</p>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">Vad som hindrar drift</div>
+      <h2>En värld som skriver sig själv måste hindras från att motsäga sig själv.</h2>
+      <p>Det är den svåra delen. En modell som får skriva fritt i månader kommer förr eller senare låta en död person tala, flytta en förseglad dörr eller uppfinna en åttonde sektor. Fyra saker står i vägen.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="mk">Lagarna</span>
+        <h3>Världens fysik är skrivskyddad</h3>
+        <p>Ett fåtal regler som ingen agent får bryta, och som ingen agent kan ändra. De följer med i varje prompt.</p>
+      </div>
+      <div class="card">
+        <span class="mk">Väktaren</span>
+        <h3>Bara en instans skriver kanon</h3>
+        <p>Agenterna föreslår, aldrig mer. Keeper avgör, slår ihop dubbletter och kräver att något nämns två gånger innan det blir sant.</p>
+      </div>
+      <div class="card">
+        <span class="mk">Hierarkin</span>
+        <h3>Allt vet var det hör hemma</h3>
+        <p>En ny plats måste förankras i en av de sju sektorerna. Kan den inte det, släpps förslaget hellre än att bli en hemlös sträng.</p>
+      </div>
+      <div class="card">
+        <span class="mk">Granskaren</span>
+        <h3>Upprepning larmar</h3>
+        <p>Mekaniska kontroller mäter titelmallar, ordtics, inledningsformer och zonslagsida. Skriver Krönikören samma scen igen syns det.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">Ansiktet utåt</div>
+      <h2>Mara Rox sänder vad som hänt.</h2>
+      <p>Skeppets nyhetsankare skriver ett sändningsmanus när tillräckligt mycket samlats — inte på klockan, utan på innehåll. Manuset vet vilka scener det redan täckt, så samma händelse sänds aldrig två gånger.</p>
+      <blockquote>
+        <p>Manuset är skrivet för att läsas upp. Bildanvisningar är märkta och läses inte. Sist i varje manus står en rubrik som aldrig går i sändning: <strong>”Vad hon inte sände”</strong> — det hon vet men valde bort.</p>
+        <footer>Ombra Prime News · avsett för uppläsning</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">Läget just nu</div>
+      <h2>Vad som finns i världen.</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>7</b><span>sektorer</span></div>
+      <div class="stat"><b>280</b><span>entiteter i kanon</span></div>
+      <div class="stat"><b>55</b><span>personer</span></div>
+      <div class="stat"><b>20</b><span>skrivna scener</span></div>
+      <div class="stat"><b>10 182</b><span>avläsningar</span></div>
+      <div class="stat"><b>165</b><span>omen</span></div>
+      <div class="stat"><b>0</b><span>trasiga referenser</span></div>
+    </div>
+
+    <div class="col">
+      <ul class="plain">
+        <li>Allt i kedjan sparas append-only, så varje scen går att spåra till avläsningen som orsakade den.</li>
+        <li>Krönikan ändras aldrig i efterhand — det är världens minne, inte ett utkast.</li>
+        <li>Hela världen kan exporteras till en enda fil: lagarna plus allt som är bekräftad kanon.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="end">
+    Ombra Prime Simulator · Python 3.13, lokal inferens, inga molnberoenden<br>
+    Sensordata: nätlatens och hushållsel · Krönikör: gemma4:26b
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.classList.add('on'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (rows) {
+      rows.forEach(function (r) {
+        if (r.isIntersecting) { r.target.classList.add('on'); io.unobserve(r.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
