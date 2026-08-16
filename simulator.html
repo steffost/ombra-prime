@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Ombra Prime Simulator</title>
-<meta name="description" content="Hur Ombra Prime Simulator gör verkliga sensoravläsningar till en självväxande värld — och vad som kommer ut ur den.">
+<meta name="description" content="Hur Ombra Prime Simulator gör verkliga sensoravläsningar till en självväxande värld — och vad som kommer ut ur den, ända ut i en radiokanal som sänder från skeppet.">
 </head>
 <body>
 <style>
@@ -449,6 +449,46 @@
     .ship-id .pip { animation: none; opacity: 1; }
   }
   :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+  /* ---------- TIMMEN: vad som är nytt och vad som spelas om ----------
+     Rälen bär hela poängen. Amber = skrivet den här timmen, dämpat =
+     hämtat ur ett bibliotek. Att kolumnen med "bibliotek" är den längre
+     är inte en tillfällighet — det är ekonomin i en radiokanal. */
+
+  .hour {
+    margin-top: 34px; border: var(--rule); border-radius: 3px;
+    overflow: hidden; background: var(--surface);
+  }
+  .slot {
+    display: grid;
+    grid-template-columns: 4px 104px minmax(0, 1fr) 108px;
+    align-items: baseline;
+    border-top: var(--rule);
+  }
+  .slot:first-child { border-top: none; }
+  .slot .rail { align-self: stretch; background: var(--sl); }
+  .slot .kind {
+    font: 600 10px/1 var(--mono); letter-spacing: .14em;
+    text-transform: uppercase; color: var(--muted);
+    padding: 14px 0 14px 20px;
+  }
+  .slot .what { padding: 13px 16px 13px 6px; font-size: 15px; color: var(--dim); }
+  .slot .what b { color: var(--text); font-weight: 600; }
+  .slot .src {
+    padding: 14px 20px 14px 0; text-align: right;
+    font: 600 10px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  }
+  .slot.fresh .src { color: var(--amber); }
+  .slot.lib   .src { color: var(--muted); }
+
+  @media (max-width: 720px) {
+    .slot { grid-template-columns: 4px minmax(0, 1fr) 96px; }
+    /* `1 / -1` syftar på det EXPLICITA rutnätet, och det har bara en rad
+       här — raderna skapas implicit. Rälen slutade därför halvvägs. */
+    .slot .rail { grid-row: 1 / span 2; }
+    .slot .kind { grid-column: 2; padding: 13px 0 0 16px; }
+    .slot .what { grid-column: 2 / -1; padding: 3px 16px 13px; }
+    .slot .src  { grid-row: 1; grid-column: 3; }
+  }
 </style>
 
 <script>
@@ -469,22 +509,22 @@
     <div class="ship-id">
       <span class="pip" aria-hidden="true"></span>
       <span>Ombra Prime</span>
-      <span>16 km · 100 000 invånare</span>
-      <span>skeppstid 0342-227</span>
+      <span>16 km &#183; 100 000 inv&#229;nare</span>
+      <span>skeppstid 0342-228</span>
     </div>
 
-    <h1>En värld som skriver sig själv, driven av <em>verkliga</em> mätvärden.</h1>
+    <h1>En v&#228;rld som skriver sig sj&#228;lv, driven av <em>verkliga</em> m&#228;tv&#228;rden.</h1>
 
-    <p class="hero-sub">Ombra Prime Simulator läser sensorer i den fysiska världen — elförbrukningen i ett hus, svarstiden mot ett nätverk — och översätter dem till händelser ombord på ett generationsskepp. En lokal AI skriver scenerna. Ingen sitter och matar in vad som ska hända.</p>
+    <p class="hero-sub">Ombra Prime Simulator l&#228;ser sensorer i den fysiska v&#228;rlden &#8212; elf&#246;rbrukningen i ett hus, svarstiden mot ett n&#228;tverk &#8212; och &#246;vers&#228;tter dem till h&#228;ndelser ombord p&#229; ett generationsskepp. En lokal AI skriver scenerna. Ingen sitter och matar in vad som ska h&#228;nda.</p>
 
     <div class="transform">
       <div class="t-side t-machine">
-        <div class="t-label">Vad instrumentet såg</div>
+        <div class="t-label">Vad instrumentet s&#229;g</div>
         <div class="t-reading num">18.44<small> ms</small></div>
         <div class="t-meta">
           net.uplink.jitter<br>
-          z = +1.9 mot tvåtimmarsbaslinjen<br>
-          avläst 0342-227 · 09:34
+          z = +1.9 mot tv&#229;timmarsbaslinjen<br>
+          avl&#228;st 0342-227 &#183; 09:34
         </div>
       </div>
 
@@ -495,9 +535,9 @@
       </div>
 
       <div class="t-side">
-        <div class="t-label">Vad som stod i krönikan</div>
-        <p class="t-prose" style="margin:0">”Min syster har ett Vitalis-organ och hon vaknade klockan fyra och sa att det gnisslade. Jag sa att organ inte gnisslar. Hon sa att jag skulle känna efter själv, och jag kände ingenting — men hon satt uppe till skiftet började ändå.”
-          <cite>Stifur Mandrattur, tekniker · sektor 03</cite>
+        <div class="t-label">Vad som stod i kr&#246;nikan</div>
+        <p class="t-prose" style="margin:0">&#8221;Min syster har ett Vitalis-organ och hon vaknade klockan fyra och sa att det gnisslade. Jag sa att organ inte gnisslar. Hon sa att jag skulle k&#228;nna efter sj&#228;lv, och jag k&#228;nde ingenting &#8212; men hon satt uppe till skiftet b&#246;rjade &#228;nd&#229;.&#8221;
+          <cite>Stifur Mandrattur, tekniker &#183; sektor 03</cite>
         </p>
       </div>
     </div>
@@ -505,74 +545,74 @@
 
   <section class="reveal">
     <div class="col">
-      <div class="eyebrow">Grundidén</div>
-      <h2>Skeppet är givet. Berättelsen är det inte.</h2>
-      <p class="lead">Sju sektorer och tretton huvudpersoner är förutbestämda och ändras aldrig. Allt annat — verkstäder, korridorer, bifigurer, konflikter — växer fram ur scenerna allteftersom de skrivs.</p>
-      <p>Krönikören hittar på en odlingsring i en scen. En annan agent läser scenen, plockar ut platsen och föreslår den. En tredje godkänner den och skriver in den i kanon. Nästa scen i samma sektor får se att odlingsringen finns, och kan använda den igen.</p>
-      <p>Så växer världen av sig själv, utan att någon tappar tråden — och utan att någon behöver komma ihåg vad som redan hänt.</p>
+      <div class="eyebrow">Grundid&#233;n</div>
+      <h2>Skeppet &#228;r givet. Ber&#228;ttelsen &#228;r det inte.</h2>
+      <p class="lead">Sju sektorer och tretton huvudpersoner &#228;r f&#246;rutbest&#228;mda och &#228;ndras aldrig. Allt annat &#8212; verkst&#228;der, korridorer, bifigurer, konflikter &#8212; v&#228;xer fram ur scenerna allteftersom de skrivs.</p>
+      <p>Kr&#246;nik&#246;ren hittar p&#229; en odlingsring i en scen. En annan agent l&#228;ser scenen, plockar ut platsen och f&#246;resl&#229;r den. En tredje godk&#228;nner den och skriver in den i kanon. N&#228;sta scen i samma sektor f&#229;r se att odlingsringen finns, och kan anv&#228;nda den igen.</p>
+      <p>S&#229; v&#228;xer v&#228;rlden av sig sj&#228;lv, utan att n&#229;gon tappar tr&#229;den &#8212; och utan att n&#229;gon beh&#246;ver komma ih&#229;g vad som redan h&#228;nt.</p>
     </div>
   </section>
 
   <section class="reveal">
     <div class="col">
       <div class="eyebrow">Kedjan</div>
-      <h2>Från ett tal till en scen, i sex steg.</h2>
-      <p>Varje led har ett eget jobb och lämnar ifrån sig något det nästa kan använda. Allt sparas, i ordning, så att vilken mening som helst i krönikan går att spåra tillbaka till avläsningen som orsakade den.</p>
+      <h2>Fr&#229;n ett tal till en scen, i sex steg.</h2>
+      <p>Varje led har ett eget jobb och l&#228;mnar ifr&#229;n sig n&#229;got det n&#228;sta kan anv&#228;nda. Allt sparas, i ordning, s&#229; att vilken mening som helst i kr&#246;nikan g&#229;r att sp&#229;ra tillbaka till avl&#228;sningen som orsakade den.</p>
     </div>
 
     <div class="chain">
       <div class="step">
         <div class="step-k">Signal<b>var 30:e sek</b></div>
         <div>
-          <h3>Verkligheten mäts</h3>
-          <p>En sensor läser av något fysiskt. Nätsvar mot 1.1.1.1, elmätaren i huset, partiklar i luften. Råvärdet i sig betyder ingenting — det som räknas är avvikelsen från en glidande baslinje.</p>
+          <h3>Verkligheten m&#228;ts</h3>
+          <p>En sensor l&#228;ser av n&#229;got fysiskt. N&#228;tsvar mot 1.1.1.1, elm&#228;taren i huset, partiklar i luften. R&#229;v&#228;rdet i sig betyder ingenting &#8212; det som r&#228;knas &#228;r avvikelsen fr&#229;n en glidande baslinje.</p>
         </div>
-        <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> · <span class="k">zscore</span> <span class="v">+1.9</span></div>
+        <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div>
       </div>
 
       <div class="step">
         <div class="step-k">Omen<b>21 regler</b></div>
         <div>
-          <h3>Talet får betydelse</h3>
-          <p>En regel i en YAML-fil översätter avvikelsen till något som händer ombord. Det är här — och bara här — som meningen bor. Ingen modell inblandad; det är en tröskel och en text.</p>
+          <h3>Talet f&#229;r betydelse</h3>
+          <p>En regel i en YAML-fil &#246;vers&#228;tter avvikelsen till n&#229;got som h&#228;nder ombord. Det &#228;r h&#228;r &#8212; och bara h&#228;r &#8212; som meningen bor. Ingen modell inblandad; det &#228;r en tr&#246;skel och en text.</p>
         </div>
-        <div class="step-data"><span class="k">rule</span> <span class="v">vitalis-frequencies-drift</span><br><span class="k">concept</span> <span class="v">”frekvenserna glider isär”</span><br><span class="k">severity</span> <span class="v">2/5</span> · <span class="k">domain</span> <span class="v">bio</span></div>
+        <div class="step-data"><span class="k">rule</span> <span class="v">vitalis-frequencies-drift</span><br><span class="k">concept</span> <span class="v">&#8221;frekvenserna glider is&#228;r&#8221;</span><br><span class="k">severity</span> <span class="v">2/5</span> &#183; <span class="k">domain</span> <span class="v">bio</span></div>
       </div>
 
       <div class="step">
-        <div class="step-k">Beat<b>4 av 37 släpps</b></div>
+        <div class="step-k">Beat<b>4 av 37 sl&#228;pps</b></div>
         <div>
-          <h3>Regin avgör om det blir en scen</h3>
-          <p>De flesta omen stoppas, och det är meningen. Fyra spärrar: allvarsgrad, vila mellan scener, dagsbudget, zonfokus. Passerar omenet tävlar de aktiva trådarna om det, och ett viktat hjul lottar vilken sektor scenen hamnar i.</p>
+          <h3>Regin avg&#246;r om det blir en scen</h3>
+          <p>De flesta omen stoppas, och det &#228;r meningen. Fyra sp&#228;rrar: allvarsgrad, vila mellan scener, dagsbudget, zonfokus. Passerar omenet t&#228;vlar de aktiva tr&#229;darna om det, och ett viktat hjul lottar vilken sektor scenen hamnar i.</p>
         </div>
-        <div class="step-data"><span class="k">tråd</span> <span class="v">Oris tystnad</span> <span class="k">(0.9 p)</span><br><span class="k">sektor</span> <span class="v">03 EZ Aqua Core</span> <span class="k">(24 % chans)</span></div>
+        <div class="step-data"><span class="k">tr&#229;d</span> <span class="v">Oris tystnad</span> <span class="k">(0.9 p)</span><br><span class="k">sektor</span> <span class="v">03 EZ Aqua Core</span> <span class="k">(24 % chans)</span></div>
       </div>
 
       <div class="step">
         <div class="step-k">Rykte<b>djungeltelegraf</b></div>
         <div>
-          <h3>En människa för det vidare</h3>
-          <p>Innan scenen skrivs berättar någon ombord vad de hört. De var inte där, de ser aldrig instrumenten, och <strong>de får ha fel.</strong> Det är världens enda plats där något tillåts vara osant — och det är därför den känns bebodd.</p>
+          <h3>En m&#228;nniska f&#246;r det vidare</h3>
+          <p>Innan scenen skrivs ber&#228;ttar n&#229;gon ombord vad de h&#246;rt. De var inte d&#228;r, de ser aldrig instrumenten, och <strong>de f&#229;r ha fel.</strong> Det &#228;r v&#228;rldens enda plats d&#228;r n&#229;got till&#229;ts vara osant &#8212; och det &#228;r d&#228;rf&#246;r den k&#228;nns bebodd.</p>
         </div>
-        <div class="step-data"><span class="k">berättare</span> <span class="v">Stifur Mandrattur, tekniker</span><br><span class="q">”…hon vaknade klockan fyra och sa att det gnisslade.”</span><br><span class="k">har fel om:</span> <span class="v">avfärdar systerns iakttagelse</span></div>
+        <div class="step-data"><span class="k">ber&#228;ttare</span> <span class="v">Stifur Mandrattur, tekniker</span><br><span class="q">&#8221;&#8230;hon vaknade klockan fyra och sa att det gnisslade.&#8221;</span><br><span class="k">har fel om:</span> <span class="v">avf&#228;rdar systerns iakttagelse</span></div>
       </div>
 
       <div class="step">
         <div class="step-k">Scen<b>~450 ord</b></div>
         <div>
-          <h3>Krönikören skriver</h3>
-          <p>En lokal modell får ryktet, rollistan, tråden, sektorns stämningsbeskrivning ur världsbibeln — och sina egna senaste inledningar, med uppmaning att inte göra om dem. Den vet <em>inte</em> vad instrumenten visade.</p>
+          <h3>Kr&#246;nik&#246;ren skriver</h3>
+          <p>En lokal modell f&#229;r ryktet, rollistan, tr&#229;den, sektorns st&#228;mningsbeskrivning ur v&#228;rldsbibeln &#8212; och sina egna senaste inledningar, med uppmaning att inte g&#246;ra om dem. Den vet <em>inte</em> vad instrumenten visade.</p>
         </div>
-        <div class="step-data"><span class="k">modell</span> <span class="v">gemma4:26b</span> <span class="k">lokalt, ~10 s</span><br><span class="k">skrivs till</span> <span class="v">chronicle/0342/…</span> <span class="k">append-only</span></div>
+        <div class="step-data"><span class="k">modell</span> <span class="v">gemma4:26b</span> <span class="k">lokalt, ~10 s</span><br><span class="k">skrivs till</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
       </div>
 
       <div class="step">
         <div class="step-k">Kanon<b>280 entiteter</b></div>
         <div>
-          <h3>Världen växer</h3>
-          <p>En arkivarie läser scenen och föreslår det som är nytt. En väktare avgör vad som blir sanning, slår ihop dubbletter och avvisar det som bryter mot världens lagar. Först då finns det på riktigt.</p>
+          <h3>V&#228;rlden v&#228;xer</h3>
+          <p>En arkivarie l&#228;ser scenen och f&#246;resl&#229;r det som &#228;r nytt. En v&#228;ktare avg&#246;r vad som blir sanning, sl&#229;r ihop dubbletter och avvisar det som bryter mot v&#228;rldens lagar. F&#246;rst d&#229; finns det p&#229; riktigt.</p>
         </div>
-        <div class="step-data"><span class="k">förslag</span> <span class="v">plats · Hydroponikring 4-C</span><br><span class="k">förankras i</span> <span class="v">sektor 03</span> <span class="k">— obligatoriskt</span></div>
+        <div class="step-data"><span class="k">f&#246;rslag</span> <span class="v">plats &#183; Hydroponikring 4-C</span><br><span class="k">f&#246;rankras i</span> <span class="v">sektor 03</span> <span class="k">&#8212; obligatoriskt</span></div>
       </div>
     </div>
   </section>
@@ -580,206 +620,304 @@
   <section class="reveal">
     <div class="col">
       <div class="eyebrow">Skeppet</div>
-      <h2>Sju sektorer, uppifrån och ner.</h2>
-      <p>Ombra Prime är vertikalt organiserat. Varje sektor har inte bara en funktion utan en <strong>stämning</strong> — hur det känns för en människa att stå där — och den texten går in i prompten varje gång en scen skrivs där. Det är därför en scen i Hangaren smakar metall och en i The Crypt smakar ozon.</p>
+      <h2>Sju sektorer, uppifr&#229;n och ner.</h2>
+      <p>Ombra Prime &#228;r vertikalt organiserat. Varje sektor har inte bara en funktion utan en <strong>st&#228;mning</strong> &#8212; hur det k&#228;nns f&#246;r en m&#228;nniska att st&#229; d&#228;r &#8212; och den texten g&#229;r in i prompten varje g&#229;ng en scen skrivs d&#228;r. Det &#228;r d&#228;rf&#246;r en scen i Hangaren smakar metall och en i The Crypt smakar ozon.</p>
     </div>
 
     <div class="sectors">
       <div class="sector" style="--sc:#E0A24B">
         <div class="rail"></div><div class="no">01</div>
-        <div class="nm"><b>The Pearl</b><span>Biosfär</span></div>
-        <div class="fl">Du kliver genom membranen och plötsligt minns du vad Jorden kändes som. Dina axlar sjunker utan att du märker det.</div>
+        <div class="nm"><b>The Pearl</b><span>Biosf&#228;r</span></div>
+        <div class="fl">Du kliver genom membranen och pl&#246;tsligt minns du vad Jorden k&#228;ndes som. Dina axlar sjunker utan att du m&#228;rker det.</div>
       </div>
       <div class="sector" style="--sc:#C9A05C">
         <div class="rail"></div><div class="no">02</div>
-        <div class="nm"><b>Främre Kommandobrygga</b><span>Kommando</span></div>
-        <div class="fl">Kontrollerad adrenalin. Den skarpa doften av kaffe och gamla skärmar, blå skuggor på ansikten som inte har sovit på timmar.</div>
+        <div class="nm"><b>Fr&#228;mre Kommandobrygga</b><span>Kommando</span></div>
+        <div class="fl">Kontrollerad adrenalin. Den skarpa doften av kaffe och gamla sk&#228;rmar, bl&#229; skuggor p&#229; ansikten som inte har sovit p&#229; timmar.</div>
       </div>
       <div class="sector" style="--sc:#A8A070">
         <div class="rail"></div><div class="no">03</div>
         <div class="nm"><b>EZ Aqua Core</b><span>Agrikultur</span></div>
-        <div class="fl">Ljudet av vatten — alltid vatten. Du kunde falla i sömn stående. Fuktigheten är en andra hud.</div>
+        <div class="fl">Ljudet av vatten &#8212; alltid vatten. Du kunde falla i s&#246;mn st&#229;ende. Fuktigheten &#228;r en andra hud.</div>
       </div>
       <div class="sector" style="--sc:#86A08A">
         <div class="rail"></div><div class="no">04</div>
         <div class="nm"><b>Metropolis</b><span>Habitat</span></div>
-        <div class="fl">Pulseringen. Tusentals fotsteg skapar en rytm under dig. Du kunde vara vem som helst här. Du kunde bli vem som helst.</div>
+        <div class="fl">Pulseringen. Tusentals fotsteg skapar en rytm under dig. Du kunde vara vem som helst h&#228;r. Du kunde bli vem som helst.</div>
       </div>
       <div class="sector" style="--sc:#6C9CA0">
         <div class="rail"></div><div class="no">05</div>
         <div class="nm"><b>Hangaren</b><span>Transport</span></div>
-        <div class="fl">Luften smakar metall och bränsle och mänsklig ansträngning. Du är i skeppets hals.</div>
+        <div class="fl">Luften smakar metall och br&#228;nsle och m&#228;nsklig anstr&#228;ngning. Du &#228;r i skeppets hals.</div>
       </div>
       <div class="sector" style="--sc:#5590B4">
         <div class="rail"></div><div class="no">06</div>
-        <div class="nm"><b>The Crypt</b><span>Industri · Oris</span></div>
-        <div class="fl">Surret är överallt. Du känner det i tänderna, i bröstbenet. Du är i närvaron av något som inte behöver dig för att överleva.</div>
+        <div class="nm"><b>The Crypt</b><span>Industri &#183; Oris</span></div>
+        <div class="fl">Surret &#228;r &#246;verallt. Du k&#228;nner det i t&#228;nderna, i br&#246;stbenet. Du &#228;r i n&#228;rvaron av n&#229;got som inte beh&#246;ver dig f&#246;r att &#246;verleva.</div>
       </div>
       <div class="sector" style="--sc:#4680BE">
         <div class="rail"></div><div class="no">07</div>
         <div class="nm"><b>The Spire</b><span>Forskning</span></div>
-        <div class="fl">Klinisk precision. Luften smakar som ingenting. Vetenskapen här är inte för att förstå — den är för att kontrollera.</div>
+        <div class="fl">Klinisk precision. Luften smakar som ingenting. Vetenskapen h&#228;r &#228;r inte f&#246;r att f&#246;rst&#229; &#8212; den &#228;r f&#246;r att kontrollera.</div>
       </div>
     </div>
 
     <div class="gradient-note">
-      <span>Varmt · levande</span>
-      <span aria-hidden="true">————————</span>
+      <span>Varmt &#183; levande</span>
+      <span aria-hidden="true">&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</span>
       <span>Funktionellt</span>
-      <span aria-hidden="true">————————</span>
-      <span>Kallt · mekaniskt</span>
+      <span aria-hidden="true">&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</span>
+      <span>Kallt &#183; mekaniskt</span>
     </div>
   </section>
 
   <section class="reveal">
     <div class="col">
-      <div class="eyebrow">Ärlighet</div>
-      <h2>Vad som är AI, och vad som inte är det.</h2>
-      <p>Den vanligaste frågan, och den viktigaste. Det mesta av systemet är vanlig kod och konfiguration. Modellerna används bara där språk faktiskt ska skapas — allt som handlar om <em>vad som får hända</em> är deterministiskt, granskningsbart och gratis.</p>
+      <div class="eyebrow">&#196;rlighet</div>
+      <h2>Vad som &#228;r AI, och vad som inte &#228;r det.</h2>
+      <p>Den vanligaste fr&#229;gan, och den viktigaste. Det mesta av systemet &#228;r vanlig kod och konfiguration. Modellerna anv&#228;nds bara d&#228;r spr&#229;k faktiskt ska skapas &#8212; allt som handlar om <em>vad som f&#229;r h&#228;nda</em> &#228;r deterministiskt, granskningsbart och gratis.</p>
     </div>
 
     <div class="tblwrap">
       <table>
         <thead>
-          <tr><th>Steg</th><th>Modell?</th><th>Vem gör det</th></tr>
+          <tr><th>Steg</th><th>Modell?</th><th>Vem g&#246;r det</th></tr>
         </thead>
         <tbody>
-          <tr><td>Sensor → signal</td><td><span class="tag code">Nej</span></td><td class="who">mätning + glidande baslinje</td></tr>
-          <tr><td>Signal → omen</td><td><span class="tag code">Nej</span></td><td class="who">21 regler i YAML</td></tr>
-          <tr><td>Grinden: blir det en scen?</td><td><span class="tag code">Nej</span></td><td class="who">Director — kod</td></tr>
-          <tr><td>Trådval och sektorlottning</td><td><span class="tag code">Nej</span></td><td class="who">poängsättning + viktad slump</td></tr>
-          <tr><td>Insatsen: vems scen är detta</td><td><span class="tag ai">Ja</span></td><td class="who">Director → gemma4:26b</td></tr>
-          <tr><td>Ryktet</td><td><span class="tag ai">Ja</span></td><td class="who">Rumor → gemma4:26b</td></tr>
-          <tr><td>Scenen</td><td><span class="tag ai">Ja</span></td><td class="who">Chronicler → gemma4:26b</td></tr>
-          <tr><td>Nyhetssändningen</td><td><span class="tag ai">Ja</span></td><td class="who">Anchor → gemma4:26b</td></tr>
-          <tr><td>Plocka ut ny kanon ur scenen</td><td><span class="tag ai">Ja</span></td><td class="who">Extractor → mistral-nemo</td></tr>
-          <tr><td>Förslag → sanning</td><td><span class="tag code">Nej</span></td><td class="who">Keeper — regler och trösklar</td></tr>
-          <tr><td>Granskning av kontinuitet</td><td><span class="tag code">Nej</span></td><td class="who">Watcher — mekaniska kontroller</td></tr>
+          <tr><td>Sensor &#8594; signal</td><td><span class="tag code">Nej</span></td><td class="who">m&#228;tning + glidande baslinje</td></tr>
+          <tr><td>Signal &#8594; omen</td><td><span class="tag code">Nej</span></td><td class="who">21 regler i YAML</td></tr>
+          <tr><td>Grinden: blir det en scen?</td><td><span class="tag code">Nej</span></td><td class="who">Director &#8212; kod</td></tr>
+          <tr><td>Tr&#229;dval och sektorlottning</td><td><span class="tag code">Nej</span></td><td class="who">po&#228;ngs&#228;ttning + viktad slump</td></tr>
+          <tr><td>Insatsen: vems scen &#228;r detta</td><td><span class="tag ai">Ja</span></td><td class="who">Director &#8594; gemma4:26b</td></tr>
+          <tr><td>Ryktet</td><td><span class="tag ai">Ja</span></td><td class="who">Rumor &#8594; gemma4:26b</td></tr>
+          <tr><td>Scenen</td><td><span class="tag ai">Ja</span></td><td class="who">Chronicler &#8594; gemma4:26b</td></tr>
+          <tr><td>Nyhetss&#228;ndningen</td><td><span class="tag ai">Ja</span></td><td class="who">Anchor &#8594; gemma4:26b</td></tr>
+          <tr><td>Plocka ut ny kanon ur scenen</td><td><span class="tag ai">Ja</span></td><td class="who">Extractor &#8594; mistral-nemo</td></tr>
+          <tr><td>F&#246;rslag &#8594; sanning</td><td><span class="tag code">Nej</span></td><td class="who">Keeper &#8212; regler och tr&#246;sklar</td></tr>
+          <tr><td>Granskning av kontinuitet</td><td><span class="tag code">Nej</span></td><td class="who">Watcher &#8212; mekaniska kontroller</td></tr>
+          <tr><td>Radions k&#246;rschema och hitlista</td><td><span class="tag code">Nej</span></td><td class="who">fyra vikter i en YAML-fil</td></tr>
+          <tr><td>Programledarens repliker</td><td><span class="tag ai">Ja</span></td><td class="who">Host &#8594; MiniMax-M3</td></tr>
+          <tr><td>Reklamerna</td><td><span class="tag ai">Ja</span></td><td class="who">Copywriter &#8594; MiniMax-M3</td></tr>
+          <tr><td>L&#229;tar och artister</td><td><span class="tag ai">Ja</span></td><td class="who">Songwriter &#8594; MiniMax-M3</td></tr>
+          <tr><td>R&#246;sterna i etern</td><td><span class="tag ai">Ja</span></td><td class="who">speech-2.8-hd</td></tr>
+          <tr><td>Musiken och jinglarna</td><td><span class="tag ai">Ja</span></td><td class="who">music-3.0</td></tr>
+          <tr><td>Mixning, nedtoning, niv&#229;er</td><td><span class="tag code">Nej</span></td><td class="who">ffmpeg &#8212; m&#228;tt, inte gissat</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p style="margin-top:22px;font-size:15px">Allt körs lokalt på ett grafikkort. Ingen API-nyckel, ingen molntjänst, ingen kostnad per scen.</p>
+    <p style="margin-top:22px;font-size:15px"><strong>Simulatorn k&#246;rs helt lokalt</strong> p&#229; ett grafikkort &#8212; ingen API-nyckel, ingen molntj&#228;nst, ingen kostnad per scen. V&#228;rlden kan alts&#229; skriva sig sj&#228;lv i m&#229;nader utan att n&#229;gon betalar f&#246;r det.</p>
+    <p style="font-size:15px">Radion &#228;r undantaget, och det &#228;r ett medvetet undantag. Den beh&#246;ver r&#246;ster och musik som ingen lokal modell g&#246;r bra, och den producerar i pass n&#229;gra g&#229;nger om dygnet i st&#228;llet f&#246;r dygnet runt. D&#228;rf&#246;r ligger den p&#229; ett abonnemang &#8212; och d&#228;rf&#246;r &#228;r den <em>l&#229;st</em> dit: en v&#228;xel som flyttar hela projektet till lokala modeller hoppar &#246;ver radions agenter, s&#229; att en s&#228;ndning aldrig tyst blir s&#228;mre.</p>
   </section>
 
   <section class="reveal">
     <div class="col">
       <div class="eyebrow">Vad som hindrar drift</div>
-      <h2>En värld som skriver sig själv måste hindras från att motsäga sig själv.</h2>
-      <p>Det är den svåra delen. En modell som får skriva fritt i månader kommer förr eller senare låta en död person tala, flytta en förseglad dörr eller uppfinna en åttonde sektor. Fyra saker står i vägen.</p>
+      <h2>En v&#228;rld som skriver sig sj&#228;lv m&#229;ste hindras fr&#229;n att mots&#228;ga sig sj&#228;lv.</h2>
+      <p>Det &#228;r den sv&#229;ra delen. En modell som f&#229;r skriva fritt i m&#229;nader kommer f&#246;rr eller senare l&#229;ta en d&#246;d person tala, flytta en f&#246;rseglad d&#246;rr eller uppfinna en &#229;ttonde sektor. Fyra saker st&#229;r i v&#228;gen.</p>
     </div>
 
     <div class="cards">
       <div class="card">
         <span class="mk">Lagarna</span>
-        <h3>Världens fysik är skrivskyddad</h3>
-        <p>Ett fåtal regler som ingen agent får bryta, och som ingen agent kan ändra. De följer med i varje prompt.</p>
+        <h3>V&#228;rldens fysik &#228;r skrivskyddad</h3>
+        <p>Ett f&#229;tal regler som ingen agent f&#229;r bryta, och som ingen agent kan &#228;ndra. De f&#246;ljer med i varje prompt.</p>
       </div>
       <div class="card">
-        <span class="mk">Väktaren</span>
+        <span class="mk">V&#228;ktaren</span>
         <h3>Bara en instans skriver kanon</h3>
-        <p>Agenterna föreslår, aldrig mer. Keeper avgör, slår ihop dubbletter och kräver att något nämns två gånger innan det blir sant.</p>
+        <p>Agenterna f&#246;resl&#229;r, aldrig mer. Keeper avg&#246;r, sl&#229;r ihop dubbletter och kr&#228;ver att n&#229;got n&#228;mns tv&#229; g&#229;nger innan det blir sant.</p>
       </div>
       <div class="card">
         <span class="mk">Hierarkin</span>
-        <h3>Allt vet var det hör hemma</h3>
-        <p>En ny plats måste förankras i en av de sju sektorerna. Kan den inte det, släpps förslaget hellre än att bli en hemlös sträng.</p>
+        <h3>Allt vet var det h&#246;r hemma</h3>
+        <p>En ny plats m&#229;ste f&#246;rankras i en av de sju sektorerna. Kan den inte det, sl&#228;pps f&#246;rslaget hellre &#228;n att bli en heml&#246;s str&#228;ng.</p>
       </div>
       <div class="card">
         <span class="mk">Granskaren</span>
         <h3>Upprepning larmar</h3>
-        <p>Mekaniska kontroller mäter titelmallar, ordtics, inledningsformer och zonslagsida. Skriver Krönikören samma scen igen syns det.</p>
+        <p>Mekaniska kontroller m&#228;ter titelmallar, ordtics, inledningsformer och zonslagsida. Skriver Kr&#246;nik&#246;ren samma scen igen syns det.</p>
       </div>
     </div>
   </section>
 
   <section class="reveal">
     <div class="col">
-      <div class="eyebrow">Ansiktet utåt</div>
-      <h2>Mara Rox sänder vad som hänt.</h2>
-      <p>Skeppets nyhetsankare skriver ett sändningsmanus när tillräckligt mycket samlats — inte på klockan, utan på innehåll. Manuset vet vilka scener det redan täckt, så samma händelse sänds aldrig två gånger.</p>
+      <div class="eyebrow">Ansiktet ut&#229;t</div>
+      <h2>Mara Rox s&#228;nder vad som h&#228;nt.</h2>
+      <p>Skeppets nyhetsankare skriver ett s&#228;ndningsmanus n&#228;r tillr&#228;ckligt mycket samlats &#8212; inte p&#229; klockan, utan p&#229; inneh&#229;ll. Manuset vet vilka scener det redan t&#228;ckt, s&#229; samma h&#228;ndelse s&#228;nds aldrig tv&#229; g&#229;nger.</p>
       <blockquote>
-        <p>Manuset är skrivet för att läsas upp. Bildanvisningar är märkta och läses inte. Sist i varje manus står en rubrik som aldrig går i sändning: <strong>”Vad hon inte sände”</strong> — det hon vet men valde bort.</p>
-        <footer>Ombra Prime News · avsett för uppläsning</footer>
+        <p>Manuset &#228;r skrivet f&#246;r att l&#228;sas upp. Bildanvisningar &#228;r m&#228;rkta och l&#228;ses inte. Sist i varje manus st&#229;r en rubrik som aldrig g&#229;r i s&#228;ndning: <strong>&#8221;Vad hon inte s&#228;nde&#8221;</strong> &#8212; det hon vet men valde bort.</p>
+        <footer>Ombra Prime News &#183; avsett f&#246;r uppl&#228;sning</footer>
       </blockquote>
     </div>
   </section>
 
   <section class="reveal">
     <div class="col">
-      <div class="eyebrow">Utflöden</div>
-      <h2>Världen växer för sin egen skull. Det som kommer ur den ska gå att använda.</h2>
-      <p>En sändning att spela in, en bok att läsa, ett avsnitt att klippa. Därför lämnar ingenting systemet som ett dokument någon måste tolka — det lämnar det som ett <strong>paket</strong>: en mapp där varje fil har ett uppdrag, och ett manifest som talar om vilket.</p>
+      <div class="eyebrow">Utfl&#246;den</div>
+      <h2>V&#228;rlden v&#228;xer f&#246;r sin egen skull. Det som kommer ur den ska g&#229; att anv&#228;nda.</h2>
+      <p>En s&#228;ndning att spela in, en bok att l&#228;sa, ett avsnitt att klippa. D&#228;rf&#246;r l&#228;mnar ingenting systemet som ett dokument n&#229;gon m&#229;ste tolka &#8212; det l&#228;mnar det som ett <strong>paket</strong>: en mapp d&#228;r varje fil har ett uppdrag, och ett manifest som talar om vilket.</p>
     </div>
 
     <div class="pkg">
-      <div class="pkg-row"><span class="f">paket.json</span><span class="r">manifest</span><span class="n">Vad paketet innehåller och vad varje del är till för. Det enda som måste läsas.</span></div>
-      <div class="pkg-row"><span class="f">tal.txt</span><span class="r">tal</span><span class="n">Ren talad text. Inga rubriker, ingen regi — går rakt in i en röstsyntes.</span></div>
-      <div class="pkg-row"><span class="f">segment/01–05.txt</span><span class="r">inslag</span><span class="n">Ett nyhetsinslag i taget, med egen uppläsningstid. För den som klipper.</span></div>
-      <div class="pkg-row"><span class="f">bild.md</span><span class="r">regi</span><span class="n">Bildanvisningar, numrerade mot segmenten. Läses aldrig upp.</span></div>
-      <div class="pkg-row"><span class="f">manus.md</span><span class="r">manus</span><span class="n">Hela sändningen som den står, med rubriker och regi. För mänskliga ögon.</span></div>
-      <div class="pkg-row secret"><span class="f">internt.md</span><span class="r">hemligt</span><span class="n">Det Mara kände till och valde bort. Får aldrig lämna paketet.</span></div>
+      <div class="pkg-row"><span class="f">paket.json</span><span class="r">manifest</span><span class="n">Vad paketet inneh&#229;ller och vad varje del &#228;r till f&#246;r. Det enda som m&#229;ste l&#228;sas.</span></div>
+      <div class="pkg-row"><span class="f">tal.txt</span><span class="r">tal</span><span class="n">Ren talad text. Inga rubriker, ingen regi &#8212; g&#229;r rakt in i en r&#246;stsyntes.</span></div>
+      <div class="pkg-row"><span class="f">segment/01&#8211;05.txt</span><span class="r">inslag</span><span class="n">Ett nyhetsinslag i taget, med egen uppl&#228;sningstid. F&#246;r den som klipper.</span></div>
+      <div class="pkg-row"><span class="f">bild.md</span><span class="r">regi</span><span class="n">Bildanvisningar, numrerade mot segmenten. L&#228;ses aldrig upp.</span></div>
+      <div class="pkg-row"><span class="f">manus.md</span><span class="r">manus</span><span class="n">Hela s&#228;ndningen som den st&#229;r, med rubriker och regi. F&#246;r m&#228;nskliga &#246;gon.</span></div>
+      <div class="pkg-row secret"><span class="f">internt.md</span><span class="r">hemligt</span><span class="n">Det Mara k&#228;nde till och valde bort. F&#229;r aldrig l&#228;mna paketet.</span></div>
     </div>
 
     <div class="col">
-      <p>Den sista raden är ingen artighet. Skillnaden mellan vad ankaret vet och vad hon sänder är hela hennes karaktär — läcker det ut är sändningen förstörd. Därför jämför paketbyggaren varje sexordsföljd i det hemliga mot allt som går ut och <strong>vägrar skriva paketet</strong> om något går igen. En regel som bara står i en instruktion är en förhoppning.</p>
+      <p>Den sista raden &#228;r ingen artighet. Skillnaden mellan vad ankaret vet och vad hon s&#228;nder &#228;r hela hennes karakt&#228;r &#8212; l&#228;cker det ut &#228;r s&#228;ndningen f&#246;rst&#246;rd. D&#228;rf&#246;r j&#228;mf&#246;r paketbyggaren varje sexordsf&#246;ljd i det hemliga mot allt som g&#229;r ut och <strong>v&#228;grar skriva paketet</strong> om n&#229;got g&#229;r igen. En regel som bara st&#229;r i en instruktion &#228;r en f&#246;rhoppning.</p>
     </div>
   </section>
 
   <section class="reveal">
     <div class="col">
       <div class="eyebrow">Boken</div>
-      <h2>Krönikören står i rummet. Romanförfattaren vet hur det gick.</h2>
-      <p>När tillräckligt många scener samlats kommer en andra skribent in och skriver ett kapitel om det som hänt. Den läser exakt samma scener som redan är skrivna — men den skriver <em>bakåt</em>, och det är hela skälet att den finns.</p>
+      <h2>Kr&#246;nik&#246;ren st&#229;r i rummet. Romanf&#246;rfattaren vet hur det gick.</h2>
+      <p>N&#228;r tillr&#228;ckligt m&#229;nga scener samlats kommer en andra skribent in och skriver ett kapitel om det som h&#228;nt. Den l&#228;ser exakt samma scener som redan &#228;r skrivna &#8212; men den skriver <em>bak&#229;t</em>, och det &#228;r hela sk&#228;let att den finns.</p>
     </div>
 
     <div class="voices">
       <div class="voice">
-        <span class="mk">Krönikan · i stunden</span>
-        <p>”Dr. Evelyn Saros drog handen genom den svala, fuktiga luften i kontrollrummet och kände hur en ovanlig torrhet bet mot huden.”</p>
+        <span class="mk">Kr&#246;nikan &#183; i stunden</span>
+        <p>&#8221;Dr. Evelyn Saros drog handen genom den svala, fuktiga luften i kontrollrummet och k&#228;nde hur en ovanlig torrhet bet mot huden.&#8221;</p>
         <div class="when">vet inte vad som kommer sedan</div>
       </div>
       <div class="voice">
-        <span class="mk">Romanen · i efterhand</span>
-        <p>”De trodde att det var ett mekaniskt problem, en fråga om logistik och reservdelar. De kunde inte ha haft mer fel.”</p>
+        <span class="mk">Romanen &#183; i efterhand</span>
+        <p>&#8221;De trodde att det var ett mekaniskt problem, en fr&#229;ga om logistik och reservdelar. De kunde inte ha haft mer fel.&#8221;</p>
         <div class="when">vet precis vad som kommer sedan</div>
       </div>
     </div>
 
     <div class="col">
-      <p>Den meningen till höger kan bara skrivas av någon som redan sett slutet. Det är det romanen tillför: den får knyta ihop, förebåda och väga om — säga att en detalj i förbifarten visade sig avgöra allt. Kapitlen skrivs ett i taget och rörs sedan aldrig igen, och mellan dem bär författaren ett kort referat, för hela boken ryms omöjligt i huvudet.</p>
-      <p><strong>Men ingenting går tillbaka.</strong> Romanen läser världen och skriver den aldrig. Fick den hitta på ovanpå Krönikörens påhitt vore tredje generationen helt utan kontakt med sensorerna — och romanens påhitt är dessutom påståenden om <em>varför</em> något hände, det svåraste av allt att ta tillbaka.</p>
+      <p>Den meningen till h&#246;ger kan bara skrivas av n&#229;gon som redan sett slutet. Det &#228;r det romanen tillf&#246;r: den f&#229;r knyta ihop, f&#246;reb&#229;da och v&#228;ga om &#8212; s&#228;ga att en detalj i f&#246;rbifarten visade sig avg&#246;ra allt. Kapitlen skrivs ett i taget och r&#246;rs sedan aldrig igen, och mellan dem b&#228;r f&#246;rfattaren ett kort referat, f&#246;r hela boken ryms om&#246;jligt i huvudet.</p>
+      <p><strong>Men ingenting g&#229;r tillbaka.</strong> Romanen l&#228;ser v&#228;rlden och skriver den aldrig. Fick den hitta p&#229; ovanp&#229; Kr&#246;nik&#246;rens p&#229;hitt vore tredje generationen helt utan kontakt med sensorerna &#8212; och romanens p&#229;hitt &#228;r dessutom p&#229;st&#229;enden om <em>varf&#246;r</em> n&#229;got h&#228;nde, det sv&#229;raste av allt att ta tillbaka.</p>
+    </div>
+  </section>
+
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">Radion</div>
+      <h2>Ombra Prime Radio s&#228;nder p&#229; natten.</h2>
+      <p class="lead">Skeppet hade redan tv&#229; s&#228;tt att ber&#228;tta om sig sj&#228;lvt, och b&#229;da handlar om huvudrollerna &#8212; det &#228;r de som &#228;r med i scenerna. Radion g&#246;r tv&#228;rtom. Den &#228;r det enda formatet d&#228;r <strong>n&#229;gon som inte har n&#229;gon handling f&#229;r prata i fyra minuter.</strong></p>
+      <p>Lisa Lusis l&#228;ser vad nyhetsankaret rapporterat, tycker n&#229;got om det, tar emot ett samtal fr&#229;n n&#229;gon som jobbar nattskift, spelar tv&#229; l&#229;tar ur listan och l&#228;ser upp placeringarna. Emellan g&#229;r reklam f&#246;r saker som faktiskt finns ombord. Allt hon s&#228;ger kommer ur kanon &#8212; och ingenting hon s&#228;ger skrivs tillbaka dit.</p>
+    </div>
+
+    <div class="hour">
+      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingel</div><div class="what"><b>Vinjett</b> &#8212; sjungen, med stationens namn talat sist</div><div class="src">bibliotek</div></div>
+      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Lisa</div><div class="what"><b>&#214;ppningen</b> &#8212; samma syfte varje timme, aldrig samma ord</div><div class="src">f&#228;rsk</div></div>
+      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingel</div><div class="what">Nyheterna</div><div class="src">bibliotek</div></div>
+      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Lisa</div><div class="what"><b>Nyheterna</b> &#8212; ankarets ins&#228;ndningar, i hennes egen mun</div><div class="src">f&#228;rsk</div></div>
+      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingel</div><div class="what">Tillbaka till studion</div><div class="src">bibliotek</div></div>
+      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Lisa</div><div class="what"><b>&#197;sikten</b> &#8212; det enda blocket d&#228;r hon f&#229;r ha fel</div><div class="src">f&#228;rsk</div></div>
+      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingel</div><div class="what">&#8221;Advertising, on Ombra Prime Radio&#8221;</div><div class="src">bibliotek</div></div>
+      <div class="slot lib"   style="--sl:var(--cold)"><div class="rail"></div><div class="kind">Reklam &#215;2</div><div class="what"><b>Tv&#229; f&#228;rdiga annonser</b> &#8212; egna r&#246;ster, egen musik, avannons</div><div class="src">pool</div></div>
+      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingel</div><div class="what">&#214;ppna linjen</div><div class="src">bibliotek</div></div>
+      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Samtal</div><div class="what"><b>N&#229;gon i bakgrunden ringer</b> &#8212; b&#229;da r&#246;sterna skrivs, tv&#229; talsynteser l&#228;ser</div><div class="src">f&#228;rsk</div></div>
+      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">L&#229;t</div><div class="what"><b>Presentation</b>, sedan g&#229;r sk&#228;rvan &#8212; l&#229;ten sj&#228;lv ur biblioteket</div><div class="src">f&#228;rsk + pool</div></div>
+      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingel</div><div class="what">Hitlistan</div><div class="src">bibliotek</div></div>
+      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Listan</div><div class="what"><b>Placeringarna</b> &#8212; men r&#246;relsen &#228;r po&#228;ngen, inte siffrorna</div><div class="src">f&#228;rsk</div></div>
+      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">L&#229;t</div><div class="what">N&#228;sta l&#229;t ner&#229;t p&#229; listan</div><div class="src">f&#228;rsk + pool</div></div>
+      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Lisa</div><div class="what"><b>Avslutningen</b> &#8212; aldrig en uppmaning att h&#229;lla modet uppe</div><div class="src">f&#228;rsk</div></div>
+      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingel</div><div class="what">&#8221;This was Ombra Prime Radio&#8221;</div><div class="src">bibliotek</div></div>
+    </div>
+
+    <div class="col">
+      <p style="margin-top:26px">Den h&#246;gra kolumnen &#228;r ekonomin. En jingel genereras <strong>en g&#229;ng och spelas f&#246;r alltid</strong>; en reklam ocks&#229;; en l&#229;t ocks&#229;. Det som faktiskt kostar n&#229;got varje timme &#228;r Lisas l&#228;nkar &#8212; och det &#228;r d&#228;rf&#246;r en fyra timmar l&#229;ng s&#228;ndning inte kostar fyra g&#229;nger en timme.</p>
+      <p>Det &#228;r ocks&#229; d&#228;rf&#246;r biblioteket &#228;r det som byggs f&#246;rst. Vad som avg&#246;r hur l&#229;ng en s&#228;ndning kan vara &#228;r inte budgeten &#8212; det &#228;r hur mycket som finns att spela om.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>7</b><span>jinglar</span></div>
+      <div class="stat"><b>7</b><span>reklamer i pool</span></div>
+      <div class="stat"><b>7</b><span>l&#229;tar inspelade</span></div>
+      <div class="stat"><b>6</b><span>artister i kanon</span></div>
     </div>
   </section>
 
   <section class="reveal">
     <div class="col">
-      <div class="eyebrow">Läget just nu</div>
-      <h2>Vad som finns i världen.</h2>
+      <div class="eyebrow">Musiken</div>
+      <h2>En l&#229;t m&#229;ste finnas i v&#228;rlden innan den f&#229;r spelas.</h2>
+      <p>En l&#229;t som bara &#228;r en ljudfil g&#246;r radion till en jukebox. En l&#229;t som &#228;r en <strong>entitet i kanon</strong> g&#246;r den till n&#229;got annat: d&#229; kan v&#228;rden ber&#228;tta vem som skrev den, var ombord hen bor, och att den legat p&#229; listan i tre veckor och fortfarande kl&#228;ttrar.</p>
+      <p>L&#229;tarna &#228;r f&#246;rem&#229;l, artisterna &#228;r personer, och b&#229;da skapas p&#229; simulatorsidan &#8212; inte i radion. <strong>Skeppet ska kunna ha en musikscen &#228;ven om kanalen aldrig startas.</strong> Texterna kommer ur v&#228;rlden: en av de sju handlar om en k&#246;karbetare som m&#228;rker att hennes egna portioner slutat bokf&#246;ras och m&#229;ste best&#228;mma sig f&#246;r om hon ska anm&#228;la det.</p>
+      <p>Det &#246;ppnar en &#229;dra av v&#228;rldsbygge som inget annat i projektet n&#229;r. Musiker &#228;r precis den sortens bakgrundsfigurer som annars aldrig f&#229;r plats &#8212; och en s&#229;ng om att livsfl&#246;det sviktar, skriven av n&#229;gon som bor under kupolen, s&#228;ger mer om skeppet &#228;n &#228;nnu en rapport om samma sak. Den &#228;r hur m&#228;nniskorna ombord <em>bearbetar</em> det som h&#228;nder.</p>
+    </div>
+
+    <div class="col">
+      <h3 style="margin-top:34px">Och listan r&#246;r sig av sk&#228;l</h3>
+      <p>Inte av slump, och inte av spelningar &#8212; det senare vore cirkul&#228;rt, eftersom det &#228;r listan som avg&#246;r vad som spelas. Det &#228;r v&#228;rlden. En l&#229;t kl&#228;ttrar n&#228;r det som h&#228;nder ombord liknar det l&#229;ten handlar om.</p>
+    </div>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Vikt</th><th>Vad den m&#228;ter</th></tr></thead>
+        <tbody>
+          <tr><td class="who">tr&#246;ghet</td><td>d&#228;r l&#229;ten l&#229;g f&#246;rra veckan, som tyngd. Utan den kastas listan om varje vecka och ingen l&#229;t hinner bli v&#228;lk&#228;nd.</td></tr>
+          <tr><td class="who">resonans</td><td>st&#228;mmer l&#229;tens grundton med veckans? Bor artisten d&#228;r n&#229;got h&#228;nt?</td></tr>
+          <tr><td class="who">tr&#246;tthet</td><td>veckor p&#229; listan drar ner. L&#229;ngsamt, men obeveklig &#8212; ingenting ligger kvar f&#246;r alltid.</td></tr>
+          <tr><td class="who">debut</td><td>vad en l&#229;t utanf&#246;r listan startar p&#229;. L&#229;gt nog att en etta inte knuffas ut p&#229; en vecka.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <p style="margin-top:22px">Fyra tal i en configfil och ingen dold logik. <strong>En lista som r&#246;r sig av sk&#228;l ingen kan f&#246;rklara &#228;r en lista ingen kan lita p&#229;</strong> &#8212; och v&#228;rden l&#228;ser upp den som om den betydde n&#229;got.</p>
+      <p>Den f&#246;rsta listan gick att h&#228;rleda rad f&#246;r rad: etta blev en l&#229;t som b&#229;de delade veckans grundton <em>och</em> hade en artist som bor d&#228;r scenerna utspelat sig. Tre l&#229;tar delade bara grundtonen. Sist hamnade den enda ljusa l&#229;ten, i en vecka som var tvetydig.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">Gr&#228;nsen</div>
+      <h2>Radion l&#228;ser v&#228;rlden. V&#228;rlden vet inte att radion finns.</h2>
+      <p>Allt kanalen vet kommer genom <strong>en enda fil</strong>, och det kommer som frusna dataklasser &#8212; inte som databasrader. Det kostar n&#229;gra rader &#246;vers&#228;ttning per fr&#229;ga och ger tre saker: ett f&#246;nster som g&#229;r att st&#228;nga om simulatorn &#228;ndrar sig, en s&#228;ndning som inte kan ljuga av misstag, och m&#246;jligheten att k&#246;ra hela radion utan v&#228;rld alls.</p>
+      <p>Regeln &#228;r inte en ambition. Ett kommando l&#228;ser importerna och f&#228;ller varje fil som n&#229;r utanf&#246;r modulen &#8212; i b&#229;da riktningarna. <strong>Den har f&#228;llt fyra filer under bygget</strong>, senast en musikdrivrutin som ville m&#228;ta ljudl&#228;ngd med radions verktyg.</p>
+      <p>Motorn ska g&#229; utan radion. Alltid.</p>
+    </div>
+
+    <blockquote>
+      <p>En timme valde en bakgrundsfigur som inringare. Samma person r&#229;kade ligga etta p&#229; hitlistan &#8212; och programledaren kn&#246;t ihop det sj&#228;lv, utan att ha blivit tillsagd:</p>
+      <p style="font-style:italic">&#8221;Det h&#228;r &#228;r en l&#229;t av n&#229;gon som ringde in alldeles nyss. Pell Ohnstad, The Pearl. Hen ringde f&#246;r att prata om att livsfl&#246;det sviktar, och skriver l&#229;tar nere vid de undre marknaderna. Den h&#228;r heter Three Spoons.&#8221;</p>
+      <footer>Ingen regel s&#228;ger att en inringare f&#229;r vara artist &#183; det f&#246;ljer av att b&#229;da h&#228;mtar ur samma kanon</footer>
+    </blockquote>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">L&#228;get just nu</div>
+      <h2>Vad som finns i v&#228;rlden.</h2>
     </div>
     <div class="stats">
       <div class="stat"><b>7</b><span>sektorer</span></div>
-      <div class="stat"><b>280</b><span>entiteter i kanon</span></div>
-      <div class="stat"><b>20</b><span>skrivna scener</span></div>
-      <div class="stat"><b>10 182</b><span>avläsningar</span></div>
-      <div class="stat"><b>165</b><span>omen</span></div>
-      <div class="stat"><b>3</b><span>sändningar</span></div>
+      <div class="stat"><b>297</b><span>entiteter i kanon</span></div>
+      <div class="stat"><b>24</b><span>skrivna scener</span></div>
+      <div class="stat"><b>10 243</b><span>avl&#228;sningar</span></div>
+      <div class="stat"><b>187</b><span>omen</span></div>
+      <div class="stat"><b>64</b><span>personer</span></div>
+      <div class="stat"><b>10</b><span>radiotimmar</span></div>
       <div class="stat"><b>2</b><span>kapitel</span></div>
       <div class="stat"><b>0</b><span>trasiga referenser</span></div>
     </div>
 
     <div class="col">
       <ul class="plain">
-        <li>Allt i kedjan sparas append-only, så varje scen går att spåra till avläsningen som orsakade den.</li>
-        <li>Krönikan ändras aldrig i efterhand — det är världens minne, inte ett utkast.</li>
-        <li>Hela världen kan exporteras till en enda fil: lagarna plus allt som är bekräftad kanon.</li>
+        <li>Allt i kedjan sparas append-only, s&#229; varje scen g&#229;r att sp&#229;ra till avl&#228;sningen som orsakade den.</li>
+        <li>Kr&#246;nikan &#228;ndras aldrig i efterhand &#8212; det &#228;r v&#228;rldens minne, inte ett utkast.</li>
+        <li>Hela v&#228;rlden kan exporteras till en enda fil: lagarna plus allt som &#228;r bekr&#228;ftad kanon.</li>
       </ul>
     </div>
   </section>
 
   <footer class="end">
-    Ombra Prime Simulator · Python 3.13, lokal inferens, inga molnberoenden<br>
-    Sensordata: nätlatens och hushållsel · Krönikör: gemma4:26b
+    Ombra Prime Simulator &#183; Python 3.13 &#183; sensordata: n&#228;tlatens och hush&#229;llsel<br>
+    V&#228;rlden: gemma4:26b och mistral-nemo, lokalt &#183; Radion: MiniMax-M3, speech-2.8-hd, music-3.0
   </footer>
 </div>
 
