@@ -509,12 +509,12 @@
       <span class="pip" aria-hidden="true"></span>
       <span>Ombra Prime</span>
       <span>16 km &#183; 100 000 inv&#229;nare</span>
-      <span>skeppstid 0342-229</span>
+      <span>skeppstid 0342-274</span>
     </div>
 
     <h1>En v&#228;rld som skriver sig sj&#228;lv, driven av <em>verkliga</em> m&#228;tv&#228;rden.</h1>
 
-    <p class="hero-sub">Ombra Prime Simulator l&#228;ser sensorer i den fysiska v&#228;rlden &#8212; elf&#246;rbrukningen i ett hus, svarstiden mot ett n&#228;tverk &#8212; och &#246;vers&#228;tter dem till h&#228;ndelser ombord p&#229; ett generationsskepp. En lokal AI skriver scenerna. Ingen sitter och matar in vad som ska h&#228;nda.</p>
+    <p class="hero-sub">Ombra Prime Simulator l&#228;ser sensorer i den fysiska v&#228;rlden &#8212; elf&#246;rbrukningen i ett hus, svarstiden mot ett n&#228;tverk, stoftet i luften, lufttrycket, fukten &#8212; och &#246;vers&#228;tter dem till h&#228;ndelser ombord p&#229; ett generationsskepp. En AI skriver scenerna. Ingen sitter och matar in vad som ska h&#228;nda.</p>
 
     <div class="transform">
       <div class="t-side t-machine">
@@ -561,16 +561,16 @@
 
     <div class="chain">
       <div class="step">
-        <div class="step-k">Signal<b>var 30:e sek</b></div>
+        <div class="step-k">Signal<b>var 10:e&#8211;30:e sek</b></div>
         <div>
           <h3>Verkligheten m&#228;ts</h3>
-          <p>En sensor l&#228;ser av n&#229;got fysiskt. N&#228;tsvar mot 1.1.1.1, elm&#228;taren i huset, partiklar i luften. R&#229;v&#228;rdet i sig betyder ingenting &#8212; det som r&#228;knas &#228;r avvikelsen fr&#229;n en glidande baslinje.</p>
+          <p>En sensor l&#228;ser av n&#229;got fysiskt. N&#228;tsvar mot 1.1.1.1, elm&#228;taren i huset, och tv&#229; sm&#229; datorer i rummen &#8212; en partikelm&#228;tare p&#229; en Raspberry Pi 3, en Sense HAT p&#229; en Pi 5: stoft, lufttryck, fukt, vibration, ljus. R&#229;v&#228;rdet i sig betyder ingenting &#8212; det som r&#228;knas &#228;r avvikelsen fr&#229;n en glidande baslinje. Tre av skeppets m&#228;tare f&#246;ljer en sensor direkt: luften ombord stoftet, vattenbalansen fukten, skrovets p&#229;frestning ett fallande lufttryck. Och st&#229;r simulatorn still blir &#228;ven det en h&#228;ndelse: dagar som saknas i skeppets register.</p>
         </div>
         <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div>
       </div>
 
       <div class="step">
-        <div class="step-k">Omen<b>21 regler</b></div>
+        <div class="step-k">Omen<b>35 regler</b></div>
         <div>
           <h3>Talet f&#229;r betydelse</h3>
           <p>En regel i en YAML-fil &#246;vers&#228;tter avvikelsen till n&#229;got som h&#228;nder ombord. Det &#228;r h&#228;r &#8212; och bara h&#228;r &#8212; som meningen bor. Ingen modell inblandad; det &#228;r en tr&#246;skel och en text.</p>
@@ -579,10 +579,10 @@
       </div>
 
       <div class="step">
-        <div class="step-k">Beat<b>4 av 37 sl&#228;pps</b></div>
+        <div class="step-k">Beat<b>33 av 252 sl&#228;pps</b></div>
         <div>
           <h3>Regin avg&#246;r om det blir en scen</h3>
-          <p>De flesta omen stoppas, och det &#228;r meningen. Fyra sp&#228;rrar: allvarsgrad, vila mellan scener, dagsbudget, zonfokus. Passerar omenet t&#228;vlar de aktiva tr&#229;darna om det, och ett viktat hjul lottar vilken sektor scenen hamnar i.</p>
+          <p>De flesta omen stoppas, och det &#228;r meningen. Fyra sp&#228;rrar: allvarsgrad, vila mellan scener, dagsbudget, zonfokus. Omen som passerar hamnar i en v&#228;ntkorg och t&#228;vlar med varandra &#8212; det m&#246;rka f&#229;r inte drunkna i det ljusa, och det som nyss blivit scen f&#229;r minus. Vinnaren g&#229;r till en av de aktiva tr&#229;darna, som f&#246;ds och d&#246;r i takt med scenerna och inte med klockan, och ett viktat hjul lottar vilken sektor scenen hamnar i.</p>
         </div>
         <div class="step-data"><span class="k">tr&#229;d</span> <span class="v">Oris tystnad</span> <span class="k">(0.9 p)</span><br><span class="k">sektor</span> <span class="v">03 EZ Aqua Core</span> <span class="k">(24 % chans)</span></div>
       </div>
@@ -600,13 +600,13 @@
         <div class="step-k">Scen<b>~450 ord</b></div>
         <div>
           <h3>Kr&#246;nik&#246;ren skriver</h3>
-          <p>En lokal modell f&#229;r ryktet, rollistan, tr&#229;den, sektorns st&#228;mningsbeskrivning ur v&#228;rldsbibeln &#8212; och sina egna senaste inledningar, med uppmaning att inte g&#246;ra om dem. Den vet <em>inte</em> vad instrumenten visade.</p>
+          <p>Modellen f&#229;r ryktet, rollistan, tr&#229;den, sektorns st&#228;mningsbeskrivning ur v&#228;rldsbibeln, de m&#228;tare som avviker mest &#8212; och sina egna senaste inledningar, med uppmaning att inte g&#246;ra om dem. Den vet <em>inte</em> vad instrumenten visade.</p>
         </div>
-        <div class="step-data"><span class="k">modell</span> <span class="v">gemma4:26b</span> <span class="k">lokalt, ~10 s</span><br><span class="k">skrivs till</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
+        <div class="step-data"><span class="k">modell</span> <span class="v">gemma4:26b</span> <span class="k">lokalt, eller MiniMax-M3 via v&#228;xeln</span><br><span class="k">skrivs till</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
       </div>
 
       <div class="step">
-        <div class="step-k">Kanon<b>301 entiteter</b></div>
+        <div class="step-k">Kanon<b>247 entiteter</b></div>
         <div>
           <h3>V&#228;rlden v&#228;xer</h3>
           <p>En arkivarie l&#228;ser scenen och f&#246;resl&#229;r det som &#228;r nytt. En v&#228;ktare avg&#246;r vad som blir sanning, sl&#229;r ihop dubbletter och avvisar det som bryter mot v&#228;rldens lagar. F&#246;rst d&#229; finns det p&#229; riktigt.</p>
@@ -684,16 +684,20 @@
         </thead>
         <tbody>
           <tr><td>Sensor &#8594; signal</td><td><span class="tag code">Nej</span></td><td class="who">m&#228;tning + glidande baslinje</td></tr>
-          <tr><td>Signal &#8594; omen</td><td><span class="tag code">Nej</span></td><td class="who">21 regler i YAML</td></tr>
+          <tr><td>Signal &#8594; omen</td><td><span class="tag code">Nej</span></td><td class="who">35 regler i YAML</td></tr>
           <tr><td>Grinden: blir det en scen?</td><td><span class="tag code">Nej</span></td><td class="who">Director &#8212; kod</td></tr>
           <tr><td>Tr&#229;dval och sektorlottning</td><td><span class="tag code">Nej</span></td><td class="who">po&#228;ngs&#228;ttning + viktad slump</td></tr>
-          <tr><td>Insatsen: vems scen &#228;r detta</td><td><span class="tag ai">Ja</span></td><td class="who">Director &#8594; gemma4:26b</td></tr>
-          <tr><td>Ryktet</td><td><span class="tag ai">Ja</span></td><td class="who">Rumor &#8594; gemma4:26b</td></tr>
-          <tr><td>Scenen</td><td><span class="tag ai">Ja</span></td><td class="who">Chronicler &#8594; gemma4:26b</td></tr>
-          <tr><td>Nyhetss&#228;ndningen</td><td><span class="tag ai">Ja</span></td><td class="who">Anchor &#8594; gemma4:26b</td></tr>
-          <tr><td>Plocka ut ny kanon ur scenen</td><td><span class="tag ai">Ja</span></td><td class="who">Extractor &#8594; mistral-nemo</td></tr>
+          <tr><td>Insatsen: vems scen &#228;r detta</td><td><span class="tag ai">Ja</span></td><td class="who">Director &#8594; v&#228;rldsmodellen</td></tr>
+          <tr><td>Ryktet</td><td><span class="tag ai">Ja</span></td><td class="who">Rumor &#8594; v&#228;rldsmodellen</td></tr>
+          <tr><td>Scenen</td><td><span class="tag ai">Ja</span></td><td class="who">Chronicler &#8594; v&#228;rldsmodellen</td></tr>
+          <tr><td>Var ber&#228;ttelsen st&#229;r: tr&#229;dar som f&#246;ds och r&#246;r sig</td><td><span class="tag ai">Ja</span></td><td class="who">Dramaturg &#8594; v&#228;rldsmodellen, varannan timme</td></tr>
+          <tr><td>Nyhetss&#228;ndningen</td><td><span class="tag ai">Ja</span></td><td class="who">Anchor &#8594; v&#228;rldsmodellen</td></tr>
+          <tr><td>Romankapitlet</td><td><span class="tag ai">Ja</span></td><td class="who">Novelist &#8594; v&#228;rldsmodellen</td></tr>
+          <tr><td>Plocka ut ny kanon ur scenen</td><td><span class="tag ai">Ja</span></td><td class="who">Extractor &#8594; mistral-nemo, liten och lokal</td></tr>
           <tr><td>F&#246;rslag &#8594; sanning</td><td><span class="tag code">Nej</span></td><td class="who">Keeper &#8212; regler och tr&#246;sklar</td></tr>
-          <tr><td>Granskning av kontinuitet</td><td><span class="tag code">Nej</span></td><td class="who">Watcher &#8212; mekaniska kontroller</td></tr>
+          <tr><td>Granskning av form: titlar, ordtics, upprepning</td><td><span class="tag code">Nej</span></td><td class="who">Watcher &#8212; mekaniska kontroller</td></tr>
+          <tr><td>Granskning av inneh&#229;ll: mots&#228;gelser mot lagarna</td><td><span class="tag ai">Ja</span></td><td class="who">Watcher &#8594; mistral-nemo, var sj&#228;tte timme</td></tr>
+          <tr><td>&#214;vers&#228;ttningen till svenska</td><td><span class="tag ai">Ja</span></td><td class="who">Translator &#8594; MiniMax-M3</td></tr>
           <tr><td>Radions k&#246;rschema och hitlista</td><td><span class="tag code">Nej</span></td><td class="who">fyra vikter i en YAML-fil</td></tr>
           <tr><td>Programledarens repliker</td><td><span class="tag ai">Ja</span></td><td class="who">Host &#8594; MiniMax-M3</td></tr>
           <tr><td>Reklamerna</td><td><span class="tag ai">Ja</span></td><td class="who">Copywriter &#8594; MiniMax-M3</td></tr>
@@ -704,14 +708,14 @@
           <tr><td>R&#228;kningen av det som inte sades</td><td><span class="tag ai">Ja</span></td><td class="who">Whistleblower &#8594; MiniMax-M3</td></tr>
           <tr><td>L&#229;tar och artister</td><td><span class="tag ai">Ja</span></td><td class="who">Songwriter &#8594; MiniMax-M3</td></tr>
           <tr><td>R&#246;sterna i etern</td><td><span class="tag ai">Ja</span></td><td class="who">speech-2.8-hd</td></tr>
-          <tr><td>Musiken och jinglarna</td><td><span class="tag ai">Ja</span></td><td class="who">music-3.0</td></tr>
+          <tr><td>Musiken och jinglarna</td><td><span class="tag ai">Ja</span></td><td class="who">music-3.0 &#8212; lokalt p&#229; kortet sedan september</td></tr>
           <tr><td>Mixning, nedtoning, niv&#229;er</td><td><span class="tag code">Nej</span></td><td class="who">ffmpeg &#8212; m&#228;tt, inte gissat</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p style="margin-top:22px;font-size:15px"><strong>Simulatorn k&#246;rs helt lokalt</strong> p&#229; ett grafikkort &#8212; ingen API-nyckel, ingen molntj&#228;nst, ingen kostnad per scen. V&#228;rlden kan alts&#229; skriva sig sj&#228;lv i m&#229;nader utan att n&#229;gon betalar f&#246;r det.</p>
-    <p style="font-size:15px">Radion &#228;r undantaget, och det &#228;r ett medvetet undantag. Den beh&#246;ver r&#246;ster och musik som ingen lokal modell g&#246;r bra, och den producerar i pass n&#229;gra g&#229;nger om dygnet i st&#228;llet f&#246;r dygnet runt. D&#228;rf&#246;r ligger den p&#229; ett abonnemang &#8212; och d&#228;rf&#246;r &#228;r den <em>l&#229;st</em> dit: en v&#228;xel som flyttar hela projektet till lokala modeller hoppar &#246;ver radions agenter, s&#229; att en s&#228;ndning aldrig tyst blir s&#228;mre.</p>
+    <p style="margin-top:22px;font-size:15px"><strong>V&#228;rldsmodellen &#228;r en v&#228;xel.</strong> Grundl&#228;get &#228;r helt lokalt p&#229; ett grafikkort &#8212; gemma4:26b, ingen API-nyckel, ingen kostnad per scen, och v&#228;rlden kan skriva sig sj&#228;lv i m&#229;nader utan att n&#229;gon betalar f&#246;r det. N&#228;r kvaliteten ska g&#229; f&#246;re kostnaden flyttar v&#228;xeln v&#228;rldens agenter till MiniMax-M3 &#246;ver n&#228;tet, och det &#228;r d&#228;r den st&#229;r just nu. Vad som <em>f&#229;r h&#228;nda</em> avg&#246;rs av kod oavsett l&#228;ge.</p>
+    <p style="font-size:15px">Radion &#228;r undantaget &#229;t andra h&#229;llet. Den beh&#246;ver r&#246;ster som ingen lokal modell g&#246;r bra, och den producerar i pass n&#229;gra g&#229;nger om dygnet i st&#228;llet f&#246;r dygnet runt. D&#228;rf&#246;r ligger den p&#229; ett abonnemang &#8212; och d&#228;rf&#246;r &#228;r den <em>l&#229;st</em> dit: v&#228;xeln hoppar &#246;ver radions agenter, s&#229; att en s&#228;ndning aldrig tyst blir s&#228;mre. Musiken gick &#229;t andra h&#229;llet i september: leverant&#246;ren drog in den ur sitt API, och samma modell k&#246;rs nu med &#246;ppna vikter p&#229; samma grafikkort som v&#228;rlden.</p>
   </section>
 
   <section class="reveal">
@@ -730,7 +734,7 @@
       <div class="card">
         <span class="mk">V&#228;ktaren</span>
         <h3>Bara en instans skriver kanon</h3>
-        <p>Agenterna f&#246;resl&#229;r, aldrig mer. Keeper avg&#246;r, sl&#229;r ihop dubbletter och kr&#228;ver att n&#229;got n&#228;mns tv&#229; g&#229;nger innan det blir sant.</p>
+        <p>Agenterna f&#246;resl&#229;r, aldrig mer. Keeper avg&#246;r, sl&#229;r ihop dubbletter och kr&#228;ver att n&#229;got n&#228;mns tv&#229; g&#229;nger innan det blir sant. Nya personer f&#229;r f&#246;r- och efternamn, och f&#246;rnamnet pekar p&#229; dem &#8212; eller p&#229; ingen, om tv&#229; delar det.</p>
       </div>
       <div class="card">
         <span class="mk">Hierarkin</span>
@@ -767,9 +771,11 @@
     <div class="pkg">
       <div class="pkg-row"><span class="f">paket.json</span><span class="r">manifest</span><span class="n">Vad paketet inneh&#229;ller och vad varje del &#228;r till f&#246;r. Det enda som m&#229;ste l&#228;sas.</span></div>
       <div class="pkg-row"><span class="f">tal.txt</span><span class="r">tal</span><span class="n">Ren talad text. Inga rubriker, ingen regi &#8212; g&#229;r rakt in i en r&#246;stsyntes.</span></div>
-      <div class="pkg-row"><span class="f">segment/01&#8211;05.txt</span><span class="r">inslag</span><span class="n">Ett nyhetsinslag i taget, med egen uppl&#228;sningstid. F&#246;r den som klipper.</span></div>
+      <div class="pkg-row"><span class="f">segment/01&#8211;06.txt</span><span class="r">inslag</span><span class="n">Ett nyhetsinslag i taget, med egen uppl&#228;sningstid. F&#246;r den som klipper.</span></div>
       <div class="pkg-row"><span class="f">bild.md</span><span class="r">regi</span><span class="n">Bildanvisningar, numrerade mot segmenten. L&#228;ses aldrig upp.</span></div>
       <div class="pkg-row"><span class="f">manus.md</span><span class="r">manus</span><span class="n">Hela s&#228;ndningen som den st&#229;r, med rubriker och regi. F&#246;r m&#228;nskliga &#246;gon.</span></div>
+      <div class="pkg-row"><span class="f">underlag.md</span><span class="r">k&#228;llor</span><span class="n">Det Mara fick l&#228;sa innan hon skrev, s&#229; att varje p&#229;st&#229;ende g&#229;r att sp&#229;ra.</span></div>
+      <div class="pkg-row"><span class="f">ljud/tal.wav</span><span class="r">uppl&#228;sning</span><span class="n">Talet, redan uppl&#228;st. Varje s&#228;ndning blir tv&#229; paket: ett engelskt och ett svenskt.</span></div>
       <div class="pkg-row secret"><span class="f">internt.md</span><span class="r">hemligt</span><span class="n">Det Mara k&#228;nde till och valde bort. F&#229;r aldrig l&#228;mna paketet.</span></div>
     </div>
 
@@ -864,7 +870,7 @@
           <tr><th>R&#246;sten</th><th>F&#229;r se</th><th>F&#229;r aldrig se</th></tr>
         </thead>
         <tbody>
-          <tr><td><b>Anselm Rask</b><br><span class="who">l&#228;ser romanen</span></td><td>kapitlet ordagrant, hur m&#229;nga scener det t&#228;cker och vilka platser</td><td class="who">scenernas rubriker &#8212; de &#228;r skrivna p&#229; svenska, och s&#228;ndningen &#228;r engelsk</td></tr>
+          <tr><td><b>Anselm Rask</b><br><span class="who">l&#228;ser romanen</span></td><td>kapitlet ordagrant, hur m&#229;nga scener det t&#228;cker och vilka platser</td><td class="who">scenerna sj&#228;lva och deras rubriker &#8212; han l&#228;ser boken, inte kr&#246;nikan</td></tr>
           <tr><td><b>Sister Haldis Vrenn</b><br><span class="who">biktmoder</span></td><td>en vers ur skriften, och veckans st&#228;mningar r&#228;knade i aggregat</td><td class="who">n&#228;mnda personer, enskilda scener, nyheter &#8212; hon h&#246;r bikt och f&#229;r inte &#229;terge n&#229;got av det</td></tr>
           <tr><td><b>Ivo Brekke</b><br><span class="who">r&#228;knar h&#229;let</span></td><td>hur m&#229;nga poster ankaret h&#246;ll inne och vilka platser de r&#246;rde, plus ryktena</td><td class="who">det undanh&#229;llnas text, och <em>vilka rykten som &#228;r fel</em></td></tr>
         </tbody>
@@ -922,7 +928,7 @@
     </div>
 
     <div class="col">
-      <p style="margin-top:22px">Fyra tal i en configfil och ingen dold logik. <strong>En lista som r&#246;r sig av sk&#228;l ingen kan f&#246;rklara &#228;r en lista ingen kan lita p&#229;</strong> &#8212; och v&#228;rden l&#228;ser upp den som om den betydde n&#229;got.</p>
+      <p style="margin-top:22px">Fyra tal i en configfil och ingen dold logik. <strong>En lista som r&#246;r sig av sk&#228;l ingen kan f&#246;rklara &#228;r en lista ingen kan lita p&#229;</strong> &#8212; och v&#228;rden l&#228;ser upp den som om den betydde n&#229;got. Veckan r&#228;knas i scener, fyrtio stycken, inte i dygn: st&#229;r simulatorn still st&#229;r listan still.</p>
       <p>Den f&#246;rsta listan gick att h&#228;rleda rad f&#246;r rad: etta blev en l&#229;t som b&#229;de delade veckans grundton <em>och</em> hade en artist som bor d&#228;r scenerna utspelat sig. Tre l&#229;tar delade bara grundtonen. Sist hamnade den enda ljusa l&#229;ten, i en vecka som var tvetydig.</p>
     </div>
   </section>
@@ -950,13 +956,15 @@
     </div>
     <div class="stats">
       <div class="stat"><b>7</b><span>sektorer</span></div>
-      <div class="stat"><b>301</b><span>entiteter i kanon</span></div>
-      <div class="stat"><b>36</b><span>skrivna scener</span></div>
-      <div class="stat"><b>10 243</b><span>avl&#228;sningar</span></div>
-      <div class="stat"><b>203</b><span>omen</span></div>
-      <div class="stat"><b>68</b><span>personer</span></div>
-      <div class="stat"><b>19</b><span>radiotimmar</span></div>
-      <div class="stat"><b>2</b><span>kapitel</span></div>
+      <div class="stat"><b>5</b><span>riktiga sensorer, 20 kanaler</span></div>
+      <div class="stat"><b>247</b><span>entiteter i kanon</span></div>
+      <div class="stat"><b>111</b><span>personer</span></div>
+      <div class="stat"><b>133</b><span>skrivna scener</span></div>
+      <div class="stat"><b>151 334</b><span>avl&#228;sningar</span></div>
+      <div class="stat"><b>1 004</b><span>omen</span></div>
+      <div class="stat"><b>23</b><span>s&#228;ndningar</span></div>
+      <div class="stat"><b>15</b><span>radiotimmar</span></div>
+      <div class="stat"><b>15</b><span>kapitel, alla uppl&#228;sta</span></div>
       <div class="stat"><b>0</b><span>trasiga referenser</span></div>
     </div>
 
@@ -970,8 +978,8 @@
   </section>
 
   <footer class="end">
-    Ombra Prime Simulator &#183; Python 3.13 &#183; sensordata: n&#228;tlatens och hush&#229;llsel<br>
-    V&#228;rlden: gemma4:26b och mistral-nemo, lokalt &#183; Radion: MiniMax-M3, speech-2.8-hd, music-3.0
+    Ombra Prime Simulator &#183; Python 3.13 &#183; sensordata: hush&#229;llsel, n&#228;tlatens, stoft, lufttryck, fukt, vibration och ljus &#8212; fr&#229;n huset och tv&#229; Raspberry Pi<br>
+    V&#228;rlden: gemma4:26b och mistral-nemo lokalt, eller MiniMax-M3 via v&#228;xeln &#183; Radion: MiniMax-M3 och speech-2.8-hd &#183; Musiken: music-3.0, lokalt
   </footer>
 </div>
 
@@ -1004,5 +1012,6 @@
     }, 3000);
   })();
 </script>
+
 
 </body></html>
