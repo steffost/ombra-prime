@@ -1,8 +1,10 @@
 <!doctype html><html lang="sv"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="dark">
 <title>Ombra Prime Simulator</title>
+<link rel="alternate" hreflang="sv" href="https://ombraprime.com/ombra-prime/simulator.html">
+<link rel="alternate" hreflang="en" href="https://ombraprime.com/ombra-prime/en/simulator.html">
 <meta name="description" content="En värld som skriver sig själv, driven av verkliga mätvärden — och en radiokanal med fyra röster som var och en bara får se en del av den.">
 </head><body>
 <meta charset="utf-8">
@@ -14,66 +16,33 @@
      Ingen webbfont laddas — CSP blockerar CDN och en tyst reserv
      hade slagit ut hela poängen.
      --------------------------------------------------------------- */
+  /* Samma värld som introduktionssidan (ombra-prime-varlden): ett enda
+     tema, rymden utanför skrovet, varm bärnsten på nästan svart. Inga
+     [data-theme]-block och ingen prefers-color-scheme — varje färg står
+     en gång och gäller alltid. Instrumenten behåller sin mono. */
   :root {
     --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
-    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-    --sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --serif: Charter, "Bitstream Charter", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --sans: Bahnschrift, "DIN Alternate", "DIN Condensed", "Segoe UI Variable Display",
+            "Segoe UI", system-ui, sans-serif;
 
-    /* Ljust läge: sval papper, inte kräm. */
-    --ground:  #E7E9ED;
-    --surface: #FFFFFF;
-    --sunk:    #DDE0E6;
-    --line:    #C9CEd6;
-    --line-2:  #AEB5C0;
-    --text:    #12161C;
-    --dim:     #4E5765;
-    --muted:   #6E7887;
+    --ground:  #0E0904;   /* rymd   */
+    --surface: #1F1610;   /* panel  */
+    --sunk:    #17100A;   /* djup   */
+    --line:    #3A2A1B;   /* kant   */
+    --line-2:  #574029;
+    --text:    #F4EFE7;   /* skrov  */
+    --dim:     #DFD3C4;   /* text   */
+    --muted:   #A0866C;   /* dämpad */
 
-    --amber:   #8A5713;   /* Vitalis */
-    --amber-2: #B8792A;
-    --cold:    #1F5A7A;   /* instrument */
-    --good:    #2E6B4F;
-    --bad:     #8C2F2F;
+    --amber:   #F2A93B;   /* bärnsten — Vitalis */
+    --amber-2: #FFCE8A;   /* glöd */
+    --cold:    #9DB8B4;   /* instrument, svalt men inte blått */
+    --good:    #A9C98A;
+    --bad:     #E3826A;
 
-    --glow: rgba(138, 87, 19, .10);
+    --glow: rgba(242, 169, 59, .08);
     --rule: 1px solid var(--line);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --ground:  #0A0D12;
-      --surface: #12161D;
-      --sunk:    #0D1117;
-      --line:    #1E2530;
-      --line-2:  #2C3543;
-      --text:    #DDE3EA;
-      --dim:     #97A1B0;
-      --muted:   #798494;
-
-      --amber:   #E0A24B;
-      --amber-2: #F0BC72;
-      --cold:    #6FA8C7;
-      --good:    #6FBF8F;
-      --bad:     #D97070;
-
-      --glow: rgba(224, 162, 75, .13);
-    }
-  }
-  :root[data-theme="dark"] {
-    --ground:  #0A0D12;
-    --surface: #12161D;
-    --sunk:    #0D1117;
-    --line:    #1E2530;
-    --line-2:  #2C3543;
-    --text:    #DDE3EA;
-    --dim:     #97A1B0;
-    --muted:   #798494;
-    --amber:   #E0A24B;
-    --amber-2: #F0BC72;
-    --cold:    #6FA8C7;
-    --good:    #6FBF8F;
-    --bad:     #D97070;
-    --glow: rgba(224, 162, 75, .13);
   }
 
   * { box-sizing: border-box; }
@@ -82,13 +51,26 @@
     margin: 0;
     background: var(--ground);
     color: var(--text);
-    font-family: var(--sans);
+    font-family: var(--serif);
     font-size: 17px;
-    line-height: 1.65;
+    line-height: 1.68;
     -webkit-font-smoothing: antialiased;
   }
 
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+  /* Samma bild som introduktionssidan, med samma övergång ner i rymden. */
+  .skepp { position: relative; max-height: 62vh; overflow: hidden; }
+  .skepp img { display: block; width: 100%; height: auto; }
+  .skepp::after {
+    content: ""; position: absolute; inset: auto 0 -1px 0; height: 45%;
+    background: linear-gradient(to bottom, rgba(14,9,4,0) 0%, var(--ground) 96%);
+    pointer-events: none;
+  }
+  .tillbaka { position: relative; z-index: 1; margin: -2rem 0 0; font: 600 12px/1 var(--sans);
+              letter-spacing: .14em; text-transform: uppercase; }
+  .tillbaka a { color: var(--amber); text-decoration: none; }
+  .tillbaka a:hover, .tillbaka a:focus-visible { color: var(--amber-2); }
   .col  { max-width: 68ch; }
 
   section { padding: 84px 0; border-top: var(--rule); }
@@ -97,10 +79,10 @@
   h1, h2, h3 { text-wrap: balance; margin: 0; }
 
   .eyebrow {
-    font: 600 11px/1 var(--mono);
-    letter-spacing: .16em;
+    font: 600 12px/1 var(--sans);
+    letter-spacing: .2em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--amber);
     margin-bottom: 20px;
   }
 
@@ -253,7 +235,7 @@
     .step { grid-template-columns: 1fr; gap: 14px; }
   }
 
-  /* ---------- SKEPPET: sju sektorer, TOPP -> BOTTEN ---------- */
+  /* ---------- SKEPPET: åtta sektorer, TOPP -> BOTTEN ---------- */
 
   .sectors { margin-top: 40px; border: var(--rule); border-radius: 3px; overflow: hidden; background: var(--surface); }
   .sector {
@@ -504,12 +486,15 @@
 
 <div class="wrap">
 
+  <p class="tillbaka" style="margin-top:2rem"><a href="https://ombraprime.com/ombra-prime-varlden/">&larr; Världen, kort förklarad</a>
+    &nbsp;&middot;&nbsp; <a href="en/simulator.html" hreflang="en" lang="en">English</a></p>
+
   <header class="hero">
     <div class="ship-id">
       <span class="pip" aria-hidden="true"></span>
       <span>Ombra Prime</span>
       <span>16 km &#183; 100 000 inv&#229;nare</span>
-      <span>skeppstid 0342-274</span>
+      <span>skeppstid 0342-315</span>
     </div>
 
     <h1>En v&#228;rld som skriver sig sj&#228;lv, driven av <em>verkliga</em> m&#228;tv&#228;rden.</h1>
@@ -546,7 +531,7 @@
     <div class="col">
       <div class="eyebrow">Grundid&#233;n</div>
       <h2>Skeppet &#228;r givet. Ber&#228;ttelsen &#228;r det inte.</h2>
-      <p class="lead">Sju sektorer och tretton huvudpersoner &#228;r f&#246;rutbest&#228;mda och &#228;ndras aldrig. Allt annat &#8212; verkst&#228;der, korridorer, bifigurer, konflikter &#8212; v&#228;xer fram ur scenerna allteftersom de skrivs.</p>
+      <p class="lead">&#197;tta sektorer och tretton huvudpersoner &#228;r f&#246;rutbest&#228;mda och &#228;ndras aldrig. Allt annat &#8212; verkst&#228;der, korridorer, bifigurer, konflikter &#8212; v&#228;xer fram ur scenerna allteftersom de skrivs.</p>
       <p>Kr&#246;nik&#246;ren hittar p&#229; en odlingsring i en scen. En annan agent l&#228;ser scenen, plockar ut platsen och f&#246;resl&#229;r den. En tredje godk&#228;nner den och skriver in den i kanon. N&#228;sta scen i samma sektor f&#229;r se att odlingsringen finns, och kan anv&#228;nda den igen.</p>
       <p>S&#229; v&#228;xer v&#228;rlden av sig sj&#228;lv, utan att n&#229;gon tappar tr&#229;den &#8212; och utan att n&#229;gon beh&#246;ver komma ih&#229;g vad som redan h&#228;nt.</p>
     </div>
@@ -564,7 +549,7 @@
         <div class="step-k">Signal<b>var 10:e&#8211;30:e sek</b></div>
         <div>
           <h3>Verkligheten m&#228;ts</h3>
-          <p>En sensor l&#228;ser av n&#229;got fysiskt. N&#228;tsvar mot 1.1.1.1, elm&#228;taren i huset, och tv&#229; sm&#229; datorer i rummen &#8212; en partikelm&#228;tare p&#229; en Raspberry Pi 3, en Sense HAT p&#229; en Pi 5: stoft, lufttryck, fukt, vibration, ljus. R&#229;v&#228;rdet i sig betyder ingenting &#8212; det som r&#228;knas &#228;r avvikelsen fr&#229;n en glidande baslinje. Tre av skeppets m&#228;tare f&#246;ljer en sensor direkt: luften ombord stoftet, vattenbalansen fukten, skrovets p&#229;frestning ett fallande lufttryck. Och st&#229;r simulatorn still blir &#228;ven det en h&#228;ndelse: dagar som saknas i skeppets register.</p>
+          <p>En sensor l&#228;ser av n&#229;got fysiskt. N&#228;tsvar mot en publik v&#228;rd, elm&#228;taren i huset, en Sense HAT p&#229; en Raspberry Pi 5 &#8212; lufttryck, fukt, vibration, ljus &#8212; och en partikelm&#228;tare f&#246;r stoftet, som just nu flyttar till ett ESP32-kort. R&#229;v&#228;rdet i sig betyder ingenting &#8212; det som r&#228;knas &#228;r avvikelsen fr&#229;n en glidande baslinje. Tre av skeppets m&#228;tare f&#246;ljer en sensor direkt: luften ombord stoftet, vattenbalansen fukten, skrovets p&#229;frestning ett fallande lufttryck. Och st&#229;r simulatorn still blir &#228;ven det en h&#228;ndelse: dagar som saknas i skeppets register.</p>
         </div>
         <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div>
       </div>
@@ -602,11 +587,11 @@
           <h3>Kr&#246;nik&#246;ren skriver</h3>
           <p>Modellen f&#229;r ryktet, rollistan, tr&#229;den, sektorns st&#228;mningsbeskrivning ur v&#228;rldsbibeln, de m&#228;tare som avviker mest &#8212; och sina egna senaste inledningar, med uppmaning att inte g&#246;ra om dem. Den vet <em>inte</em> vad instrumenten visade.</p>
         </div>
-        <div class="step-data"><span class="k">modell</span> <span class="v">gemma4:26b</span> <span class="k">lokalt, eller MiniMax-M3 via v&#228;xeln</span><br><span class="k">skrivs till</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
+        <div class="step-data"><span class="k">modell</span> <span class="v">MiniMax-M3</span> <span class="k">eller en lokal modell, via v&#228;xeln</span><br><span class="k">skrivs till</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
       </div>
 
       <div class="step">
-        <div class="step-k">Kanon<b>247 entiteter</b></div>
+        <div class="step-k">Kanon<b>424 entiteter</b></div>
         <div>
           <h3>V&#228;rlden v&#228;xer</h3>
           <p>En arkivarie l&#228;ser scenen och f&#246;resl&#229;r det som &#228;r nytt. En v&#228;ktare avg&#246;r vad som blir sanning, sl&#229;r ihop dubbletter och avvisar det som bryter mot v&#228;rldens lagar. F&#246;rst d&#229; finns det p&#229; riktigt.</p>
@@ -619,7 +604,7 @@
   <section class="reveal">
     <div class="col">
       <div class="eyebrow">Skeppet</div>
-      <h2>Sju sektorer, uppifr&#229;n och ner.</h2>
+      <h2>&#197;tta sektorer, uppifr&#229;n och ner.</h2>
       <p>Ombra Prime &#228;r vertikalt organiserat. Varje sektor har inte bara en funktion utan en <strong>st&#228;mning</strong> &#8212; hur det k&#228;nns f&#246;r en m&#228;nniska att st&#229; d&#228;r &#8212; och den texten g&#229;r in i prompten varje g&#229;ng en scen skrivs d&#228;r. Det &#228;r d&#228;rf&#246;r en scen i Hangaren smakar metall och en i The Crypt smakar ozon.</p>
     </div>
 
@@ -659,7 +644,13 @@
         <div class="nm"><b>The Spire</b><span>Forskning</span></div>
         <div class="fl">Klinisk precision. Luften smakar som ingenting. Vetenskapen h&#228;r &#228;r inte f&#246;r att f&#246;rst&#229; &#8212; den &#228;r f&#246;r att kontrollera.</div>
       </div>
+      <div class="sector" style="--sc:#9A7FC2">
+        <div class="rail"></div><div class="no">08</div>
+        <div class="nm"><b>The Breather</b><span>Skeppets syfte</span></div>
+        <div class="fl">Gudomlig frid och bottenl&#246;s sorg. Du k&#228;nner barnens dr&#246;mmar som vibrationer i ditt eget br&#246;st &#8212; v&#228;lsignad f&#246;r v&#228;rlden som f&#246;ds, f&#246;rbannad av priset den kostar.</div>
+      </div>
     </div>
+    <p style="margin-top:18px;font-size:15px">Den &#229;ttonde &#228;r ingen del av skrovet som de andra, utan maskinen skeppet byggdes runt: terraformingsmotorn, och Hj&#228;rtkammaren d&#228;r The Eternal Dreamers sover. Ombra Prime &#228;r p&#229; v&#228;g f&#246;r att bl&#229;sa liv i d&#246;da v&#228;rldar, och en scen beh&#246;ver inte handla om The Breather f&#246;r att veta att den finns.</p>
 
     <div class="gradient-note">
       <span>Varmt &#183; levande</span>
@@ -698,7 +689,9 @@
           <tr><td>Granskning av form: titlar, ordtics, upprepning</td><td><span class="tag code">Nej</span></td><td class="who">Watcher &#8212; mekaniska kontroller</td></tr>
           <tr><td>Granskning av inneh&#229;ll: mots&#228;gelser mot lagarna</td><td><span class="tag ai">Ja</span></td><td class="who">Watcher &#8594; mistral-nemo, var sj&#228;tte timme</td></tr>
           <tr><td>&#214;vers&#228;ttningen till svenska</td><td><span class="tag ai">Ja</span></td><td class="who">Translator &#8594; MiniMax-M3</td></tr>
-          <tr><td>Radions k&#246;rschema och hitlista</td><td><span class="tag code">Nej</span></td><td class="who">fyra vikter i en YAML-fil</td></tr>
+          <tr><td>Radions k&#246;rschema</td><td><span class="tag code">Nej</span></td><td class="who">format i en YAML-fil &#8212; tar alltid det senaste</td></tr>
+          <tr><td>Hitlistan</td><td><span class="tag code">Nej</span></td><td class="who">veckans scener r&#246;star, plus fyra vikter</td></tr>
+          <tr><td>L&#229;tens stil, tempo och r&#246;st</td><td><span class="tag code">Nej</span></td><td class="who">ett viktat hjul, som sektorhjulet</td></tr>
           <tr><td>Programledarens repliker</td><td><span class="tag ai">Ja</span></td><td class="who">Host &#8594; MiniMax-M3</td></tr>
           <tr><td>Reklamerna</td><td><span class="tag ai">Ja</span></td><td class="who">Copywriter &#8594; MiniMax-M3</td></tr>
           <tr><td>Romankapitlet som l&#228;ses upp</td><td><span class="tag code">Nej</span></td><td class="who">h&#228;mtas ordagrant ur boken</td></tr>
@@ -707,22 +700,22 @@
           <tr><td>Versen som citeras</td><td><span class="tag code">Nej</span></td><td class="who">18 verser i kanon, tur och ordning</td></tr>
           <tr><td>R&#228;kningen av det som inte sades</td><td><span class="tag ai">Ja</span></td><td class="who">Whistleblower &#8594; MiniMax-M3</td></tr>
           <tr><td>L&#229;tar och artister</td><td><span class="tag ai">Ja</span></td><td class="who">Songwriter &#8594; MiniMax-M3</td></tr>
-          <tr><td>R&#246;sterna i etern</td><td><span class="tag ai">Ja</span></td><td class="who">speech-2.8-hd</td></tr>
-          <tr><td>Musiken och jinglarna</td><td><span class="tag ai">Ja</span></td><td class="who">music-3.0 &#8212; lokalt p&#229; kortet sedan september</td></tr>
+          <tr><td>R&#246;sterna i etern</td><td><span class="tag ai">Ja</span></td><td class="who">ElevenLabs v4 f&#246;r Lisa, Haldis och Ivo &#183; MiniMax speech-2.8-hd f&#246;r uppl&#228;saren, inringarna och reklamen</td></tr>
+          <tr><td>Musiken och jinglarna</td><td><span class="tag ai">Ja</span></td><td class="who">MiniMax Music 3 hos fal.ai &#8212; betald per l&#229;t, priset p&#229; knappen</td></tr>
           <tr><td>Mixning, nedtoning, niv&#229;er</td><td><span class="tag code">Nej</span></td><td class="who">ffmpeg &#8212; m&#228;tt, inte gissat</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p style="margin-top:22px;font-size:15px"><strong>V&#228;rldsmodellen &#228;r en v&#228;xel.</strong> Grundl&#228;get &#228;r helt lokalt p&#229; ett grafikkort &#8212; gemma4:26b, ingen API-nyckel, ingen kostnad per scen, och v&#228;rlden kan skriva sig sj&#228;lv i m&#229;nader utan att n&#229;gon betalar f&#246;r det. N&#228;r kvaliteten ska g&#229; f&#246;re kostnaden flyttar v&#228;xeln v&#228;rldens agenter till MiniMax-M3 &#246;ver n&#228;tet, och det &#228;r d&#228;r den st&#229;r just nu. Vad som <em>f&#229;r h&#228;nda</em> avg&#246;rs av kod oavsett l&#228;ge.</p>
-    <p style="font-size:15px">Radion &#228;r undantaget &#229;t andra h&#229;llet. Den beh&#246;ver r&#246;ster som ingen lokal modell g&#246;r bra, och den producerar i pass n&#229;gra g&#229;nger om dygnet i st&#228;llet f&#246;r dygnet runt. D&#228;rf&#246;r ligger den p&#229; ett abonnemang &#8212; och d&#228;rf&#246;r &#228;r den <em>l&#229;st</em> dit: v&#228;xeln hoppar &#246;ver radions agenter, s&#229; att en s&#228;ndning aldrig tyst blir s&#228;mre. Musiken gick &#229;t andra h&#229;llet i september: leverant&#246;ren drog in den ur sitt API, och samma modell k&#246;rs nu med &#246;ppna vikter p&#229; samma grafikkort som v&#228;rlden.</p>
+    <p style="margin-top:22px;font-size:15px"><strong>V&#228;rldsmodellen &#228;r en v&#228;xel.</strong> Den kan st&#229; helt lokalt p&#229; ett grafikkort &#8212; ingen API-nyckel, ingen kostnad per scen &#8212; eller p&#229; MiniMax-M3 &#246;ver n&#228;tet. Sedan november 2026 bor hela simulatorn p&#229; en egen dator som g&#229;r dygnet runt, och v&#228;rldens agenter st&#229;r p&#229; MiniMax-M3. Vad som <em>f&#229;r h&#228;nda</em> avg&#246;rs av kod oavsett l&#228;ge.</p>
+    <p style="font-size:15px">Det som kostar per g&#229;ng g&#246;rs aldrig av sig sj&#228;lvt. En l&#229;t spelas in och ett radioprogram l&#228;ses upp f&#246;rst n&#228;r en m&#228;nniska trycker p&#229; en knapp, och priset st&#229;r p&#229; knappen innan. Musiken har flyttat tv&#229; g&#229;nger: leverant&#246;ren drog in den ur sitt API i augusti, den gick en tid p&#229; ett lokalt grafikkort, och sedan november g&#246;rs samma modell hos fal.ai, betald per l&#229;t.</p>
   </section>
 
   <section class="reveal">
     <div class="col">
       <div class="eyebrow">Vad som hindrar drift</div>
       <h2>En v&#228;rld som skriver sig sj&#228;lv m&#229;ste hindras fr&#229;n att mots&#228;ga sig sj&#228;lv.</h2>
-      <p>Det &#228;r den sv&#229;ra delen. En modell som f&#229;r skriva fritt i m&#229;nader kommer f&#246;rr eller senare l&#229;ta en d&#246;d person tala, flytta en f&#246;rseglad d&#246;rr eller uppfinna en &#229;ttonde sektor. Fyra saker st&#229;r i v&#228;gen.</p>
+      <p>Det &#228;r den sv&#229;ra delen. En modell som f&#229;r skriva fritt i m&#229;nader kommer f&#246;rr eller senare l&#229;ta en d&#246;d person tala, flytta en f&#246;rseglad d&#246;rr eller uppfinna en nionde sektor. Fyra saker st&#229;r i v&#228;gen.</p>
     </div>
 
     <div class="cards">
@@ -739,7 +732,7 @@
       <div class="card">
         <span class="mk">Hierarkin</span>
         <h3>Allt vet var det h&#246;r hemma</h3>
-        <p>En ny plats m&#229;ste f&#246;rankras i en av de sju sektorerna. Kan den inte det, sl&#228;pps f&#246;rslaget hellre &#228;n att bli en heml&#246;s str&#228;ng.</p>
+        <p>En ny plats m&#229;ste f&#246;rankras i en av de &#229;tta sektorerna. Kan den inte det, sl&#228;pps f&#246;rslaget hellre &#228;n att bli en heml&#246;s str&#228;ng.</p>
       </div>
       <div class="card">
         <span class="mk">Granskaren</span>
@@ -814,10 +807,12 @@
   <section class="reveal">
     <div class="col">
       <div class="eyebrow">Radion</div>
-      <h2>Ombra Prime Radio s&#228;nder p&#229; natten.</h2>
+      <h2>Ombra Prime Radio &#8212; en glimt in i v&#228;rlden.</h2>
       <p class="lead">Skeppet hade redan tv&#229; s&#228;tt att ber&#228;tta om sig sj&#228;lvt, och b&#229;da handlar om huvudrollerna &#8212; det &#228;r de som &#228;r med i scenerna. Radion g&#246;r tv&#228;rtom. Den &#228;r det enda formatet d&#228;r <strong>n&#229;gon som inte har n&#229;gon handling f&#229;r prata i nio minuter.</strong></p>
       <p>Lisa Lusis l&#228;ser vad nyhetsankaret rapporterat, tycker n&#229;got om det, tar emot ett samtal fr&#229;n n&#229;gon som jobbar nattskift, spelar tv&#229; l&#229;tar ur listan och l&#228;ser upp placeringarna. Emellan g&#229;r reklam f&#246;r saker som faktiskt finns ombord. Allt hon s&#228;ger kommer ur kanon &#8212; och ingenting hon s&#228;ger skrivs tillbaka dit.</p>
-      <p>Men hon &#228;r inte l&#228;ngre ensam i etern. <strong>Tre r&#246;ster till har egna inslag</strong>, med egna agenter, egna talsynteser och egen bakgrund: en loggboksf&#246;rare som l&#228;ser senaste romankapitlet ordagrant, en biktmoder som h&#229;ller en vers ur skeppets heliga skrift mot hur veckan k&#228;nts, och en lagerkontrollant som r&#228;knar det som <em>inte</em> sades. Timmen gick fr&#229;n fem minuter till <strong>tjugofyra</strong>.</p>
+      <p>Men hon &#228;r inte l&#228;ngre ensam i etern. <strong>Tre r&#246;ster till har egna inslag</strong>, med egna agenter, egna talsynteser och egen bakgrund: en loggboksf&#246;rare som l&#228;ser senaste romankapitlet ordagrant, en biktmoder som h&#229;ller en vers ur skeppets heliga skrift mot hur veckan k&#228;nts, och en lagerkontrollant som r&#228;knar det som <em>inte</em> sades. Ett program &#228;r i dag knappt en halvtimme.</p>
+      <p><strong>Ett program tar alltid det senaste</strong> &#8212; Maras senaste s&#228;ndning, de senaste scenerna, romanens senaste kapitel, listan som den ligger. Och ett nytt g&#246;rs f&#246;rst n&#228;r det finns nytt att ber&#228;tta: nya nyheter, ett nytt kapitel och en omr&#228;knad lista. <strong>Det blir aldrig en repris.</strong> Knappen som g&#246;r programmet t&#228;nds f&#246;rst d&#229;, och priset st&#229;r p&#229; den.</p>
+      <p>Lisa, Haldis och Ivo har r&#246;ster hos ElevenLabs. Lisas kan sucka, skratta tyst och ta en paus d&#228;r manuset s&#228;ger det; de andra tv&#229; l&#228;ser lugnare, som folk som inte &#228;r vana vid en mikrofon. Uppl&#228;saren, de som ringer in och reklamen har MiniMax-r&#246;ster, och en man som ringer in f&#229;r en mansr&#246;st.</p>
     </div>
 
     <div class="hour">
@@ -851,10 +846,10 @@
     </div>
 
     <div class="stats">
-      <div class="stat"><b>24 min</b><span>senaste timmen</span></div>
+      <div class="stat"><b>29 min</b><span>senaste programmet</span></div>
       <div class="stat"><b>10</b><span>jinglar</span></div>
-      <div class="stat"><b>10</b><span>reklamer i pool</span></div>
-      <div class="stat"><b>7</b><span>l&#229;tar inspelade</span></div>
+      <div class="stat"><b>13</b><span>reklamer i pool</span></div>
+      <div class="stat"><b>11</b><span>l&#229;tar inspelade</span></div>
       <div class="stat"><b>4</b><span>r&#246;ster med eget inslag</span></div>
     </div>
   </section>
@@ -906,13 +901,14 @@
       <div class="eyebrow">Musiken</div>
       <h2>En l&#229;t m&#229;ste finnas i v&#228;rlden innan den f&#229;r spelas.</h2>
       <p>En l&#229;t som bara &#228;r en ljudfil g&#246;r radion till en jukebox. En l&#229;t som &#228;r en <strong>entitet i kanon</strong> g&#246;r den till n&#229;got annat: d&#229; kan v&#228;rden ber&#228;tta vem som skrev den, var ombord hen bor, och att den legat p&#229; listan i tre veckor och fortfarande kl&#228;ttrar.</p>
-      <p>L&#229;tarna &#228;r f&#246;rem&#229;l, artisterna &#228;r personer, och b&#229;da skapas p&#229; simulatorsidan &#8212; inte i radion. <strong>Skeppet ska kunna ha en musikscen &#228;ven om kanalen aldrig startas.</strong> Texterna kommer ur v&#228;rlden: en av de sju handlar om en k&#246;karbetare som m&#228;rker att hennes egna portioner slutat bokf&#246;ras och m&#229;ste best&#228;mma sig f&#246;r om hon ska anm&#228;la det.</p>
+      <p>L&#229;tarna &#228;r f&#246;rem&#229;l, artisterna &#228;r personer, och b&#229;da skapas p&#229; simulatorsidan &#8212; inte i radion. <strong>Skeppet ska kunna ha en musikscen &#228;ven om kanalen aldrig startas.</strong> Texterna kommer ur v&#228;rlden: en av de f&#246;rsta handlar om en k&#246;karbetare som m&#228;rker att hennes egna portioner slutat bokf&#246;ras och m&#229;ste best&#228;mma sig f&#246;r om hon ska anm&#228;la det.</p>
       <p>Det &#246;ppnar en &#229;dra av v&#228;rldsbygge som inget annat i projektet n&#229;r. Musiker &#228;r precis den sortens bakgrundsfigurer som annars aldrig f&#229;r plats &#8212; och en s&#229;ng om att livsfl&#246;det sviktar, skriven av n&#229;gon som bor under kupolen, s&#228;ger mer om skeppet &#228;n &#228;nnu en rapport om samma sak. Den &#228;r hur m&#228;nniskorna ombord <em>bearbetar</em> det som h&#228;nder.</p>
     </div>
 
     <div class="col">
       <h3 style="margin-top:34px">Och listan r&#246;r sig av sk&#228;l</h3>
-      <p>Inte av slump, och inte av spelningar &#8212; det senare vore cirkul&#228;rt, eftersom det &#228;r listan som avg&#246;r vad som spelas. Det &#228;r v&#228;rlden. En l&#229;t kl&#228;ttrar n&#228;r det som h&#228;nder ombord liknar det l&#229;ten handlar om.</p>
+      <p>Inte av slump, och inte av spelningar &#8212; det senare vore cirkul&#228;rt, eftersom det &#228;r listan som avg&#246;r vad som spelas. Det &#228;r v&#228;rlden. <strong>Varje scen under veckan &#228;r en r&#246;stsedel</strong>: platsen den utspelar sig p&#229;, tr&#229;den den h&#246;r till och dess grundton. En l&#229;t kl&#228;ttrar n&#228;r det som h&#228;nder ombord liknar det l&#229;ten handlar om.</p>
+      <p>Samma r&#246;ster avg&#246;r vilka nya l&#229;tar som spelas in. Varje vecka skrivs l&#229;tar om veckans tr&#229;dar, och de som f&#229;tt flest r&#246;ster g&#229;r till inspelning. Stilen dras med ett viktat hjul, byggt som sektorhjulet: sektorn, tr&#229;dens ton och hur tr&#229;ngt det redan &#228;r i en stil. D&#228;rf&#246;r l&#229;ter veckans l&#229;tar olika, och en artist beh&#229;ller sin stil.</p>
     </div>
 
     <div class="tblwrap">
@@ -951,21 +947,30 @@
 
   <section class="reveal">
     <div class="col">
+      <div class="eyebrow">Live</div>
+      <h2>V&#228;rlden s&#228;nds medan den skrivs.</h2>
+      <p class="lead">Radion s&#228;nds live p&#229; YouTube, p&#229; kanalen <strong>Ombra Prime</strong>. Det senaste programmet g&#229;r tills ett nytt finns, och hitlistan spelas i s&#228;ndningen.</p>
+      <p>S&#228;ndningen sk&#246;ts av <strong>Oris</strong> &#8212; en AI-agent som bor p&#229; samma dator som simulatorn och b&#228;r namnet p&#229; skeppets medvetande. Hon l&#228;ser bara: programmet och listan h&#228;mtas d&#228;r simulatorn l&#228;gger dem, och ingenting i s&#228;ndningen skrivs tillbaka till v&#228;rlden. I chatten svarar hon tittarna.</p>
+      <p>Mer &#228;r p&#229; v&#228;g: <strong>Rox News</strong>, d&#228;r Mara Rox l&#228;ser nyheterna fr&#229;n skeppet varje dag, och en <strong>podd</strong> som g&#229;r igenom veckan ombord.</p>
+      <p><a href="https://www.youtube.com/@ombraprime">youtube.com/@ombraprime</a></p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
       <div class="eyebrow">L&#228;get just nu</div>
       <h2>Vad som finns i v&#228;rlden.</h2>
     </div>
     <div class="stats">
-      <div class="stat"><b>7</b><span>sektorer</span></div>
-      <div class="stat"><b>5</b><span>riktiga sensorer, 20 kanaler</span></div>
-      <div class="stat"><b>247</b><span>entiteter i kanon</span></div>
-      <div class="stat"><b>111</b><span>personer</span></div>
-      <div class="stat"><b>133</b><span>skrivna scener</span></div>
-      <div class="stat"><b>151 334</b><span>avl&#228;sningar</span></div>
-      <div class="stat"><b>1 004</b><span>omen</span></div>
-      <div class="stat"><b>23</b><span>s&#228;ndningar</span></div>
-      <div class="stat"><b>15</b><span>radiotimmar</span></div>
-      <div class="stat"><b>15</b><span>kapitel, alla uppl&#228;sta</span></div>
-      <div class="stat"><b>0</b><span>trasiga referenser</span></div>
+      <div class="stat"><b>8</b><span>sektorer</span></div>
+      <div class="stat"><b>3</b><span>riktiga sensorer i drift, 14 kanaler</span></div>
+      <div class="stat"><b>424</b><span>entiteter i kanon</span></div>
+      <div class="stat"><b>134</b><span>personer</span></div>
+      <div class="stat"><b>240</b><span>skrivna scener</span></div>
+      <div class="stat"><b>37</b><span>s&#228;ndningar</span></div>
+      <div class="stat"><b>29</b><span>romankapitel</span></div>
+      <div class="stat"><b>16</b><span>radioprogram</span></div>
+      <div class="stat"><b>11</b><span>inspelade l&#229;tar</span></div>
     </div>
 
     <div class="col">
@@ -978,8 +983,8 @@
   </section>
 
   <footer class="end">
-    Ombra Prime Simulator &#183; Python 3.13 &#183; sensordata: hush&#229;llsel, n&#228;tlatens, stoft, lufttryck, fukt, vibration och ljus &#8212; fr&#229;n huset och tv&#229; Raspberry Pi<br>
-    V&#228;rlden: gemma4:26b och mistral-nemo lokalt, eller MiniMax-M3 via v&#228;xeln &#183; Radion: MiniMax-M3 och speech-2.8-hd &#183; Musiken: music-3.0, lokalt
+    Ombra Prime Simulator &#183; Python &#183; sensordata: hush&#229;llsel, n&#228;tlatens, lufttryck, fukt, vibration och ljus &#8212; stoftet flyttar till en ESP32<br>
+    V&#228;rlden: MiniMax-M3 &#183; Radion: MiniMax-M3, ElevenLabs v4 och MiniMax speech-2.8-hd &#183; Musiken: MiniMax Music 3 hos fal.ai &#183; Live: YouTube, @ombraprime
   </footer>
 </div>
 
