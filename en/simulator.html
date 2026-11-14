@@ -492,12 +492,12 @@
       <span class="pip" aria-hidden="true"></span>
       <span>Ombra Prime</span>
       <span>16.9 km &#183; 100,000 inhabitants</span>
-      <span>ship time 0342-315</span>
+      <span>ship time 0342-318</span>
     </div>
 
     <h1>A world that writes itself, driven by <em>real</em> measurements.</h1>
 
-    <p class="hero-sub">Ombra Prime Simulator reads sensors in the physical world &#8212; the power use of a house, the response time of a network, the dust in the air, air pressure, humidity &#8212; and translates them into events aboard a generation ship. An AI writes the scenes. Nobody types in what is supposed to happen.</p>
+    <p class="hero-sub">Ombra Prime Simulator reads sensors in the physical world &#8212; the power use of a house, the response time of a network, the dust in the air, air pressure, humidity, movement in a room &#8212; and translates them into events aboard a generation ship. An AI writes the scenes. Nobody types in what is supposed to happen.</p>
 
     <div class="transform">
       <div class="t-side t-machine">
@@ -547,7 +547,7 @@
         <div class="step-k">Signal<b>every 10&#8211;30 s</b></div>
         <div>
           <h3>Reality is measured</h3>
-          <p>A sensor reads something physical. Network response against a public host, the power meter in the house, a Sense HAT on a Raspberry Pi 5 &#8212; air pressure, humidity, vibration, light &#8212; and a particle sensor for the dust, which is moving to an ESP32 board right now. The raw value means nothing in itself &#8212; what counts is the deviation from a moving baseline. Three of the ship&#8217;s gauges follow a sensor directly: the air aboard follows the dust, the water balance the humidity, the hull stress a falling air pressure. And if the simulator stands still, that becomes an event too: days missing from the ship&#8217;s log.</p>
+          <p>A sensor reads something physical. Network response against a public host, the power meter in the house, a Raspberry Pi 5 with a Sense HAT and a particle sensor &#8212; air pressure, humidity, vibration, light, dust &#8212; and a small ESP32 board that senses movement in the room without a camera, from how the wifi waves bounce. The raw value means nothing in itself &#8212; what counts is the deviation from a moving baseline. Three of the ship&#8217;s gauges follow a sensor directly: the air aboard follows the dust, the water balance the humidity, the hull stress a falling air pressure. The movement becomes the activity in The Crypt, where Oris and her machines work without anyone aboard knowing on what. Once enough of it has gathered they have finished something, and the shape of the movement decides what: calm work makes something small and fine, violent work something large. The people aboard only notice the traces. And if the simulator stands still, that becomes an event too: days missing from the ship&#8217;s log.</p>
         </div>
         <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div>
       </div>
@@ -589,7 +589,7 @@
       </div>
 
       <div class="step">
-        <div class="step-k">Canon<b>424 entities</b></div>
+        <div class="step-k">Canon<b>632 entities</b></div>
         <div>
           <h3>The world grows</h3>
           <p>An archivist reads the scene and proposes what is new. A keeper decides what becomes true, merges duplicates and rejects what breaks the laws of the world. Only then does it really exist.</p>
@@ -844,10 +844,10 @@
     </div>
 
     <div class="stats">
-      <div class="stat"><b>29 min</b><span>latest show</span></div>
+      <div class="stat"><b>27 min</b><span>latest show</span></div>
       <div class="stat"><b>10</b><span>jingles</span></div>
       <div class="stat"><b>13</b><span>adverts in the pool</span></div>
-      <div class="stat"><b>11</b><span>songs recorded</span></div>
+      <div class="stat"><b>17</b><span>songs recorded</span></div>
       <div class="stat"><b>4</b><span>voices with their own segment</span></div>
     </div>
   </section>
@@ -961,14 +961,14 @@
     </div>
     <div class="stats">
       <div class="stat"><b>8</b><span>sectors</span></div>
-      <div class="stat"><b>3</b><span>real sensors running, 14 channels</span></div>
-      <div class="stat"><b>424</b><span>entities in canon</span></div>
-      <div class="stat"><b>134</b><span>people</span></div>
-      <div class="stat"><b>240</b><span>scenes written</span></div>
-      <div class="stat"><b>37</b><span>broadcasts</span></div>
-      <div class="stat"><b>29</b><span>novel chapters</span></div>
-      <div class="stat"><b>16</b><span>radio shows</span></div>
-      <div class="stat"><b>11</b><span>songs recorded</span></div>
+      <div class="stat"><b>5</b><span>real sensors running, 20 channels</span></div>
+      <div class="stat"><b>632</b><span>entities in canon</span></div>
+      <div class="stat"><b>172</b><span>people</span></div>
+      <div class="stat"><b>368</b><span>scenes written</span></div>
+      <div class="stat"><b>72</b><span>broadcasts</span></div>
+      <div class="stat"><b>45</b><span>novel chapters</span></div>
+      <div class="stat"><b>21</b><span>radio shows</span></div>
+      <div class="stat"><b>17</b><span>songs recorded</span></div>
     </div>
 
     <div class="col">
@@ -981,7 +981,7 @@
   </section>
 
   <footer class="end">
-    Ombra Prime Simulator &#183; Python &#183; sensor data: household power, network latency, air pressure, humidity, vibration and light &#8212; the dust is moving to an ESP32<br>
+    Ombra Prime Simulator &#183; Python &#183; sensor data: household power, network latency, dust, air pressure, humidity, vibration, light and movement &#8212; from the house, a Raspberry Pi 5 and an ESP32 board<br>
     The world: MiniMax-M3 &#183; The radio: MiniMax-M3, ElevenLabs v4 and MiniMax speech-2.8-hd &#183; Music: MiniMax Music 3 at fal.ai &#183; Live: YouTube, @ombraprime
   </footer>
 </div>
