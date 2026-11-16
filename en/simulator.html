@@ -485,7 +485,8 @@
 <div class="wrap">
 
   <p class="tillbaka" style="margin-top:2rem"><a href="https://ombraprime.com/ombra-prime-world/">&larr; The world, briefly explained</a>
-    &nbsp;&middot;&nbsp; <a href="../simulator.html" hreflang="sv" lang="sv">Svenska</a></p>
+    &nbsp;&middot;&nbsp; <a href="broadcasts.html">What is on air</a>
+     &#183;  <a href="../simulator.html" hreflang="sv" lang="sv">Svenska</a></p>
 
   <header class="hero">
     <div class="ship-id">
@@ -496,7 +497,7 @@
 
     <h1>A world that writes itself, driven by <em>real</em> measurements.</h1>
 
-    <p class="hero-sub">Ombra Prime Simulator reads sensors in the physical world &#8212; the power use of a house, the response time of a network, the dust in the air, air pressure, humidity, movement in a room &#8212; and translates them into events aboard a generation ship. An AI writes the scenes. Nobody types in what is supposed to happen.</p>
+    <p class="hero-sub">Ombra Prime Simulator reads sensors in the physical world &#8212; the power use of a house, the response time of a network, the dust in the air, air pressure, humidity, movement in a room, whatever moves outside a kitchen window &#8212; and translates them into events aboard a generation ship. An AI writes the scenes. Nobody types in what is supposed to happen.</p>
 
     <div class="transform">
       <div class="t-side t-machine">
@@ -546,13 +547,13 @@
         <div class="step-k">Signal<b>every 10&#8211;30 s</b></div>
         <div>
           <h3>Reality is measured</h3>
-          <p>A sensor reads something physical. Network response against a public host, the power meter in the house, a Raspberry Pi 5 with a Sense HAT and a particle sensor &#8212; air pressure, humidity, vibration, light, dust &#8212; and a small ESP32 board that senses movement in the room without a camera, from how the wifi waves bounce. The raw value means nothing in itself &#8212; what counts is the deviation from a moving baseline. Three of the ship&#8217;s gauges follow a sensor directly: the air aboard follows the dust, the water balance the humidity, the hull stress a falling air pressure. The movement is the pulse of the city: Metropolis sleeps when the house sleeps, wakes when it wakes, and fills with people when there is a party. The power, which switches on and off around the clock, is the work in The Crypt, where Oris and her machines build without anyone aboard knowing what. Once enough work has gathered they have finished something, and the shape of the power draw decides what: steady running makes something small and fine, heavy loads something large. The people aboard only notice the traces. And if the simulator stands still, that becomes an event too: days missing from the ship&#8217;s log.</p>
+          <p>A sensor reads something physical. Network response against a public host, the power meter in the house, a Raspberry Pi 5 with a Sense HAT and a particle sensor &#8212; air pressure, humidity, dust &#8212; a webcam looking out through a kitchen window at a bird table, and a small ESP32 board that senses movement in the room without a camera, from how the wifi waves bounce. The raw value means nothing in itself &#8212; what counts is the deviation from a moving baseline. The air aboard follows the dust and the hull stress a falling air pressure. But most gauges do not read a sensor straight off; they read a <strong>derived value</strong>: how far the number stands from its own normal, how fast it changes, the imbalance between the three phases of the power, what share of the day something has moved. The water balance aboard follows how evenly the power runs, not the humidity. The camera is the ship&#8217;s lookout: when something comes to the bird table, something is outside the hull. The image is not kept and never published. A reviewer sees a small crop around the movement and says what it was. If it recognises a deer, that is a comet; a squirrel is an object caught in the ship&#8217;s wake; a crow is an unknown probe. If it cannot tell, it stays a mystery, and a person in the picture never becomes anything at all. The movement is the pulse of the city: Metropolis sleeps when the house sleeps, wakes when it wakes, and fills with people when there is a party. The power, which switches on and off around the clock, is the work in The Crypt, where Oris and her machines build without anyone aboard knowing what. Once enough work has gathered they have finished something, and the shape of the power draw decides what: steady running makes something small and fine, heavy loads something large. The people aboard only notice the traces. And if the simulator stands still, that becomes an event too: days missing from the ship&#8217;s log.</p>
         </div>
         <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div>
       </div>
 
       <div class="step">
-        <div class="step-k">Omen<b>35 rules</b></div>
+        <div class="step-k">Omen<b>50 rules</b></div>
         <div>
           <h3>The number gets a meaning</h3>
           <p>A rule in a YAML file translates the deviation into something that happens aboard. This is where &#8212; and only where &#8212; meaning lives. No model involved; it is a threshold and a text.</p>
@@ -561,10 +562,10 @@
       </div>
 
       <div class="step">
-        <div class="step-k">Beat<b>33 of 252 pass</b></div>
+        <div class="step-k">Beat<b>most are stopped</b></div>
         <div>
           <h3>The director decides whether it becomes a scene</h3>
-          <p>Most omens are stopped, and that is the point. Four gates: severity, rest between scenes, daily budget, zone focus. Omens that pass land in a waiting basket and compete with each other &#8212; the dark must not drown in the bright, and what just became a scene gets a minus. The winner goes to one of the active threads, which are born and die in step with the scenes rather than the clock, and a weighted wheel draws which sector the scene lands in.</p>
+          <p>Most omens are stopped, and that is the point. Four gates: severity, rest between scenes, daily budget, zone focus. Omens that pass land in a waiting basket and compete with each other &#8212; the dark must not drown in the bright, and what just became a scene gets a minus. The winner goes to one of the active threads, at least six at a time, which are born and die in step with the scenes rather than the clock, and a weighted wheel draws which sector the scene lands in.</p>
         </div>
         <div class="step-data"><span class="k">thread</span> <span class="v">Oris&#8217;s silence</span> <span class="k">(0.9 p)</span><br><span class="k">sector</span> <span class="v">03 EZ Aqua Core</span> <span class="k">(24 % chance)</span></div>
       </div>
@@ -582,16 +583,16 @@
         <div class="step-k">Scene<b>~450 words</b></div>
         <div>
           <h3>The Chronicler writes</h3>
-          <p>The model gets the rumour, the cast, the thread, the sector&#8217;s mood description from the world bible, the gauges that deviate most &#8212; and its own latest openings, with a request not to repeat them. It does <em>not</em> know what the instruments showed.</p>
+          <p>The model gets the rumour, the cast, the thread, the sheet for the one sector the wheel has drawn, what has happened there before, the gauges that deviate most &#8212; and its own latest openings, with a request not to repeat them. It does <em>not</em> know what the instruments showed. Two of the four places in the cast go to people who live in the sector. The others are visitors, and their cards say so.</p>
         </div>
-        <div class="step-data"><span class="k">model</span> <span class="v">MiniMax-M3</span> <span class="k">or a local model, via the switch</span><br><span class="k">written to</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
+        <div class="step-data"><span class="k">model</span> <span class="v">Claude Haiku</span> <span class="k">or a local model, via the switch</span><br><span class="k">written to</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
       </div>
 
       <div class="step">
         <div class="step-k">Canon<b>grows every day</b></div>
         <div>
           <h3>The world grows</h3>
-          <p>An archivist reads the scene and proposes what is new. A keeper decides what becomes true, merges duplicates and rejects what breaks the laws of the world. Only then does it really exist.</p>
+          <p>An archivist reads the scene and proposes what is new. A keeper decides what becomes true, merges duplicates and rejects what breaks the laws of the world. Only then does it really exist. The archivist also decides whether the scene changed something that lasts: something broke, someone moved, a decision was made. Then the sector gets a line in its memory, and the next scene there builds on it.</p>
         </div>
         <div class="step-data"><span class="k">proposal</span> <span class="v">place &#183; Hydroponics Ring 4-C</span><br><span class="k">anchored in</span> <span class="v">sector 03</span> <span class="k">&#8212; mandatory</span></div>
       </div>
@@ -602,7 +603,7 @@
     <div class="col">
       <div class="eyebrow">The ship</div>
       <h2>Eight sectors, top to bottom.</h2>
-      <p>Ombra Prime is organised vertically. Each sector has not just a function but a <strong>mood</strong> &#8212; how it feels for a person to stand there &#8212; and that text goes into the prompt every time a scene is written there. That is why a scene in the Hangar tastes of metal and one in The Crypt tastes of ozone.</p>
+      <p>Ombra Prime is organised vertically. Each sector has a <strong>sheet</strong>: what it is, what is done there, what never belongs there, who gets in, how bright it is and how it feels for a person to stand there. Whoever writes a scene gets only the sheet for the sector the wheel has drawn, so that nothing else rubs off. That is why a scene in the Hangar tastes of metal and one in The Crypt tastes of ozone. Everyone aboard has a home sector. Away from it you are a visitor, and only Oris is everywhere.</p>
     </div>
 
     <div class="sectors">
@@ -672,29 +673,33 @@
         </thead>
         <tbody>
           <tr><td>Sensor &#8594; signal</td><td><span class="tag code">No</span></td><td class="who">measurement + moving baseline</td></tr>
-          <tr><td>Signal &#8594; omen</td><td><span class="tag code">No</span></td><td class="who">35 rules in YAML</td></tr>
+          <tr><td>Signal &#8594; omen</td><td><span class="tag code">No</span></td><td class="who">50 rules in YAML</td></tr>
           <tr><td>The gate: does it become a scene?</td><td><span class="tag code">No</span></td><td class="who">Director &#8212; code</td></tr>
           <tr><td>Thread choice and sector draw</td><td><span class="tag code">No</span></td><td class="who">scoring + weighted chance</td></tr>
           <tr><td>The stakes: whose scene is this</td><td><span class="tag ai">Yes</span></td><td class="who">Director &#8594; world model</td></tr>
           <tr><td>The rumour</td><td><span class="tag ai">Yes</span></td><td class="who">Rumor &#8594; world model</td></tr>
           <tr><td>The scene</td><td><span class="tag ai">Yes</span></td><td class="who">Chronicler &#8594; world model</td></tr>
-          <tr><td>Where the story stands: threads that are born and move</td><td><span class="tag ai">Yes</span></td><td class="who">Dramaturg &#8594; world model, every other hour</td></tr>
+          <tr><td>Where the story stands: threads that are born and move</td><td><span class="tag ai">Yes</span></td><td class="who">Dramaturg &#8594; world model, more often when the threads are too few</td></tr>
           <tr><td>The news broadcast</td><td><span class="tag ai">Yes</span></td><td class="who">Anchor &#8594; world model</td></tr>
           <tr><td>The novel chapter</td><td><span class="tag ai">Yes</span></td><td class="who">Novelist &#8594; world model</td></tr>
-          <tr><td>Picking new canon out of the scene</td><td><span class="tag ai">Yes</span></td><td class="who">Extractor &#8594; a small model</td></tr>
+          <tr><td>Picking new canon out of the scene</td><td><span class="tag ai">Yes</span></td><td class="who">Extractor &#8594; Claude Haiku</td></tr>
+          <tr><td>The sector&#8217;s memory: did the scene change something that lasts?</td><td><span class="tag ai">Yes</span></td><td class="who">Extractor proposes a line &#183; code merges, keeps the limit and lets old lines fade</td></tr>
           <tr><td>Proposal &#8594; truth</td><td><span class="tag code">No</span></td><td class="who">Keeper &#8212; rules and thresholds</td></tr>
           <tr><td>Review of form: titles, verbal tics, repetition</td><td><span class="tag code">No</span></td><td class="who">Watcher &#8212; mechanical checks</td></tr>
-          <tr><td>Review of content: contradictions with the laws</td><td><span class="tag ai">Yes</span></td><td class="who">Watcher &#8594; a small model, every sixth hour</td></tr>
-          <tr><td>Translation into Swedish</td><td><span class="tag ai">Yes</span></td><td class="who">Translator &#8594; MiniMax-M3</td></tr>
+          <tr><td>Review of content: contradictions with the laws</td><td><span class="tag ai">Yes</span></td><td class="who">Watcher &#8594; Claude Haiku, every sixth hour</td></tr>
+          <tr><td>The lookout: is something moving at the bird table?</td><td><span class="tag code">No</span></td><td class="who">image difference on a small computer by the window &#8212; only numbers leave it</td></tr>
+          <tr><td>The lookout: what was it?</td><td><span class="tag ai">Yes</span></td><td class="who">a reviewer sees a crop &#183; mystery or recognised, never a person</td></tr>
+          <tr><td>Who may be in the scene</td><td><span class="tag code">No</span></td><td class="who">home and visits per person, and whoever has rested longest goes first</td></tr>
+          <tr><td>Translation into Swedish</td><td><span class="tag ai">Yes</span></td><td class="who">Translator &#8594; Claude Haiku</td></tr>
           <tr><td>The radio running order</td><td><span class="tag code">No</span></td><td class="who">a format in a YAML file &#8212; always takes the latest</td></tr>
-          <tr><td>The chart</td><td><span class="tag code">No</span></td><td class="who">the week&#8217;s scenes vote, plus four weights</td></tr>
+          <tr><td>The chart</td><td><span class="tag code">No</span></td><td class="who">the week&#8217;s scenes vote, plus four weights &#183; a new chart every Monday</td></tr>
           <tr><td>A song&#8217;s style, tempo and voice</td><td><span class="tag code">No</span></td><td class="who">a weighted wheel, like the sector wheel</td></tr>
           <tr><td>The host&#8217;s lines</td><td><span class="tag ai">Yes</span></td><td class="who">Host &#8594; MiniMax-M3</td></tr>
           <tr><td>The adverts</td><td><span class="tag ai">Yes</span></td><td class="who">Copywriter &#8594; MiniMax-M3</td></tr>
           <tr><td>The novel chapter read on air</td><td><span class="tag code">No</span></td><td class="who">taken verbatim from the book</td></tr>
           <tr><td>The introduction to the reading</td><td><span class="tag ai">Yes</span></td><td class="who">Reader &#8594; MiniMax-M3</td></tr>
-          <tr><td>The reflection on a verse</td><td><span class="tag ai">Yes</span></td><td class="who">Priest &#8594; MiniMax-M3</td></tr>
-          <tr><td>The verse quoted</td><td><span class="tag code">No</span></td><td class="who">18 verses in canon, in turn</td></tr>
+          <tr><td>The reflection on a verse</td><td><span class="tag ai">Yes</span></td><td class="who">Priest &#8594; MiniMax-M3, three sermons a day &#183; the radio takes the latest</td></tr>
+          <tr><td>The verse quoted</td><td><span class="tag code">No</span></td><td class="who">22 verses in canon, in turn</td></tr>
           <tr><td>Counting what was not said</td><td><span class="tag ai">Yes</span></td><td class="who">Whistleblower &#8594; MiniMax-M3</td></tr>
           <tr><td>Songs and artists</td><td><span class="tag ai">Yes</span></td><td class="who">Songwriter &#8594; MiniMax-M3</td></tr>
           <tr><td>The voices on air</td><td><span class="tag ai">Yes</span></td><td class="who">ElevenLabs v4 for Lisa, Haldis and Ivo &#183; MiniMax speech-2.8-hd for the reader, the callers and the adverts</td></tr>
@@ -704,15 +709,15 @@
       </table>
     </div>
 
-    <p style="margin-top:22px;font-size:15px"><strong>The world model is a switch.</strong> It can run entirely locally on a graphics card &#8212; no API key, no cost per scene &#8212; or on MiniMax-M3 over the network. Since November 2026 the whole simulator lives on a computer of its own that runs around the clock, and the world&#8217;s agents are on MiniMax-M3. What is <em>allowed to happen</em> is decided by code either way.</p>
-    <p style="font-size:15px">Anything that costs money per run is never done by itself. A song is recorded and a radio show is read aloud only when a person presses a button, and the price is on the button first. The music has moved twice: the provider pulled it from its API in August, it ran for a while on a local graphics card, and since November the same model runs at fal.ai, paid per song.</p>
+    <p style="margin-top:22px;font-size:15px"><strong>The world model is a switch.</strong> It can run entirely locally on a graphics card &#8212; no API key, no cost per scene &#8212; or on a model over the network. Since November 2026 the whole simulator lives on a computer of its own that runs around the clock, and the world&#8217;s agents are on Claude Haiku. What is <em>allowed to happen</em> is decided by code either way.</p>
+    <p style="font-size:15px">Anything that costs money per run always has a ceiling. A radio show is read aloud only when a person presses a button, and the price is on the button first. The songs are the exception: those that make it onto the week’s chart are recorded by themselves, at most two new ones a week and under a daily ceiling. The music has moved twice: the provider pulled it from its API in August, it ran for a while on a local graphics card, and since November the same model runs at fal.ai, paid per song.</p>
   </section>
 
   <section class="reveal">
     <div class="col">
       <div class="eyebrow">What prevents drift</div>
       <h2>A world that writes itself has to be kept from contradicting itself.</h2>
-      <p>That is the hard part. A model allowed to write freely for months will sooner or later let a dead person speak, move a sealed door or invent a ninth sector. Four things stand in the way.</p>
+      <p>That is the hard part. A model allowed to write freely for months will sooner or later let a dead person speak, move a sealed door or invent a ninth sector. Seven things stand in the way.</p>
     </div>
 
     <div class="cards">
@@ -724,7 +729,7 @@
       <div class="card">
         <span class="mk">The keeper</span>
         <h3>Only one instance writes canon</h3>
-        <p>The agents propose, never more. The Keeper decides, merges duplicates and requires something to be mentioned twice before it becomes true. New people get a first and a last name, and the first name points to them &#8212; or to nobody, if two share it.</p>
+        <p>The agents propose, never more. The Keeper decides, merges duplicates and requires something to be mentioned twice before it becomes true. What the creator himself has written is locked: no agent may change it. New people get a first and a last name, and the first name points to them &#8212; or to nobody, if two share it.</p>
       </div>
       <div class="card">
         <span class="mk">The hierarchy</span>
@@ -735,6 +740,21 @@
         <span class="mk">The reviewer</span>
         <h3>Repetition raises the alarm</h3>
         <p>Mechanical checks measure title templates, verbal tics, opening forms and zone bias. If the Chronicler writes the same scene again, it shows.</p>
+      </div>
+      <div class="card">
+        <span class="mk">Home</span>
+        <h3>Everyone has a home sector</h3>
+        <p>Each person belongs to one sector and may visit certain others. The cast follows it: two places in every scene go to those who live there, and someone who may not be in the sector is left out. That is how each sector becomes a world of its own, with its own people.</p>
+      </div>
+      <div class="card">
+        <span class="mk">Memory</span>
+        <h3>What happened has consequences</h3>
+        <p>Each sector remembers at most ten larger things that happened there and still hold. The lines go along to the next scene in the sector. Something left unresolved comes back after a while as a later scene’s assignment.</p>
+      </div>
+      <div class="card">
+        <span class="mk">Reuse</span>
+        <h3>The world counts what it returns to</h3>
+        <p>After every scene the people, places and objects it mentioned are counted. Whoever has rested longest is first in line, so that the world uses what it already has instead of only inventing more.</p>
       </div>
     </div>
   </section>
@@ -808,7 +828,7 @@
       <p class="lead">The ship already had two ways of telling about itself, and both are about the main characters &#8212; they are the ones in the scenes. The radio does the opposite. It is the only format where <strong>someone with no part in the plot gets to talk for nine minutes.</strong></p>
       <p>Lisa Lusis reads what the news anchor reported, has an opinion about it, takes a call from someone working the night shift, plays two songs from the chart and reads out the positions. In between run adverts for things that actually exist aboard. Everything she says comes from canon &#8212; and nothing she says is written back.</p>
       <p>But she is no longer alone on air. <strong>Three more voices have segments of their own</strong>, with their own agents, their own voices and their own background: a logbook keeper who reads the latest novel chapter verbatim, a confessor who holds a verse of the ship&#8217;s scripture up against how the week has felt, and a stores clerk who counts what was <em>not</em> said. A show is now just under half an hour.</p>
-      <p><strong>A show always takes the latest</strong> &#8212; Mara&#8217;s latest broadcast, the latest scenes, the novel&#8217;s latest chapter, the chart as it stands. And a new one is made only when there is something new to tell: new news, a new chapter and a recalculated chart. <strong>It is never a rerun.</strong> The button that makes the show lights up only then, with the price on it.</p>
+      <p><strong>A show always takes the latest</strong> &#8212; Mara&#8217;s latest broadcast, the latest scenes, the novel&#8217;s latest chapter, the chart as it stands. And a new one is made only when there is something new to tell: new news and a new chapter. The chart is the week’s, and the same in all of the week’s shows. <strong>It is never a rerun.</strong> The button that makes the show lights up only then, with the price on it.</p>
       <p>Lisa, Haldis and Ivo have voices at ElevenLabs. Lisa&#8217;s can sigh, laugh quietly and pause where the script says so; the other two read more calmly, like people not used to a microphone. The reader, the callers and the adverts have MiniMax voices, and a man who calls in gets a man&#8217;s voice.</p>
     </div>
 
@@ -870,7 +890,7 @@
 
     <div class="stats">
       <div class="stat"><b>0</b><span>lines of what was held back that reach the air</span></div>
-      <div class="stat"><b>18</b><span>verses in the scripture</span></div>
+      <div class="stat"><b>22</b><span>verses in the scripture</span></div>
       <div class="stat"><b>4</b><span>beds, one per voice</span></div>
     </div>
   </section>
@@ -897,8 +917,8 @@
 
     <div class="col">
       <h3 style="margin-top:34px">And the chart moves for a reason</h3>
-      <p>Not by chance, and not by plays &#8212; the latter would be circular, since the chart decides what is played. It is the world. <strong>Every scene during the week is a ballot</strong>: the place it happens in, the thread it belongs to and its keynote. A song climbs when what happens aboard resembles what the song is about.</p>
-      <p>The same votes decide which new songs are recorded. Every week songs are written about the week&#8217;s threads, and the ones with the most votes go to recording. The style is drawn with a weighted wheel, built like the sector wheel: the sector, the thread&#8217;s tone and how crowded a style already is. That is why the week&#8217;s songs sound different, and an artist keeps their style.</p>
+      <p>Not by chance, and not by plays &#8212; the latter would be circular, since the chart decides what is played. It is the world. <strong>Every scene since the last chart is a ballot</strong>: the place it happens in, the thread it belongs to and its keynote. A song climbs when what happens aboard resembles what the song is about.</p>
+      <p>All songs compete, recorded or not. Every week new songs are written about the week&#8217;s threads, as text. A new song has to spend a week bubbling under before it can enter, and only those that enter are recorded. The style is drawn with a weighted wheel, built like the sector wheel: the sector, the thread&#8217;s tone and how crowded a style already is. That is why the week&#8217;s songs sound different, and an artist keeps their style.</p>
     </div>
 
     <div class="tblwrap">
@@ -914,7 +934,7 @@
     </div>
 
     <div class="col">
-      <p style="margin-top:22px">Four numbers in a config file and no hidden logic. <strong>A chart that moves for reasons nobody can explain is a chart nobody can trust</strong> &#8212; and the host reads it out as if it meant something. The week is counted in scenes, forty of them, not in days: if the simulator stands still, the chart stands still.</p>
+      <p style="margin-top:22px">Four numbers in a config file and no hidden logic. <strong>A chart that moves for reasons nobody can explain is a chart nobody can trust</strong> &#8212; and the host reads it out as if it meant something. The chart runs Monday to Sunday, like a real chart. Next week’s is counted on the Sunday and takes effect on the Monday. If the world has stood still, it is a quiet week where inertia and fatigue decide.</p>
       <p>The first chart could be derived line by line: number one was a song that both shared the week&#8217;s keynote <em>and</em> had an artist living where the scenes took place. Three songs shared only the keynote. Last came the only bright song, in a week that was ambiguous.</p>
     </div>
   </section>
@@ -942,7 +962,7 @@
       <p class="lead">The radio is broadcast live on YouTube, on the channel <strong>Ombra Prime</strong>. The latest show runs until a new one exists, and the chart plays in the broadcast.</p>
       <p>The broadcast is run by <strong>Oris</strong> &#8212; an AI agent who lives on the same computer as the simulator and bears the name of the ship&#8217;s mind. She only reads: the show and the chart are fetched where the simulator puts them, and nothing in the broadcast is written back to the world. In the chat she answers the viewers.</p>
       <p>More is on the way: <strong>Rox News</strong>, where Mara Rox reads the news from the ship every day, and a <strong>podcast</strong> going through the week aboard.</p>
-      <p><a href="https://www.youtube.com/@ombraprime">youtube.com/@ombraprime</a></p>
+      <p><a href="https://www.youtube.com/@ombraprime">youtube.com/@ombraprime</a> &#183; <a href="broadcasts.html">What is on air right now</a></p>
     </div>
   </section>
 
@@ -961,8 +981,8 @@
   </section>
 
   <footer class="end">
-    Ombra Prime Simulator &#183; Python &#183; sensor data: household power, network latency, dust, air pressure, humidity, vibration, light and movement &#8212; from the house, a Raspberry Pi 5 and an ESP32 board<br>
-    The world: MiniMax-M3 &#183; The radio: MiniMax-M3, ElevenLabs v4 and MiniMax speech-2.8-hd &#183; Music: MiniMax Music 3 at fal.ai &#183; Live: YouTube, @ombraprime
+    Ombra Prime Simulator &#183; Python &#183; sensor data: household power, network latency, dust, air pressure, humidity, movement and whatever moves at a bird table &#8212; from the house, a Raspberry Pi 5 and an ESP32 board<br>
+    The world: Claude Haiku &#183; The radio: MiniMax-M3, ElevenLabs v4 and MiniMax speech-2.8-hd &#183; Music: MiniMax Music 3 at fal.ai &#183; Live: YouTube, @ombraprime
   </footer>
 </div>
 
