@@ -547,7 +547,7 @@
         <div class="step-k">Signal<b>every 10&#8211;30 s</b></div>
         <div>
           <h3>Reality is measured</h3>
-          <p>A sensor reads something physical. Network response against a public host, the power meter in the house, a Raspberry Pi 5 with a Sense HAT and a particle sensor &#8212; air pressure, humidity, dust &#8212; a webcam looking out through a kitchen window at a bird table, and a small ESP32 board that senses movement in the room without a camera, from how the wifi waves bounce. The raw value means nothing in itself &#8212; what counts is the deviation from a moving baseline. The air aboard follows the dust and the hull stress a falling air pressure. But most gauges do not read a sensor straight off; they read a <strong>derived value</strong>: how far the number stands from its own normal, how fast it changes, the imbalance between the three phases of the power, what share of the day something has moved. The water balance aboard follows how evenly the power runs, not the humidity. The camera is the ship&#8217;s lookout: when something comes to the bird table, something is outside the hull. The image is not kept and never published. A reviewer sees a small crop around the movement and says what it was. If it recognises a deer, that is a comet; a squirrel is an object caught in the ship&#8217;s wake; a crow is an unknown probe. If it cannot tell, it stays a mystery, and a person in the picture never becomes anything at all. The movement is the pulse of the city: Metropolis sleeps when the house sleeps, wakes when it wakes, and fills with people when there is a party. The power, which switches on and off around the clock, is the work in The Crypt, where Oris and her machines build without anyone aboard knowing what. Once enough work has gathered they have finished something, and the shape of the power draw decides what: steady running makes something small and fine, heavy loads something large. The people aboard only notice the traces. And if the simulator stands still, that becomes an event too: days missing from the ship&#8217;s log.</p>
+          <p>A sensor reads something physical. Network response against a public host, the power meter in the house, a Raspberry Pi 5 with a Sense HAT and a particle sensor &#8212; air pressure, humidity, dust &#8212; a webcam looking out through a kitchen window at a bird table, and a small ESP32 board that senses movement in the room without a camera, from how the wifi waves bounce. The raw value means nothing in itself &#8212; what counts is the deviation from a moving baseline. The air aboard follows the dust and the hull stress a falling air pressure. But most gauges do not read a sensor straight off; they read a <strong>derived value</strong>: how far the number stands from its own normal, how fast it changes, the imbalance between the three phases of the power, what share of the day something has moved. The water balance aboard follows how evenly the power runs, not the humidity. The camera is the ship&#8217;s lookout: when something comes to the bird table, something is outside the hull. The reviewed crops are kept for two weeks on the simulator&#8217;s own computer and never published. An image with a person in it is never kept. A reviewer sees a small crop around the movement and says what it was. If it recognises a deer, that is a comet; a squirrel is an object caught in the ship&#8217;s wake; a crow is an unknown probe. If it cannot tell, it stays a mystery, and a person in the picture never becomes anything at all. The movement is the pulse of the city: Metropolis sleeps when the house sleeps, wakes when it wakes, and fills with people when there is a party. The power, which switches on and off around the clock, is the work in The Crypt, where Oris and her machines build without anyone aboard knowing what. Once enough work has gathered they have finished something, and the shape of the power draw decides what: steady running makes something small and fine, heavy loads something large. The people aboard only notice the traces. And if the simulator stands still, that becomes an event too: days missing from the ship&#8217;s log.</p>
         </div>
         <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div>
       </div>
@@ -585,7 +585,7 @@
           <h3>The Chronicler writes</h3>
           <p>The model gets the rumour, the cast, the thread, the sheet for the one sector the wheel has drawn, what has happened there before, the gauges that deviate most &#8212; and its own latest openings, with a request not to repeat them. It does <em>not</em> know what the instruments showed. Two of the four places in the cast go to people who live in the sector. The others are visitors, and their cards say so.</p>
         </div>
-        <div class="step-data"><span class="k">model</span> <span class="v">Claude Haiku</span> <span class="k">or a local model, via the switch</span><br><span class="k">written to</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
+        <div class="step-data"><span class="k">model</span> <span class="v">Claude Opus</span> <span class="k">or a local model, via the switch</span><br><span class="k">written to</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
       </div>
 
       <div class="step">
@@ -661,6 +661,45 @@
 
   <section class="reveal">
     <div class="col">
+      <div class="eyebrow">The systems</div>
+      <h2>Sectors are places. Systems run through them.</h2>
+      <p>A sector is a part of the ship: you are there. A <strong>system</strong> runs through the sectors or affects them: it works or it fails. Each system says what it is, which sectors it runs through and what of it is found there, which gauge tells how it fares, and what can go wrong.</p>
+      <p>When a gauge goes bad, the system gets <strong>a fault in one of its sectors</strong>. Whoever writes a scene there is told that the fault lies right there and that someone has to deal with it; in the other sectors it only shows that the system is troubled. The fault does not pass by itself: it stays until the gauge has recovered <em>and</em> a scene has taken place on the spot.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="mk">Sanguis Matris</span>
+        <h3>The water&#8217;s way</h3>
+        <p>The mother&#8217;s blood. One closed circuit through the whole ship: radiation turns the water to gel in the outer skin, the gel freezes to ice in the roof of The Pearl, the ice becomes mist, rain and lakes, and from there the water falls level by level through the ship, cleaned on the way, gathers at the bottom and is lifted up again.</p>
+      </div>
+      <div class="card">
+        <span class="mk">The Aegis</span>
+        <h3>The living shell</h3>
+        <p>A mat of radiation-eating fungus under a ceramic shell. It turns radiation into current and heals itself, slowly.</p>
+      </div>
+      <div class="card">
+        <span class="mk">Levitas Aequilibrium</span>
+        <h3>Everything that flies</h3>
+        <p>The anti-gravity every craft aboard runs on. The fuel comes from what lives in The Pearl, so a weak life flow is felt in the hangar.</p>
+      </div>
+      <div class="card">
+        <span class="mk">The Breather</span>
+        <h3>The machine</h3>
+        <p>Built to breathe life into dead worlds. On the way there it breathes a fine mist into the air of the ship.</p>
+      </div>
+    </div>
+
+    <div class="col" style="margin-top:28px">
+      <div class="eyebrow">Chance</div>
+      <h3 style="font-size:22px;margin:6px 0 10px">Wheels that can be filled.</h3>
+      <p>Some things should not be possible to work out. They are settled by <strong>wheels</strong>: a list of slots, each with a weight and a text. Chance picks a slot, and the text goes to whoever writes the scene. Adding a slot is adding a thing that can happen. The same slot never falls twice in a row.</p>
+      <p>The most important wheel belongs to <strong>The Crypt</strong>. The power use of the house is Oris and her machines at work, and when enough work has gathered they have finished something. Nobody aboard is told what it was; people only notice a sign. Then the wheel turns: most works stay secret, some become rumours, and now and then one <strong>turns up in another sector</strong> with no sender, so that something entirely new enters the world as a surprise. Another wheel spreads rumours while a thing is still being made, and a third decides what people say it was when the lookout saw something it could not make out.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
       <div class="eyebrow">Honesty</div>
       <h2>What is AI, and what is not.</h2>
       <p>The most common question, and the most important. Most of the system is ordinary code and configuration. The models are used only where language actually has to be created &#8212; everything about <em>what is allowed to happen</em> is deterministic, auditable and free.</p>
@@ -676,12 +715,12 @@
           <tr><td>Signal &#8594; omen</td><td><span class="tag code">No</span></td><td class="who">50 rules in YAML</td></tr>
           <tr><td>The gate: does it become a scene?</td><td><span class="tag code">No</span></td><td class="who">Director &#8212; code</td></tr>
           <tr><td>Thread choice and sector draw</td><td><span class="tag code">No</span></td><td class="who">scoring + weighted chance</td></tr>
-          <tr><td>The stakes: whose scene is this</td><td><span class="tag ai">Yes</span></td><td class="who">Director &#8594; world model</td></tr>
-          <tr><td>The rumour</td><td><span class="tag ai">Yes</span></td><td class="who">Rumor &#8594; world model</td></tr>
-          <tr><td>The scene</td><td><span class="tag ai">Yes</span></td><td class="who">Chronicler &#8594; world model</td></tr>
-          <tr><td>Where the story stands: threads that are born and move</td><td><span class="tag ai">Yes</span></td><td class="who">Dramaturg &#8594; world model, more often when the threads are too few</td></tr>
-          <tr><td>The news broadcast</td><td><span class="tag ai">Yes</span></td><td class="who">Anchor &#8594; world model</td></tr>
-          <tr><td>The novel chapter</td><td><span class="tag ai">Yes</span></td><td class="who">Novelist &#8594; world model</td></tr>
+          <tr><td>The stakes: whose scene is this</td><td><span class="tag ai">Yes</span></td><td class="who">Director &#8594; Claude Haiku</td></tr>
+          <tr><td>The rumour</td><td><span class="tag ai">Yes</span></td><td class="who">Rumor &#8594; Claude Opus</td></tr>
+          <tr><td>The scene</td><td><span class="tag ai">Yes</span></td><td class="who">Chronicler &#8594; Claude Opus</td></tr>
+          <tr><td>Where the story stands: threads that are born and move</td><td><span class="tag ai">Yes</span></td><td class="who">Dramaturg &#8594; Claude Haiku, more often when the threads are too few</td></tr>
+          <tr><td>The news broadcast</td><td><span class="tag ai">Yes</span></td><td class="who">Anchor &#8594; Claude Opus</td></tr>
+          <tr><td>The novel chapter</td><td><span class="tag ai">Yes</span></td><td class="who">Novelist &#8594; Claude Opus</td></tr>
           <tr><td>Picking new canon out of the scene</td><td><span class="tag ai">Yes</span></td><td class="who">Extractor &#8594; Claude Haiku</td></tr>
           <tr><td>The sector&#8217;s memory: did the scene change something that lasts?</td><td><span class="tag ai">Yes</span></td><td class="who">Extractor proposes a line &#183; code merges, keeps the limit and lets old lines fade</td></tr>
           <tr><td>Proposal &#8594; truth</td><td><span class="tag code">No</span></td><td class="who">Keeper &#8212; rules and thresholds</td></tr>
@@ -690,26 +729,31 @@
           <tr><td>The lookout: is something moving at the bird table?</td><td><span class="tag code">No</span></td><td class="who">image difference on a small computer by the window &#8212; only numbers leave it</td></tr>
           <tr><td>The lookout: what was it?</td><td><span class="tag ai">Yes</span></td><td class="who">a reviewer sees a crop &#183; mystery or recognised, never a person</td></tr>
           <tr><td>Who may be in the scene</td><td><span class="tag code">No</span></td><td class="who">home and visits per person, and whoever has rested longest goes first</td></tr>
-          <tr><td>Translation into Swedish</td><td><span class="tag ai">Yes</span></td><td class="who">Translator &#8594; Claude Haiku</td></tr>
+          <tr><td>Where a new thing belongs</td><td><span class="tag code">No</span></td><td class="who">the sector where the scene took place, unless something else is said</td></tr>
+          <tr><td>The systems: are they working?</td><td><span class="tag code">No</span></td><td class="who">gauges and thresholds &#183; a fault lands in one sector and stays until someone has been there</td></tr>
+          <tr><td>The work in The Crypt: what was made?</td><td><span class="tag ai">Yes</span></td><td class="who">Artificer &#8594; Claude Opus, when the power has gathered enough work</td></tr>
+          <tr><td>The fate of the work, rumours, what the riddle was</td><td><span class="tag code">No</span></td><td class="who">weighted wheels &#183; chance picks a slot, the slot&#8217;s text goes with the scene</td></tr>
+          <tr><td>Translation into Swedish</td><td><span class="tag ai">Yes</span></td><td class="who">Translator &#8594; Claude Opus</td></tr>
           <tr><td>The radio running order</td><td><span class="tag code">No</span></td><td class="who">a format in a YAML file &#8212; always takes the latest</td></tr>
           <tr><td>The chart</td><td><span class="tag code">No</span></td><td class="who">the week&#8217;s scenes vote, plus four weights &#183; a new chart every Monday</td></tr>
           <tr><td>A song&#8217;s style, tempo and voice</td><td><span class="tag code">No</span></td><td class="who">a weighted wheel, like the sector wheel</td></tr>
-          <tr><td>The host&#8217;s lines</td><td><span class="tag ai">Yes</span></td><td class="who">Host &#8594; MiniMax-M3</td></tr>
-          <tr><td>The adverts</td><td><span class="tag ai">Yes</span></td><td class="who">Copywriter &#8594; MiniMax-M3</td></tr>
+          <tr><td>The news on the radio</td><td><span class="tag code">No</span></td><td class="who">Mara Rox reads her own broadcast, word for word</td></tr>
+          <tr><td>The host&#8217;s lines</td><td><span class="tag ai">Yes</span></td><td class="who">Host &#8594; Claude Opus</td></tr>
+          <tr><td>The adverts</td><td><span class="tag ai">Yes</span></td><td class="who">Copywriter &#8594; Claude Opus</td></tr>
           <tr><td>The novel chapter read on air</td><td><span class="tag code">No</span></td><td class="who">taken verbatim from the book</td></tr>
           <tr><td>The introduction to the reading</td><td><span class="tag ai">Yes</span></td><td class="who">Reader &#8594; MiniMax-M3</td></tr>
-          <tr><td>The reflection on a verse</td><td><span class="tag ai">Yes</span></td><td class="who">Priest &#8594; MiniMax-M3, three sermons a day &#183; the radio takes the latest</td></tr>
+          <tr><td>The reflection on a verse</td><td><span class="tag ai">Yes</span></td><td class="who">Priest &#8594; Claude Opus, three sermons a day &#183; the radio takes the latest</td></tr>
           <tr><td>The verse quoted</td><td><span class="tag code">No</span></td><td class="who">22 verses in canon, in turn</td></tr>
-          <tr><td>Counting what was not said</td><td><span class="tag ai">Yes</span></td><td class="who">Whistleblower &#8594; MiniMax-M3</td></tr>
-          <tr><td>Songs and artists</td><td><span class="tag ai">Yes</span></td><td class="who">Songwriter &#8594; MiniMax-M3</td></tr>
-          <tr><td>The voices on air</td><td><span class="tag ai">Yes</span></td><td class="who">ElevenLabs v4 for Lisa, Haldis and Ivo &#183; MiniMax speech-2.8-hd for the reader, the callers and the adverts</td></tr>
+          <tr><td>Counting what was not said</td><td><span class="tag ai">Yes</span></td><td class="who">Whistleblower &#8594; Claude Opus</td></tr>
+          <tr><td>Songs and artists</td><td><span class="tag ai">Yes</span></td><td class="who">Songwriter &#8594; Claude Opus</td></tr>
+          <tr><td>The voices on air</td><td><span class="tag ai">Yes</span></td><td class="who">ElevenLabs v4 for Lisa, Mara, Haldis and Ivo &#183; MiniMax speech-2.8-hd for the reader, the callers and the adverts</td></tr>
           <tr><td>Music and jingles</td><td><span class="tag ai">Yes</span></td><td class="who">MiniMax Music 3 at fal.ai &#8212; paid per song, the price on the button</td></tr>
           <tr><td>Mixing, fades, levels</td><td><span class="tag code">No</span></td><td class="who">ffmpeg &#8212; measured, not guessed</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p style="margin-top:22px;font-size:15px"><strong>The world model is a switch.</strong> It can run entirely locally on a graphics card &#8212; no API key, no cost per scene &#8212; or on a model over the network. Since November 2026 the whole simulator lives on a computer of its own that runs around the clock, and the world&#8217;s agents are on Claude Haiku. What is <em>allowed to happen</em> is decided by code either way.</p>
+    <p style="margin-top:22px;font-size:15px"><strong>The world model is a switch.</strong> It can run entirely locally on a graphics card &#8212; no API key, no cost per scene &#8212; or on a model over the network. Since November 2026 the whole simulator lives on a computer of its own that runs around the clock, and everything written to be read or heard &#8212; the scenes, the novel, the news, the radio &#8212; is written by Claude Opus. The mechanical work, such as picking new canon out of a scene and reviewing it, runs on Claude Haiku. What is <em>allowed to happen</em> is decided by code either way.</p>
     <p style="font-size:15px">Anything that costs money per run always has a ceiling. A radio show is read aloud only when a person presses a button, and the price is on the button first. The songs are the exception: those that make it onto the week’s chart are recorded by themselves, at most two new ones a week and under a daily ceiling. The music has moved twice: the provider pulled it from its API in August, it ran for a while on a local graphics card, and since November the same model runs at fal.ai, paid per song.</p>
   </section>
 
@@ -734,7 +778,7 @@
       <div class="card">
         <span class="mk">The hierarchy</span>
         <h3>Everything knows where it belongs</h3>
-        <p>A new place must be anchored in one of the eight sectors. If it cannot be, the proposal is dropped rather than becoming a homeless string.</p>
+        <p>A new place must be anchored in one of the eight sectors. If it cannot be, the proposal is dropped rather than becoming a homeless string. Objects, technology and organisms get the sector where the scene they were born in took place.</p>
       </div>
       <div class="card">
         <span class="mk">The reviewer</span>
@@ -826,23 +870,23 @@
       <div class="eyebrow">The radio</div>
       <h2>Ombra Prime Radio &#8212; a glimpse into the world.</h2>
       <p class="lead">The ship already had two ways of telling about itself, and both are about the main characters &#8212; they are the ones in the scenes. The radio does the opposite. It is the only format where <strong>someone with no part in the plot gets to talk for nine minutes.</strong></p>
-      <p>Lisa Lusis reads what the news anchor reported, has an opinion about it, takes a call from someone working the night shift, plays two songs from the chart and reads out the positions. In between run adverts for things that actually exist aboard. Everything she says comes from canon &#8212; and nothing she says is written back.</p>
-      <p>But she is no longer alone on air. <strong>Three more voices have segments of their own</strong>, with their own agents, their own voices and their own background: a logbook keeper who reads the latest novel chapter verbatim, a confessor who holds a verse of the ship&#8217;s scripture up against how the week has felt, and a stores clerk who counts what was <em>not</em> said. A show is now just under half an hour.</p>
+      <p>Mara Rox reads her own news, in her own voice. Straight after, Ivo Brekke counts what she left out. Then Lisa Lusis weighs the two against each other and says what she believes; Mara is her daughter, and she does not always take her side. Lisa takes a call from someone working the night shift, plays two songs from the chart and reads out the positions. In between run adverts for things that actually exist aboard. Everything she says comes from canon &#8212; and nothing she says is written back.</p>
+      <p>Besides Mara, <strong>three more voices have segments of their own</strong>, with their own agents, their own voices and their own background: a logbook keeper who reads the latest novel chapter verbatim, a confessor who holds a verse of the ship&#8217;s scripture up against how the week has felt, and a stores clerk who counts what was <em>not</em> said. A show is now just under half an hour.</p>
       <p><strong>A show always takes the latest</strong> &#8212; Mara&#8217;s latest broadcast, the latest scenes, the novel&#8217;s latest chapter, the chart as it stands. And a new one is made only when there is something new to tell: new news and a new chapter. The chart is the week’s, and the same in all of the week’s shows. <strong>It is never a rerun.</strong> The button that makes the show lights up only then, with the price on it.</p>
-      <p>Lisa, Haldis and Ivo have voices at ElevenLabs. Lisa&#8217;s can sigh, laugh quietly and pause where the script says so; the other two read more calmly, like people not used to a microphone. The reader, the callers and the adverts have MiniMax voices, and a man who calls in gets a man&#8217;s voice.</p>
+      <p>Lisa, Mara, Haldis and Ivo have voices at ElevenLabs. Lisa&#8217;s can sigh, laugh quietly and pause where the script says so; the other two read more calmly, like people not used to a microphone. The reader, the callers and the adverts have MiniMax voices, and a man who calls in gets a man&#8217;s voice.</p>
     </div>
 
     <div class="hour">
       <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingle</div><div class="what"><b>Station ident</b> &#8212; sung, with the station name spoken last</div><div class="src">library</div></div>
       <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Lisa</div><div class="what"><b>The opening</b> &#8212; the same purpose every show, never the same words</div><div class="src">fresh</div></div>
       <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingle</div><div class="what">The news</div><div class="src">library</div></div>
-      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Lisa</div><div class="what"><b>The news</b> &#8212; the anchor&#8217;s reports, in her own words</div><div class="src">fresh</div></div>
-      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingle</div><div class="what">Back to the studio</div><div class="src">library</div></div>
-      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Lisa</div><div class="what"><b>The opinion</b> &#8212; the only segment where she is allowed to be wrong</div><div class="src">fresh</div></div>
-      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingle</div><div class="what">&#8220;Advertising, on Ombra Prime Radio&#8221;</div><div class="src">library</div></div>
-      <div class="slot lib"   style="--sl:var(--cold)"><div class="rail"></div><div class="kind">Adverts &#215;2</div><div class="what"><b>Two finished adverts</b> &#8212; their own voices, their own music, a tag line</div><div class="src">pool</div></div>
+      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Mara</div><div class="what"><b>The news</b> &#8212; her own broadcast, word for word, in her own voice</div><div class="src">written</div></div>
       <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingle</div><div class="what">&#8220;The Gap. With Ivo Brekke&#8221;</div><div class="src">library</div></div>
       <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">The gap</div><div class="what"><b>What was not said</b> &#8212; how much the anchor held back, and where</div><div class="src">fresh</div></div>
+      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingle</div><div class="what">Back to the studio</div><div class="src">library</div></div>
+      <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Lisa</div><div class="what"><b>The opinion</b> &#8212; she weighs Mara against Ivo, and is allowed to be wrong</div><div class="src">fresh</div></div>
+      <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingle</div><div class="what">&#8220;Advertising, on Ombra Prime Radio&#8221;</div><div class="src">library</div></div>
+      <div class="slot lib"   style="--sl:var(--cold)"><div class="rail"></div><div class="kind">Adverts &#215;2</div><div class="what"><b>Two finished adverts</b> &#8212; their own voices, their own music, a tag line</div><div class="src">pool</div></div>
       <div class="slot lib"   style="--sl:var(--line-2)"><div class="rail"></div><div class="kind">Jingle</div><div class="what">Open line</div><div class="src">library</div></div>
       <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">The call</div><div class="what"><b>Someone in the background calls</b> &#8212; both voices written, two voices read</div><div class="src">fresh</div></div>
       <div class="slot fresh" style="--sl:var(--amber)"><div class="rail"></div><div class="kind">Song</div><div class="what"><b>Introduction</b>, then the record plays &#8212; the song itself from the library</div><div class="src">fresh + pool</div></div>
@@ -961,7 +1005,7 @@
       <h2>The world is broadcast while it is being written.</h2>
       <p class="lead">The radio is broadcast live on YouTube, on the channel <strong>Ombra Prime</strong>. The latest show runs until a new one exists, and the chart plays in the broadcast.</p>
       <p>The broadcast is run by <strong>Oris</strong> &#8212; an AI agent who lives on the same computer as the simulator and bears the name of the ship&#8217;s mind. She only reads: the show and the chart are fetched where the simulator puts them, and nothing in the broadcast is written back to the world. In the chat she answers the viewers.</p>
-      <p>More is on the way: <strong>Rox News</strong>, where Mara Rox reads the news from the ship every day, and a <strong>podcast</strong> going through the week aboard.</p>
+      <p>More is on the way: <strong>Rox News</strong> as a broadcast of its own, and a <strong>podcast</strong> where Mara invites two who disagree about the week&#8217;s biggest event.</p>
       <p><a href="https://www.youtube.com/@ombraprime">youtube.com/@ombraprime</a> &#183; <a href="broadcasts.html">What is on air right now</a></p>
     </div>
   </section>
@@ -982,7 +1026,7 @@
 
   <footer class="end">
     Ombra Prime Simulator &#183; Python &#183; sensor data: household power, network latency, dust, air pressure, humidity, movement and whatever moves at a bird table &#8212; from the house, a Raspberry Pi 5 and an ESP32 board<br>
-    The world: Claude Haiku &#183; The radio: MiniMax-M3, ElevenLabs v4 and MiniMax speech-2.8-hd &#183; Music: MiniMax Music 3 at fal.ai &#183; Live: YouTube, @ombraprime
+    The world: Claude Opus and Claude Haiku &#183; The radio: Claude Opus, ElevenLabs v4 and MiniMax speech-2.8-hd &#183; Music: MiniMax Music 3 at fal.ai &#183; Live: YouTube, @ombraprime
   </footer>
 </div>
 
