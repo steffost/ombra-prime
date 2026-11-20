@@ -470,6 +470,105 @@
     .slot .what { grid-column: 2 / -1; padding: 3px 16px 13px; }
     .slot .src  { grid-row: 1; grid-column: 3; }
   }
+
+  /* Linjeteckningarna (20 november 2026): ritade i sidans egna färger. */
+  .bild { margin: 40px 0 0; }
+  .bild svg { display: block; width: 100%; height: auto; }
+  .bild figcaption { margin-top: 12px; font: 500 12.5px/1.5 var(--sans); letter-spacing: .06em; color: var(--muted); }
+  .bild .l, .pikt .l { fill: none; stroke: var(--amber); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+  .bild .l2, .pikt .l2 { fill: none; stroke: var(--line-2); stroke-width: 1.1; stroke-linejoin: round; stroke-linecap: round; }
+  .bild .l3, .pikt .l3 { fill: none; stroke: var(--muted); stroke-width: 1.1; stroke-linejoin: round; stroke-linecap: round; }
+  .bild .f, .pikt .f { fill: rgba(242, 169, 59, .07); stroke: var(--amber); stroke-width: 1.4; stroke-linejoin: round; }
+  .bild .f2, .pikt .f2 { fill: var(--surface); stroke: var(--line-2); stroke-width: 1.1; stroke-linejoin: round; }
+  .bild .g, .pikt .g { fill: var(--amber-2); }
+  .bild .gr, .pikt .gr { fill: var(--good); }
+  .bild .lg, .pikt .lg { fill: none; stroke: var(--good); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .bild .t, .pikt .t { font: 600 12px var(--sans); letter-spacing: .16em; fill: var(--dim); }
+  .bild .tn, .pikt .tn { font: 600 12px var(--mono); fill: var(--amber); }
+  .bild .ts, .pikt .ts { font: 500 11px var(--sans); letter-spacing: .06em; fill: var(--muted); }
+
+  /* Teckningarna rör sig (20 november 2026). Bara för den som inte bett
+     webbläsaren om mindre rörelse. Allt går i långsamma varv. */
+  @media (prefers-reduced-motion: no-preference) {
+    .pikt *, .bild svg * { transform-box: fill-box; transform-origin: center; }
+    .a-spin   { animation: a-spin 9s linear infinite; }
+    .a-pulse  { animation: a-pulse 2.6s ease-in-out infinite; }
+    .a-glow   { animation: a-glow 3.4s ease-in-out infinite; }
+    .a-halo   { animation: a-halo 2.6s ease-in-out infinite; }
+    .a-flow   { stroke-dasharray: 4 5; animation: a-flow 1.4s linear infinite; }
+    .a-climb  { animation: a-climb 6s steps(1, end) infinite; }
+    .a-lift   { animation: a-lift 5s ease-in-out infinite; }
+    .a-beat   { stroke-dasharray: 150; animation: a-beat 5s ease-in-out infinite; }
+    .a-blink  { animation: a-blink 5s ease-in-out infinite; }
+    .a-s1, .a-s2, .a-s3, .a-s4, .a-s5 { animation: a-step 7.5s ease-in-out infinite; }
+    .a-s2 { animation-delay: .9s; } .a-s3 { animation-delay: 1.8s; }
+    .a-s4 { animation-delay: 2.7s; } .a-s5 { animation-delay: 3.6s; }
+    .a-p1, .a-p2, .a-p3, .a-p4, .a-p5 { animation: a-page 6s ease-in-out infinite; }
+    .a-p2 { animation-delay: .35s; } .a-p3 { animation-delay: .7s; }
+    .a-p4 { animation-delay: 1.05s; } .a-p5 { animation-delay: 1.4s; }
+    .a-book   { animation: a-book 6s ease-in-out infinite; }
+    .a-star   { animation: a-twinkle 4s ease-in-out infinite; }
+  }
+  @keyframes a-spin    { to { transform: rotate(360deg); } }
+  @keyframes a-pulse   { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: .55; } }
+  @keyframes a-glow    { 0%, 100% { opacity: .05; } 50% { opacity: .13; } }
+  @keyframes a-halo    { 0%, 100% { transform: scale(.9); opacity: .07; } 50% { transform: scale(1.25); opacity: .2; } }
+  @keyframes a-flow    { to { stroke-dashoffset: -18; } }
+  @keyframes a-climb   { 0% { transform: translate(0, 0); } 20% { transform: translate(44px, -12px); }
+                         40% { transform: translate(88px, -24px); } 60% { transform: translate(132px, -36px); }
+                         80%, 100% { transform: translate(176px, -48px); } }
+  @keyframes a-lift    { 0%, 15% { transform: translateY(51px); opacity: .25; } 45%, 85% { transform: translateY(0); opacity: 1; }
+                         100% { transform: translateY(51px); opacity: .25; } }
+  @keyframes a-beat    { 0% { stroke-dashoffset: 150; } 35%, 100% { stroke-dashoffset: 0; } }
+  @keyframes a-blink   { 0%, 30% { opacity: 1; } 45%, 100% { opacity: .15; } }
+  @keyframes a-step    { 0%, 8% { opacity: .22; } 20%, 78% { opacity: 1; } 100% { opacity: .22; } }
+  @keyframes a-page    { 0%, 10% { transform: translateX(0); opacity: 1; } 45% { transform: translateX(60px); opacity: 0; }
+                         46%, 80% { transform: translateX(0); opacity: 0; } 100% { opacity: 1; } }
+  @keyframes a-book    { 0%, 35% { opacity: .55; } 55%, 85% { opacity: 1; } 100% { opacity: .55; } }
+  @keyframes a-twinkle { 0%, 100% { opacity: .15; } 50% { opacity: .7; } }
+  .card .pikt { display: block; width: 100%; max-width: 260px; height: auto; margin: 0 0 14px; }
+  .card .pikt .l, .card .pikt .f { stroke-width: 1.5; }
+
+  /* Symbolerna på resten av sidan (20 november 2026). */
+  .step-side { display: grid; gap: 18px; min-width: 0; }
+  .step-side .pikt { display: block; width: 100%; max-width: 330px; height: auto; }
+  .emblem { display: block; width: 112px; height: auto; margin: 0 0 18px; }
+  section { position: relative; }
+  @media (prefers-reduced-motion: no-preference) {
+    /* En ljuspunkt vandrar längs linjen mellan avsnitten, som en signal. */
+    section + section::before {
+      content: ""; position: absolute; top: -2px; left: 0; width: 26px; height: 3px; border-radius: 3px;
+      background: linear-gradient(90deg, rgba(242,169,59,0), var(--amber-2));
+      box-shadow: 0 0 10px rgba(242,169,59,.55);
+      animation: a-skarv 13s linear infinite;
+    }
+    section:nth-of-type(3n)::before { animation-delay: -4.5s; }
+    section:nth-of-type(3n+1)::before { animation-delay: -9s; }
+    .a-draw   { stroke-dasharray: 420; animation: a-draw 5.5s ease-in-out infinite; }
+    .a-travel { animation: a-travel 6s linear infinite; }
+    .a-scan   { animation: a-scan 5s ease-in-out infinite; }
+    .a-bob    { animation: a-bob 4s ease-in-out infinite; }
+    .a-breathe { animation: a-breathe 4.5s ease-in-out infinite; }
+    .a-ring, .a-ring2, .a-ring3 { animation: a-ring 3.6s ease-out infinite; }
+    .a-ring2 { animation-delay: 1.2s; } .a-ring3 { animation-delay: 2.4s; }
+    .a-return { animation: a-return 6s ease-in-out infinite; }
+    .a-rec    { animation: a-rec 1.6s ease-in-out infinite; }
+    .a-eq1, .a-eq2, .a-eq3, .a-eq4, .a-eq5 { transform-origin: 50% 100%; animation: a-eq 1.5s ease-in-out infinite; }
+    .a-eq2 { animation-delay: -.3s; } .a-eq3 { animation-delay: -.75s; }
+    .a-eq4 { animation-delay: -.45s; } .a-eq5 { animation-delay: -1.05s; }
+    .a-grow   { transform-origin: 50% 100%; animation: a-grow 6s ease-in-out infinite; }
+  }
+  @keyframes a-skarv  { 0% { left: 0; opacity: 0; } 6% { opacity: .9; } 94% { opacity: .9; } 100% { left: calc(100% - 26px); opacity: 0; } }
+  @keyframes a-draw   { 0% { stroke-dashoffset: 420; } 55%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -420; } }
+  @keyframes a-travel { 0% { transform: translateX(0); opacity: 0; } 8%, 88% { opacity: 1; } 100% { transform: translateX(190px); opacity: 0; } }
+  @keyframes a-scan   { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(96px); } }
+  @keyframes a-bob    { 0%, 100% { transform: translateY(3px); } 50% { transform: translateY(-5px); } }
+  @keyframes a-breathe { 0%, 100% { transform: scale(.96); } 50% { transform: scale(1.05); } }
+  @keyframes a-ring   { 0% { transform: scale(.25); opacity: .9; } 100% { transform: scale(1); opacity: 0; } }
+  @keyframes a-return { 0%, 10% { transform: translateX(0); } 45%, 60% { transform: translateX(120px); } 95%, 100% { transform: translateX(0); } }
+  @keyframes a-rec    { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+  @keyframes a-eq     { 0%, 100% { transform: scaleY(.35); } 50% { transform: scaleY(1); } }
+  @keyframes a-grow   { 0%, 10% { transform: scaleY(.15); } 60%, 90% { transform: scaleY(1); } 100% { transform: scaleY(.15); } }
 </style>
 
 <script>
@@ -529,6 +628,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M14 44 H106"/><path class="f" d="M36 44 a24 22 0 0 1 48 0 Z"/><g class="a-grow"><path class="lg" d="M60 44 V28"/><path class="gr" d="M60 30 q-9 -2 -11 -10 q9 0 11 10 Z M60 30 q9 -2 11 -10 q-9 0 -11 10 Z"/></g></svg>
       <div class="eyebrow">Grundid&#233;n</div>
       <h2>Skeppet &#228;r givet. Ber&#228;ttelsen &#228;r det inte.</h2>
       <p class="lead">&#197;tta sektorer och tretton huvudpersoner &#228;r f&#246;rutbest&#228;mda och &#228;ndras aldrig. Allt annat &#8212; verkst&#228;der, korridorer, bifigurer, konflikter &#8212; v&#228;xer fram ur scenerna allteftersom de skrivs.</p>
@@ -539,6 +639,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l2" d="M14 26 H104"/><circle class="f a-s1" cx="14" cy="26" r="5"/><circle class="f a-s2" cx="32" cy="26" r="5"/><circle class="f a-s3" cx="50" cy="26" r="5"/><circle class="f a-s4" cx="68" cy="26" r="5"/><circle class="f a-s5" cx="86" cy="26" r="5"/><circle class="f a-s5" cx="104" cy="26" r="5"/></svg>
       <div class="eyebrow">Kedjan</div>
       <h2>Fr&#229;n ett tal till en scen, i sex steg.</h2>
       <p>Varje led har ett eget jobb och l&#228;mnar ifr&#229;n sig n&#229;got det n&#228;sta kan anv&#228;nda. Allt sparas, i ordning, s&#229; att vilken mening som helst i kr&#246;nikan g&#229;r att sp&#229;ra tillbaka till avl&#228;sningen som orsakade den.</p>
@@ -551,7 +652,7 @@
           <h3>Verkligheten m&#228;ts</h3>
           <p>En sensor l&#228;ser av n&#229;got fysiskt. N&#228;tsvar mot en publik v&#228;rd, elm&#228;taren i huset, en Raspberry Pi 5 med Sense HAT och partikelm&#228;tare &#8212; lufttryck, fukt, stoft &#8212; en kamera som ser ett f&#229;gelbord, och ett litet ESP32-kort som k&#228;nner r&#246;relse i rummet utan kamera, genom hur wifi-v&#229;gorna studsar. R&#229;v&#228;rdet i sig betyder ingenting &#8212; det som r&#228;knas &#228;r avvikelsen fr&#229;n en glidande baslinje. Luften ombord f&#246;ljer stoftet och skrovets p&#229;frestning ett fallande lufttryck. Men de flesta m&#228;tare l&#228;ser inte en sensor rakt av utan ett <strong>r&#228;knat v&#228;rde</strong>: hur l&#229;ngt talet st&#229;r fr&#229;n sitt eget normala, hur fort det &#228;ndras, obalansen mellan elens tre faser, hur stor del av dygnet n&#229;got r&#246;rt sig. Vattenbalansen ombord f&#246;ljer hur j&#228;mnt elen g&#229;r, inte fukten. Kameran &#228;r ett titth&#229;l in i The Pearl: det som kommer till f&#229;gelbordet &#228;r ett djur i domen. De granskade utsnitten sparas i tv&#229; veckor p&#229; simulatorns egen dator och publiceras aldrig. En bild med en m&#228;nniska sparas aldrig. En granskare ser ett litet utsnitt kring r&#246;relsen och s&#228;ger vad det var. K&#228;nner den igen ett r&#229;djur &#228;r det ett av domens r&#229;djur, och en skata &#228;r en av dess kr&#229;kf&#229;glar: varje sort har ett eget namn och en egen plats i The Pearl. K&#228;nner den inte igen det f&#246;rblir det en g&#229;ta, och en m&#228;nniska i bild blir aldrig n&#229;gonting. R&#246;relsen &#228;r stadens puls: Metropolis sover n&#228;r huset sover, vaknar n&#228;r det vaknar, och fylls med folk n&#228;r det &#228;r fest. Elen, som g&#229;r av och p&#229; dygnet runt, &#228;r arbetet i The Crypt, d&#228;r Oris och hennes maskiner bygger utan att n&#229;gon ombord vet vad. N&#228;r arbetet samlats l&#228;nge nog har de gjort f&#228;rdigt n&#229;got, och hur elen g&#229;tt avg&#246;r vad det blir: j&#228;mn drift ger n&#229;got litet och fint, stora laster n&#229;got stort. M&#228;nniskorna ombord m&#228;rker bara sp&#229;ren. Och st&#229;r simulatorn still blir &#228;ven det en h&#228;ndelse: dagar som saknas i skeppets register.</p>
         </div>
-        <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l2" stroke-dasharray="3 5" d="M12 56 H248"/><path class="l a-draw" d="M12 56 C30 56 34 40 48 44 S66 62 82 58 S104 30 122 36 S146 70 164 60 S190 16 208 22 S232 50 248 46"/><circle class="g a-pulse" cx="208" cy="22" r="3.6"/><circle class="a-halo" cx="208" cy="22" r="14" fill="var(--amber)" opacity=".1"/></svg></div>
       </div>
 
       <div class="step">
@@ -560,7 +661,7 @@
           <h3>Talet f&#229;r betydelse</h3>
           <p>En regel i en YAML-fil &#246;vers&#228;tter avvikelsen till n&#229;got som h&#228;nder ombord. Det &#228;r h&#228;r &#8212; och bara h&#228;r &#8212; som meningen bor. Ingen modell inblandad; det &#228;r en tr&#246;skel och en text.</p>
         </div>
-        <div class="step-data"><span class="k">rule</span> <span class="v">vitalis-frequencies-drift</span><br><span class="k">concept</span> <span class="v">&#8221;frekvenserna glider is&#228;r&#8221;</span><br><span class="k">severity</span> <span class="v">2/5</span> &#183; <span class="k">domain</span> <span class="v">bio</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">rule</span> <span class="v">vitalis-frequencies-drift</span><br><span class="k">concept</span> <span class="v">&#8221;frekvenserna glider is&#228;r&#8221;</span><br><span class="k">severity</span> <span class="v">2/5</span> &#183; <span class="k">domain</span> <span class="v">bio</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><rect class="f2" x="30" y="58" width="16" height="18"/><rect class="f2" x="58" y="50" width="16" height="26"/><rect class="f2" x="86" y="62" width="16" height="14"/><rect class="f2" x="114" y="46" width="16" height="30"/><rect class="f2" x="142" y="54" width="16" height="22"/><path class="l2" stroke-dasharray="3 5" d="M18 38 H200"/><rect class="f a-s3" x="170" y="20" width="16" height="56"/><path class="l3 a-flow" d="M196 30 H214"/><path class="l3" d="M208 26 L214 30 L208 34"/><circle class="a-halo" cx="234" cy="30" r="15" fill="var(--amber)" opacity=".1"/><path class="f a-pulse" d="M234 18 L246 30 L234 42 L222 30 Z"/></svg></div>
       </div>
 
       <div class="step">
@@ -569,7 +670,7 @@
           <h3>Regin avg&#246;r om det blir en scen</h3>
           <p>De flesta omen stoppas, och det &#228;r meningen. Fyra sp&#228;rrar: allvarsgrad, vila mellan scener, dagsbudget, zonfokus. Omen som passerar hamnar i en v&#228;ntkorg och t&#228;vlar med varandra &#8212; det m&#246;rka f&#229;r inte drunkna i det ljusa, och det som nyss blivit scen f&#229;r minus. Vinnaren g&#229;r till en av de aktiva tr&#229;darna, minst sex &#229;t g&#229;ngen, som f&#246;ds och d&#246;r i takt med scenerna och inte med klockan, och ett viktat hjul lottar vilken sektor scenen hamnar i.</p>
         </div>
-        <div class="step-data"><span class="k">tr&#229;d</span> <span class="v">Oris tystnad</span> <span class="k">(0.9 p)</span><br><span class="k">sektor</span> <span class="v">03 EZ Aqua Core</span> <span class="k">(24 % chans)</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">tr&#229;d</span> <span class="v">Oris tystnad</span> <span class="k">(0.9 p)</span><br><span class="k">sektor</span> <span class="v">03 EZ Aqua Core</span> <span class="k">(24 % chans)</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l" d="M66 16 V36 M66 56 V76"/><path class="l" d="M108 16 V36 M108 56 V76"/><path class="l" d="M150 16 V36 M150 56 V76"/><path class="l" d="M192 16 V36 M192 56 V76"/><circle cx="46" cy="30" r="3.4" fill="var(--muted)" opacity=".6"/><circle cx="88" cy="64" r="3.4" fill="var(--muted)" opacity=".6"/><circle cx="130" cy="28" r="3.4" fill="var(--muted)" opacity=".6"/><circle class="g a-travel" cx="30" cy="46" r="4.4"/><path class="l2" stroke-dasharray="2 6" d="M22 46 H240"/></svg></div>
       </div>
 
       <div class="step">
@@ -578,7 +679,7 @@
           <h3>En m&#228;nniska f&#246;r det vidare</h3>
           <p>Innan scenen skrivs ber&#228;ttar n&#229;gon ombord vad de h&#246;rt. De var inte d&#228;r, de ser aldrig instrumenten, och <strong>de f&#229;r ha fel.</strong> Det &#228;r v&#228;rldens enda plats d&#228;r n&#229;got till&#229;ts vara osant &#8212; och det &#228;r d&#228;rf&#246;r den k&#228;nns bebodd.</p>
         </div>
-        <div class="step-data"><span class="k">ber&#228;ttare</span> <span class="v">Stifur Mandrattur, tekniker</span><br><span class="q">&#8221;&#8230;hon vaknade klockan fyra och sa att det gnisslade.&#8221;</span><br><span class="k">har fel om:</span> <span class="v">avf&#228;rdar systerns iakttagelse</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">ber&#228;ttare</span> <span class="v">Stifur Mandrattur, tekniker</span><br><span class="q">&#8221;&#8230;hon vaknade klockan fyra och sa att det gnisslade.&#8221;</span><br><span class="k">har fel om:</span> <span class="v">avf&#228;rdar systerns iakttagelse</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><g class="a-s1"><circle class="f" cx="46" cy="40" r="13"/><path class="l" d="M28 76 q0 -20 18 -20 q18 0 18 20"/></g><g class="a-s2"><circle class="f" cx="130" cy="40" r="13"/><path class="l" d="M112 76 q0 -20 18 -20 q18 0 18 20"/></g><g class="a-s3"><circle class="f" cx="214" cy="40" r="13"/><path class="l" d="M196 76 q0 -20 18 -20 q18 0 18 20"/></g><path class="l3 a-flow" d="M64 34 q24 -16 48 0"/><path class="l3 a-flow" d="M148 34 q24 -16 48 0"/></svg></div>
       </div>
 
       <div class="step">
@@ -587,7 +688,7 @@
           <h3>Kr&#246;nik&#246;ren skriver</h3>
           <p>Modellen f&#229;r ryktet, rollistan, tr&#229;den, bladet f&#246;r just den sektor hjulet valt, det som h&#228;nt d&#228;r f&#246;rut, de m&#228;tare som avviker mest &#8212; och sina egna senaste inledningar, med uppmaning att inte g&#246;ra om dem. Den vet <em>inte</em> vad instrumenten visade. Tv&#229; av rollistans fyra platser g&#229;r till folk som bor i sektorn. De andra &#228;r p&#229; bes&#246;k, och det st&#229;r p&#229; deras kort.</p>
         </div>
-        <div class="step-data"><span class="k">modell</span> <span class="v">Claude Opus</span> <span class="k">eller en lokal modell, via v&#228;xeln</span><br><span class="k">skrivs till</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">modell</span> <span class="v">Claude Opus</span> <span class="k">eller en lokal modell, via v&#228;xeln</span><br><span class="k">skrivs till</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><rect class="f2" x="92" y="10" width="86" height="72" rx="2"/><path class="l a-s1" d="M104 26 H166"/><path class="l a-s2" d="M104 37 H152"/><path class="l a-s3" d="M104 48 H166"/><path class="l a-s4" d="M104 59 H152"/><path class="l a-s5" d="M104 70 H166"/><path class="l3" d="M196 62 L214 24 L220 27 L202 65 Z M196 62 l-2 9 l8 -6"/></svg></div>
       </div>
 
       <div class="step">
@@ -596,13 +697,14 @@
           <h3>V&#228;rlden v&#228;xer</h3>
           <p>En arkivarie l&#228;ser scenen och f&#246;resl&#229;r det som &#228;r nytt. En v&#228;ktare avg&#246;r vad som blir sanning, sl&#229;r ihop dubbletter och avvisar det som bryter mot v&#228;rldens lagar. F&#246;rst d&#229; finns det p&#229; riktigt. Arkivarien avg&#246;r ocks&#229; om scenen &#228;ndrade n&#229;got som best&#229;r: n&#229;got gick s&#246;nder, n&#229;gon flyttade, ett beslut togs. D&#229; f&#229;r sektorn en rad i sitt minne, och n&#228;sta scen d&#228;r bygger vidare p&#229; den.</p>
         </div>
-        <div class="step-data"><span class="k">f&#246;rslag</span> <span class="v">plats &#183; Hydroponikring 4-C</span><br><span class="k">f&#246;rankras i</span> <span class="v">sektor 03</span> <span class="k">&#8212; obligatoriskt</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">f&#246;rslag</span> <span class="v">plats &#183; Hydroponikring 4-C</span><br><span class="k">f&#246;rankras i</span> <span class="v">sektor 03</span> <span class="k">&#8212; obligatoriskt</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l2" d="M40 60 L84 28"/><path class="l2" d="M84 28 L126 62"/><path class="l2" d="M126 62 L168 30"/><path class="l2" d="M40 60 L96 78"/><path class="l2" d="M96 78 L126 62"/><circle class="f2" cx="40" cy="60" r="6"/><circle class="f2" cx="84" cy="28" r="6"/><circle class="f2" cx="126" cy="62" r="6"/><circle class="f2" cx="168" cy="30" r="6"/><circle class="f2" cx="96" cy="78" r="6"/><path class="l a-flow" d="M168 30 L218 54"/><circle class="a-halo" cx="218" cy="54" r="16" fill="var(--amber)" opacity=".1"/><circle class="f a-pulse" cx="218" cy="54" r="7"/></svg></div>
       </div>
     </div>
   </section>
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l a-s1" d="M46 12 H74"/><path class="l a-s2" d="M34 20 H86"/><path class="l a-s3" d="M20 28 H100"/><path class="l a-s4" d="M34 36 H86"/><path class="l a-s5" d="M46 44 H74"/></svg>
       <div class="eyebrow">Skeppet</div>
       <h2>&#197;tta sektorer, uppifr&#229;n och ner.</h2>
       <p>Ombra Prime &#228;r vertikalt organiserat. Varje sektor har ett <strong>blad</strong>: vad den &#228;r, vad som g&#246;rs d&#228;r, vad som aldrig h&#246;r hemma d&#228;r, vem som f&#229;r komma in, hur ljust det &#228;r och hur det k&#228;nns f&#246;r en m&#228;nniska att st&#229; d&#228;r. Den som skriver en scen f&#229;r bara bladet f&#246;r den sektor hjulet valt, s&#229; att inget annat f&#228;rgar av sig. Det &#228;r d&#228;rf&#246;r en scen i Hangaren smakar metall och en i The Crypt smakar ozon. Alla ombord har en hemsektor. Borta &#228;r man bes&#246;kare, och bara Oris finns &#246;verallt.</p>
@@ -663,6 +765,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><rect class="f2" x="10" y="14" width="24" height="24" rx="2"/><rect class="f2" x="48" y="14" width="24" height="24" rx="2"/><rect class="f2" x="86" y="14" width="24" height="24" rx="2"/><path class="a-flow" d="M2 26 H118" fill="none" stroke="var(--cold)" stroke-width="1.5"/></svg>
       <div class="eyebrow">Systemen</div>
       <h2>Sektorer &#228;r platser. System g&#229;r genom dem.</h2>
       <p>En sektor &#228;r en del av skeppet: d&#228;r &#228;r man. Ett <strong>system</strong> g&#229;r genom sektorerna eller p&#229;verkar dem: det fungerar eller kr&#229;nglar. Varje system s&#228;ger vad det &#228;r, vilka sektorer det g&#229;r genom och vad av det som finns just d&#228;r, vilken m&#228;tare som s&#228;ger hur det m&#229;r, och vad som kan g&#229; fel.</p>
@@ -671,21 +774,25 @@
 
     <div class="cards">
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><rect class="f2" x="28" y="26" width="48" height="40" rx="2"/><rect class="f2" x="106" y="26" width="48" height="40" rx="2"/><rect class="f2" x="184" y="26" width="48" height="40" rx="2"/><path d="M8 46 C30 30 40 62 60 46 S100 30 118 46 S158 62 176 46 S216 30 252 46" fill="none" stroke="var(--cold)" stroke-width="1.6" stroke-linecap="round" class="a-flow"/></svg>
         <span class="mk">Sanguis Matris</span>
         <h3>Vattnets v&#228;g</h3>
         <p>Moderns blod. Ett slutet kretslopp genom hela skeppet: str&#229;lningen g&#246;r vattnet till gel i ytterskalet, gelen fryser till is i taket p&#229; The Pearl, isen blir dimma, regn och sj&#246;ar, och d&#228;rifr&#229;n faller vattnet niv&#229; f&#246;r niv&#229; genom skeppet, renas p&#229; v&#228;gen, samlas i botten och lyfts upp igen.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><g class="a-breathe"><polygon class="f" points="161.2,28.0 161.2,64.0 130.0,82.0 98.8,64.0 98.8,28.0 130.0,10.0"/><polygon class="l2" points="149.1,35.0 149.1,57.0 130.0,68.0 110.9,57.0 110.9,35.0 130.0,24.0"/></g><circle class="g" cx="130" cy="46" r="3"/></svg>
         <span class="mk">The Aegis</span>
         <h3>Det levande skalet</h3>
         <p>En matta av str&#229;lnings&#228;tande svamp under ett keramiskt skal. Den g&#246;r str&#229;lning till str&#246;m och l&#228;ker sig sj&#228;lv, l&#229;ngsamt.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><g class="a-bob"><ellipse class="f" cx="130" cy="42" rx="34" ry="9"/><path class="l" d="M114 36 a16 12 0 0 1 32 0"/></g><path class="l2 a-s1" d="M104 66 H156"/><path class="l2 a-s2" d="M112 74 H148"/><path class="l2 a-s3" d="M120 82 H140"/></svg>
         <span class="mk">Levitas Aequilibrium</span>
         <h3>Allt som flyger</h3>
         <p>Antigravitationen som varje farkost ombord g&#229;r p&#229;. Br&#228;nslet kommer ur det levande i The Pearl, s&#229; ett svagt livsfl&#246;de m&#228;rks i hangaren.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><circle class="a-ring" cx="130" cy="46" r="38" fill="none" stroke="var(--cold)" stroke-width="1.4"/><circle class="a-ring2" cx="130" cy="46" r="38" fill="none" stroke="var(--cold)" stroke-width="1.4"/><circle class="a-ring3" cx="130" cy="46" r="38" fill="none" stroke="var(--cold)" stroke-width="1.4"/><circle cx="130" cy="46" r="5" fill="var(--cold)"/></svg>
         <span class="mk">The Breather</span>
         <h3>Maskinen</h3>
         <p>Byggd f&#246;r att bl&#229;sa liv i d&#246;da v&#228;rldar. P&#229; v&#228;g dit andas den en fin dimma in i skeppets luft.</p>
@@ -702,6 +809,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M22 14 l-8 12 l8 12 M40 14 l8 12 l-8 12"/><path class="l3" d="M58 26 H70"/><circle class="a-halo" cx="92" cy="26" r="14" fill="var(--amber)" opacity=".1"/><path class="f a-pulse" d="M92 14 l3 9 l9 3 l-9 3 l-3 9 l-3 -9 l-9 -3 l9 -3 Z"/></svg>
       <div class="eyebrow">&#196;rlighet</div>
       <h2>Vad som &#228;r AI, och vad som inte &#228;r det.</h2>
       <p>Den vanligaste fr&#229;gan, och den viktigaste. Det mesta av systemet &#228;r vanlig kod och konfiguration. Modellerna anv&#228;nds bara d&#228;r spr&#229;k faktiskt ska skapas &#8212; allt som handlar om <em>vad som f&#229;r h&#228;nda</em> &#228;r deterministiskt, granskningsbart och gratis.</p>
@@ -765,6 +873,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="f" d="M60 6 L88 14 V28 Q88 42 60 48 Q32 42 32 28 V14 Z"/><path class="l" d="M50 27 l7 7 l13 -14"/></svg>
       <div class="eyebrow">Vad som hindrar drift</div>
       <h2>En v&#228;rld som skriver sig sj&#228;lv m&#229;ste hindras fr&#229;n att mots&#228;ga sig sj&#228;lv.</h2>
       <p>Det &#228;r den sv&#229;ra delen. En modell som f&#229;r skriva fritt i m&#229;nader kommer f&#246;rr eller senare l&#229;ta en d&#246;d person tala, flytta en f&#246;rseglad d&#246;rr eller uppfinna en nionde sektor. Sju saker st&#229;r i v&#228;gen.</p>
@@ -772,36 +881,43 @@
 
     <div class="cards">
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><rect class="f2" x="70" y="14" width="74" height="64" rx="2"/><path class="l2" d="M82 30 H132 M82 42 H132 M82 54 H118"/><circle class="a-halo" cx="176" cy="52" r="20" fill="var(--amber)" opacity=".1"/><rect class="f" x="162" y="46" width="28" height="22" rx="2"/><path class="l" d="M168 46 v-8 a8 8 0 0 1 16 0 v8"/><circle class="g" cx="176" cy="57" r="2.4"/></svg>
         <span class="mk">Lagarna</span>
         <h3>V&#228;rldens fysik &#228;r skrivskyddad</h3>
         <p>Ett f&#229;tal regler som ingen agent f&#229;r bryta, och som ingen agent kan &#228;ndra. De f&#246;ljer med i varje prompt.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l" d="M72 46 Q130 6 188 46 Q130 86 72 46 Z"/><circle class="f" cx="130" cy="46" r="15"/><circle class="g a-pulse" cx="130" cy="46" r="5"/></svg>
         <span class="mk">V&#228;ktaren</span>
         <h3>Bara en instans skriver kanon</h3>
         <p>Agenterna f&#246;resl&#229;r, aldrig mer. Keeper avg&#246;r, sl&#229;r ihop dubbletter och kr&#228;ver att n&#229;got n&#228;mns tv&#229; g&#229;nger innan det blir sant. Det skaparen sj&#228;lv skrivit &#228;r l&#229;st: ingen agent f&#229;r &#228;ndra det. Nya personer f&#229;r f&#246;r- och efternamn, och f&#246;rnamnet pekar p&#229; dem &#8212; eller p&#229; ingen, om tv&#229; delar det.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><rect class="f a-s1" x="100" y="14" width="60" height="16" rx="2"/><rect class="f2 a-s2" x="78" y="38" width="104" height="16" rx="2"/><rect class="f2 a-s3" x="54" y="62" width="152" height="16" rx="2"/></svg>
         <span class="mk">Hierarkin</span>
         <h3>Allt vet var det h&#246;r hemma</h3>
         <p>En ny plats m&#229;ste f&#246;rankras i en av de &#229;tta sektorerna. Kan den inte det, sl&#228;pps f&#246;rslaget hellre &#228;n att bli en heml&#246;s str&#228;ng. F&#246;rem&#229;l, teknik och organismer f&#229;r sektorn d&#228;r scenen de f&#246;ddes i utspelade sig.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l2" d="M60 26 H200 M60 40 H200 M60 54 H200 M60 68 H170"/><g class="a-scan"><circle cx="80" cy="46" r="15" fill="var(--ground)" stroke="var(--amber)" stroke-width="1.5"/><path class="l" d="M91 57 L104 70"/></g></svg>
         <span class="mk">Granskaren</span>
         <h3>Upprepning larmar</h3>
         <p>Mekaniska kontroller m&#228;ter titelmallar, ordtics, inledningsformer och zonslagsida. Skriver Kr&#246;nik&#246;ren samma scen igen syns det.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="f" d="M40 76 V44 L64 24 L88 44 V76 Z"/><path class="l2" d="M58 76 V58 H70 V76"/><path class="l2" stroke-dasharray="2 6" d="M96 62 H224"/><circle class="g a-return" cx="100" cy="62" r="4.4"/><rect class="f2" x="204" y="48" width="24" height="28" rx="2"/></svg>
         <span class="mk">Hemmet</span>
         <h3>Alla har en hemsektor</h3>
         <p>Varje person h&#246;r hemma i en sektor och f&#229;r bes&#246;ka vissa andra. Rollistan f&#246;ljer det: tv&#229; platser i varje scen g&#229;r till dem som bor d&#228;r, och den som inte f&#229;r vara i sektorn kommer inte med. S&#229; blir varje sektor en egen v&#228;rld med eget folk.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l2" d="M40 56 H220"/><circle class="f2" cx="40" cy="56" r="6"/><circle class="f2" cx="76" cy="56" r="6"/><circle class="f2" cx="112" cy="56" r="6"/><circle class="f2" cx="148" cy="56" r="6"/><circle class="f2" cx="184" cy="56" r="6"/><circle class="f2" cx="220" cy="56" r="6"/><path class="l a-flow" d="M220 50 Q150 4 76 50"/><circle class="a-halo" cx="76" cy="56" r="14" fill="var(--amber)" opacity=".1"/><circle class="f a-pulse" cx="76" cy="56" r="6"/></svg>
         <span class="mk">Minnet</span>
         <h3>Det som h&#228;nt f&#229;r f&#246;ljder</h3>
         <p>Varje sektor minns h&#246;gst tio st&#246;rre saker som h&#228;nt d&#228;r och fortfarande g&#228;ller. Raderna f&#246;ljer med till n&#228;sta scen i sektorn. En sak som l&#228;mnats ol&#246;st kommer efter en tid tillbaka som en senare scens uppdrag.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><g class="a-spin"><path class="l" d="M130 14 a32 32 0 0 1 30 21"/><path class="l" d="M160 35 l-9 -2 M160 35 l2 -9"/><path class="l" d="M130 78 a32 32 0 0 1 -30 -21"/><path class="l" d="M100 57 l9 2 M100 57 l-2 9"/></g><rect class="f" x="122" y="38" width="16" height="16" rx="2"/></svg>
         <span class="mk">&#197;terbruket</span>
         <h3>V&#228;rlden r&#228;knar vad den &#229;terv&#228;nder till</h3>
         <p>Efter varje scen r&#228;knas vilka personer, platser och f&#246;rem&#229;l som n&#228;mndes. Den som vilat l&#228;ngst st&#229;r f&#246;rst p&#229; tur, s&#229; att v&#228;rlden anv&#228;nder det den redan har i st&#228;llet f&#246;r att bara hitta p&#229; nytt.</p>
@@ -811,6 +927,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M20 46 H100"/><g class="a-grow"><path class="lg" d="M60 46 V20"/><path class="gr" d="M60 24 q-12 -3 -15 -13 q12 0 15 13 Z M60 24 q12 -3 15 -13 q-12 0 -15 13 Z"/></g></svg>
       <div class="eyebrow">Det som v&#228;xer</div>
       <h2>V&#228;rlden blir djupare av sig sj&#228;lv.</h2>
       <p>En v&#228;rld som bara blir st&#246;rre blir inte b&#228;ttre. D&#228;rf&#246;r finns det saker som g&#246;r den <strong>djupare</strong> i st&#228;llet: personer som blir tydligare ju oftare v&#228;rlden &#229;terv&#228;nder till dem, djur som f&#246;r&#246;kar sig, och s&#229;dant som gl&#246;mts och kommer tillbaka.</p>
@@ -818,40 +935,48 @@
 
     <div class="cards">
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="Tv&#229; arter, ett hjul, en ny art"><g transform="translate(48 50) scale(0.42)"><path class="l" d="M-28 16 L-31 66 M-17 19 L-15 66 M25 17 L21 42 L25 66 M35 11 L33 40 L39 66"/><path class="f" d="M-20 -18 L-38 -46 L-52 -40 L-40 -6 Z"/><ellipse class="f" cx="2" cy="0" rx="44" ry="20"/><ellipse class="f" cx="-54" cy="-50" rx="15" ry="8.5" transform="rotate(14 -54 -50)"/><path class="f" d="M-45 -56 q0 -18 9 -22 q3 12 -3 23 Z M-53 -58 q-6 -16 0 -23 q7 10 5 22 Z"/><circle class="g" cx="-67.5" cy="-47" r="1.8"/><circle cx="-55" cy="-52" r="1.6" fill="var(--amber)"/><path class="l" d="M45 -6 q9 -6 11 4"/></g><g transform="translate(104 52) scale(1.0 1.0)"><ellipse class="f" cx="0" cy="0" rx="10" ry="6.5"/><circle class="f" cx="-9" cy="-5" r="4.6"/><path class="l" d="M-13.5 -5 l-5 1.5 l5 1.5 M9 -1 l11 -4 M-2 6 v6 M3 6 v6"/></g><path class="l3" d="M78 50 h8 M82 46 v8"/><path class="l3 a-flow" d="M124 50 H150"/><path class="l3" d="M144 46 L150 50 L144 54"/><g class="a-spin"><circle class="l" cx="172" cy="50" r="15"/><path class="l2" d="M172 35 V65 M157 50 H187 M161.5 39.5 L182.5 60.5 M182.5 39.5 L161.5 60.5"/></g><path class="g" d="M172 30 l-4 -7 h8 Z"/><path class="l3 a-flow" d="M194 50 H216"/><path class="l3" d="M210 46 L216 50 L210 54"/><circle class="a-halo" cx="236" cy="50" r="16" fill="var(--amber)" opacity=".10"/><circle class="f" cx="236" cy="50" r="8"/><circle class="g a-pulse" cx="236" cy="50" r="3"/></svg>
         <span class="mk">Domens djur</span>
         <h3>Djuren i The Pearl</h3>
         <p>Kameran vid f&#229;gelbordet &#228;r ett titth&#229;l in i domen. Varje djur den k&#228;nner igen &#228;r en art i The Pearl, med eget namn, och f&#246;rs in i en <strong>stambok</strong>: hur ofta arten kommit, och hur m&#229;nga p&#229; en g&#229;ng. Varje natt avg&#246;r ett hjul om tv&#229; av dagens djur har f&#229;tt en avkomma. D&#229; skrivs en ny art in, med de tv&#229; som f&#246;r&#228;ldrar, och den kan sj&#228;lv bli f&#246;r&#228;lder en annan dag. Kommer m&#229;nga arter under en vecka m&#228;rks det &#228;nda ner i staden: domen &#228;r d&#228;r livskraften f&#246;ds.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="Fem steg"><path class="l" d="M20 78 H64 V66 H108 V54 H152 V42 H196 V30 H240"/><circle cx="42" cy="68" r="3.2" fill="var(--amber)" opacity="0.30"/><circle cx="86" cy="56" r="3.9" fill="var(--amber)" opacity="0.47"/><circle cx="130" cy="44" r="4.6" fill="var(--amber)" opacity="0.65"/><circle cx="174" cy="32" r="5.3" fill="var(--amber)" opacity="0.82"/><circle cx="218" cy="20" r="6.0" fill="var(--amber)" opacity="1.00"/><circle class="g a-climb" cx="42" cy="68" r="4.6"/></svg>
         <span class="mk">Trappan</span>
         <h3>Personer v&#228;xer av att vara med</h3>
         <p>Alla b&#246;rjar som bifigurer. Den som v&#228;rlden &#229;terv&#228;nder till kliver upp: &#229;terkommande, v&#228;lk&#228;nd, b&#228;rande och till sist huvudperson. Ett steg kr&#228;ver scener, dagar och sektorer, och det g&#229;r i skov, ett steg i taget. Ingen best&#228;mmer vem det blir. Till slut har v&#228;rlden skapat sina egna huvudpersoner.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="Samma person, allt tydligare"><g class="a-s1"><circle cx="44" cy="46" r="17" fill="none" stroke="var(--amber)" stroke-width="1.5" opacity="0.4" stroke-dasharray="3 4"/></g><g class="a-s2"><circle cx="102" cy="46" r="17" fill="none" stroke="var(--amber)" stroke-width="1.5" opacity="0.65"/></g><g class="a-s3"><circle cx="160" cy="46" r="17" fill="rgba(242,169,59,.14)" stroke="var(--amber)" stroke-width="1.5" opacity="0.85"/></g><g class="a-s4"><circle cx="218" cy="46" r="17" fill="rgba(242,169,59,.42)" stroke="var(--amber)" stroke-width="1.5" opacity="1.0"/><polygon class="g" points="218.0,37.5 220.0,44.0 226.5,46.0 220.0,48.0 218.0,54.5 216.0,48.0 209.5,46.0 216.0,44.0"/></g><path class="l3 a-flow" d="M66 46 H80"/><path class="l3" d="M74 42 L80 46 L74 50"/><path class="l3 a-flow" d="M124 46 H138"/><path class="l3" d="M132 42 L138 46 L132 50"/><path class="l3 a-flow" d="M182 46 H196"/><path class="l3" d="M190 42 L196 46 L190 50"/></svg>
         <span class="mk">Djupet</span>
         <h3>En person blir tydligare f&#246;r varje steg</h3>
         <p>En bifigur &#228;r en skiss. F&#246;r varje steg l&#229;ses mer upp: hur hon talar, vad hon vill, vad hon &#228;r r&#228;dd f&#246;r, och vad hon <strong>aldrig</strong> skulle g&#246;ra. De som b&#228;r ber&#228;ttelsen f&#229;r ocks&#229; sina f&#246;rsvar och sitt s&#228;tt att vara n&#228;ra andra, i psykologins egna ord, och ett minne av vad de varit med om. En biograf skriver fram det ur scenerna personen varit med i och hittar inte p&#229; n&#229;got. Fackorden s&#228;gs aldrig i en scen; de syns i vad personen g&#246;r.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="En bortgl&#246;md sak lyfts fram"><rect class="f2" x="26" y="56" width="26" height="26" rx="2"/><rect class="f2" x="70" y="56" width="26" height="26" rx="2"/><rect class="f2" x="114" y="56" width="26" height="26" rx="2"/><rect x="158" y="56" width="26" height="26" rx="2" fill="none" stroke="var(--muted)" stroke-width="1.1" stroke-dasharray="3 4"/><path class="l3" d="M171 50 V34 M167 39 L171 34 L175 39"/><g class="a-lift"><circle cx="171" cy="18" r="18" fill="var(--amber)" opacity=".10"/><rect class="f" x="158" y="5" width="26" height="26" rx="2"/></g><rect class="f2" x="202" y="56" width="26" height="26" rx="2"/></svg>
         <span class="mk">Det bortgl&#246;mda</span>
         <h3>Det v&#228;rlden gl&#246;mt kommer tillbaka</h3>
         <p>Det mesta som finns i v&#228;rlden n&#228;mns aldrig igen. Inf&#246;r varje scen letas d&#228;rf&#246;r n&#229;got fram som h&#246;r hemma i sektorn men som ingen r&#246;rt p&#229; l&#228;nge, och ett hjul avg&#246;r om det kommer med: i bakgrunden, f&#246;r att det beh&#246;vs, eller f&#246;r att det inte fungerar som det ska.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="Fem predikningar blir ett kapitel"><g class="a-p5"><rect class="f2" x="22" y="30" width="15" height="36" rx="1.5"/><path class="l2" d="M25 40 h9 M25 47 h9"/></g><g class="a-p4"><rect class="f2" x="42" y="26" width="15" height="36" rx="1.5"/><path class="l2" d="M45 36 h9 M45 43 h9"/></g><g class="a-p3"><rect class="f2" x="62" y="30" width="15" height="36" rx="1.5"/><path class="l2" d="M65 40 h9 M65 47 h9"/></g><g class="a-p2"><rect class="f2" x="82" y="26" width="15" height="36" rx="1.5"/><path class="l2" d="M85 36 h9 M85 43 h9"/></g><g class="a-p1"><rect class="f2" x="102" y="30" width="15" height="36" rx="1.5"/><path class="l2" d="M105 40 h9 M105 47 h9"/></g><path class="l3 a-flow" d="M130 48 H160"/><path class="l3" d="M154 44 L160 48 L154 52"/><g class="a-book"><path class="f" d="M176 28 q22 -8 30 2 q8 -10 30 -2 v42 q-22 -8 -30 2 q-8 -10 -30 -2 Z"/><path class="l" d="M206 30 V72"/><path class="l2" d="M184 40 h14 M184 48 h14 M184 56 h14 M214 40 h14 M214 48 h14"/></g></svg>
         <span class="mk">Skriften</span>
         <h3>Skeppets skrift v&#228;xer</h3>
         <p>Biktmodern h&#229;ller en predikan om dagen. N&#228;r en av skriftens b&#246;cker har samlat fem predikningar skriver en munk n&#228;sta kapitel i den boken. Skriften &#228;r gammal: han skriver aldrig om dem som lever ombord nu.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="M&#228;taren tystnar och lagas"><path class="l" d="M18 50 H52 L60 28 L70 70 L78 50 H96"/><path class="a-blink" d="M96 50 H160" fill="none" stroke="var(--bad)" stroke-width="1.4" stroke-dasharray="3 5" stroke-linecap="round"/><circle cx="128" cy="50" r="14" fill="var(--ground)" stroke="var(--cold)" stroke-width="1.4"/><path d="M122 50 h12 M128 44 v12" fill="none" stroke="var(--cold)" stroke-width="1.6" stroke-linecap="round"/><path class="l a-beat" d="M160 50 H176 L184 28 L194 70 L202 50 H242"/></svg>
         <span class="mk">L&#228;karen</span>
         <h3>Simulatorn ser efter sina egna m&#228;tare</h3>
         <p>En g&#229;ng i timmen kontrolleras att varje m&#228;tare svarar och faktiskt r&#228;knar. Det enkla pr&#246;vas f&#246;rst. R&#228;cker inte det v&#228;cks en agent som f&#229;r leta upp felet i m&#228;tarens kod och laga det, inom sn&#228;va gr&#228;nser, och som skriver upp vad den gjorde.</p>
       </div>
     </div>
+    <figure class="bild"><svg viewBox="0 0 1100 330" role="img" aria-label="Trappan"><circle class="a-star" style="animation-delay:-2.5s" cx="812" cy="258" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.6s" cx="583" cy="272" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.6s" cx="985" cy="44" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-3.5s" cx="421" cy="40" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.1s" cx="243" cy="96" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.6s" cx="872" cy="52" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.8s" cx="151" cy="313" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.8s" cx="242" cy="316" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.2s" cx="1050" cy="177" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.5s" cx="205" cy="312" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-3.9s" cx="977" cy="102" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.7s" cx="1022" cy="91" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.2s" cx="662" cy="9" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.8s" cx="80" cy="120" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.9s" cx="350" cy="159" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.7s" cx="286" cy="303" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.4s" cx="446" cy="180" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.5s" cx="635" cy="11" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.8s" cx="684" cy="308" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-3.0s" cx="1016" cy="304" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.0s" cx="976" cy="87" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.4s" cx="819" cy="258" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.1s" cx="1033" cy="37" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.1s" cx="401" cy="55" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-3.7s" cx="599" cy="106" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.2s" cx="874" cy="205" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.8s" cx="1088" cy="59" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.3s" cx="659" cy="298" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.9s" cx="652" cy="267" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.6s" cx="166" cy="315" r="1.2" fill="var(--amber-2)" opacity=".4"/><path class="l" d="M60 270 H256 V236 H452 V202 H648 V168 H844 V134 H1040 "/><g class="a-s1"><g opacity="0.35"><circle cx="158.0" cy="174" r="15" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="3 4"/><path d="M138.0 270 V220 Q138.0 196 158.0 196 Q178.0 196 178.0 220 V270 Z" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="3 4" stroke-linejoin="round"/></g></g><text class="t" x="158.0" y="296" text-anchor="middle">BIFIGUR</text><text class="ts" x="158.0" y="314" text-anchor="middle">en skiss</text><g class="a-s2"><g opacity="0.55"><circle cx="354.0" cy="140" r="15" fill="none" stroke="var(--amber)" stroke-width="1.5"/><path d="M334.0 236 V186 Q334.0 162 354.0 162 Q374.0 162 374.0 186 V236 Z" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></g></g><text class="t" x="354.0" y="262" text-anchor="middle">&#197;TERKOMMANDE</text><text class="ts" x="354.0" y="280" text-anchor="middle">tv&#229; drag, ett s&#228;tt att tala</text><g class="a-s3"><g opacity="0.75"><circle cx="550.0" cy="106" r="15" fill="rgba(242,169,59,.10)" stroke="var(--amber)" stroke-width="1.5"/><path d="M530.0 202 V152 Q530.0 128 550.0 128 Q570.0 128 570.0 152 V202 Z" fill="rgba(242,169,59,.10)" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></g></g><text class="t" x="550.0" y="228" text-anchor="middle">V&#196;LK&#196;ND</text><text class="ts" x="550.0" y="246" text-anchor="middle">vill, fruktar, skulle aldrig</text><g class="a-s4"><g opacity="0.9"><circle cx="746.0" cy="72" r="15" fill="rgba(242,169,59,.22)" stroke="var(--amber)" stroke-width="1.5"/><path d="M726.0 168 V118 Q726.0 94 746.0 94 Q766.0 94 766.0 118 V168 Z" fill="rgba(242,169,59,.22)" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></g></g><circle cx="746.0" cy="72" r="9" fill="none" stroke="var(--amber-2)" stroke-width="1.1"/><text class="t" x="746.0" y="194" text-anchor="middle">B&#196;RANDE</text><text class="ts" x="746.0" y="212" text-anchor="middle">f&#246;rsvar, minne</text><circle class="a-glow" cx="942.0" cy="56" r="64" fill="var(--amber)" opacity=".07"/><g class="a-s5"><g opacity="1.0"><circle cx="942.0" cy="38" r="15" fill="rgba(242,169,59,.42)" stroke="var(--amber)" stroke-width="1.5"/><path d="M922.0 134 V84 Q922.0 60 942.0 60 Q962.0 60 962.0 84 V134 Z" fill="rgba(242,169,59,.42)" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></g></g><circle cx="942.0" cy="38" r="9" fill="none" stroke="var(--amber-2)" stroke-width="1.1"/><polygon class="g" points="942.0,31.0 943.7,36.3 949.0,38.0 943.7,39.7 942.0,45.0 940.3,39.7 935.0,38.0 940.3,36.3"/><text class="t" x="942.0" y="160" text-anchor="middle">HUVUDPERSON</text><text class="ts" x="942.0" y="178" text-anchor="middle">hela m&#228;nniskan</text></svg><figcaption>Trappan. Ju oftare v&#228;rlden &#229;terv&#228;nder till en person, desto tydligare blir hon.</figcaption></figure>
   </section>
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M60 46 V22"/><circle class="g" cx="60" cy="20" r="3.4"/><path class="l a-s1" d="M50 12 a12 12 0 0 0 0 16 M70 12 a12 12 0 0 1 0 16"/><path class="l a-s2" d="M40 8 a21 21 0 0 0 0 24 M80 8 a21 21 0 0 1 0 24"/><path class="l a-s3" d="M30 4 a30 30 0 0 0 0 32 M90 4 a30 30 0 0 1 0 32"/></svg>
       <div class="eyebrow">Ansiktet ut&#229;t</div>
       <h2>Mara Rox s&#228;nder vad som h&#228;nt.</h2>
       <p>Skeppets nyhetsankare skriver ett s&#228;ndningsmanus n&#228;r tillr&#228;ckligt mycket samlats &#8212; inte p&#229; klockan, utan p&#229; inneh&#229;ll. Manuset vet vilka scener det redan t&#228;ckt, s&#229; samma h&#228;ndelse s&#228;nds aldrig tv&#229; g&#229;nger.</p>
@@ -864,6 +989,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="f" d="M30 20 L56 10 L82 20 V40 L56 48 L30 40 Z"/><path class="l2" d="M30 20 L56 28 L82 20 M56 28 V48"/><path class="l3 a-flow" d="M88 28 H112"/><path class="l3" d="M106 24 L112 28 L106 32"/></svg>
       <div class="eyebrow">Utfl&#246;den</div>
       <h2>V&#228;rlden v&#228;xer f&#246;r sin egen skull. Det som kommer ur den ska g&#229; att anv&#228;nda.</h2>
       <p>En s&#228;ndning att spela in, en bok att l&#228;sa, ett avsnitt att klippa. D&#228;rf&#246;r l&#228;mnar ingenting systemet som ett dokument n&#229;gon m&#229;ste tolka &#8212; det l&#228;mnar det som ett <strong>paket</strong>: en mapp d&#228;r varje fil har ett uppdrag, och ett manifest som talar om vilket.</p>
@@ -887,6 +1013,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><g class="a-book"><path class="f" d="M24 12 q22 -8 36 2 q14 -10 36 -2 v32 q-22 -8 -36 2 q-14 -10 -36 -2 Z"/><path class="l" d="M60 14 V46"/><path class="l2" d="M32 22 h18 M32 30 h18 M70 22 h18 M70 30 h18"/></g></svg>
       <div class="eyebrow">Boken</div>
       <h2>Kr&#246;nik&#246;ren st&#229;r i rummet. Romanf&#246;rfattaren vet hur det gick.</h2>
       <p>N&#228;r tillr&#228;ckligt m&#229;nga scener samlats kommer en andra skribent in och skriver ett kapitel om det som h&#228;nt. Den l&#228;ser exakt samma scener som redan &#228;r skrivna &#8212; men den skriver <em>bak&#229;t</em>, och det &#228;r hela sk&#228;let att den finns.</p>
@@ -914,6 +1041,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M60 48 L52 20 H68 Z M60 20 V10"/><circle class="g" cx="60" cy="9" r="3"/><path class="l a-s1" d="M44 2 a14 14 0 0 0 0 16 M76 2 a14 14 0 0 1 0 16"/><path class="l a-s2" d="M35 2 a22 22 0 0 0 0 18 M85 2 a22 22 0 0 1 0 18"/><path class="l a-s3" d="M26 2 a30 30 0 0 0 0 20 M94 2 a30 30 0 0 1 0 20"/></svg>
       <div class="eyebrow">Radion</div>
       <h2>Ombra Prime Radio &#8212; en glimt in i v&#228;rlden.</h2>
       <p class="lead">Skeppet hade redan tv&#229; s&#228;tt att ber&#228;tta om sig sj&#228;lvt, och b&#229;da handlar om huvudrollerna &#8212; det &#228;r de som &#228;r med i scenerna. Radion g&#246;r tv&#228;rtom. Den &#228;r det enda formatet d&#228;r <strong>n&#229;gon som inte har n&#229;gon handling f&#229;r prata i nio minuter.</strong></p>
@@ -957,6 +1085,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><circle class="f2" cx="28" cy="26" r="11"/><circle class="f2" cx="60" cy="26" r="11"/><circle class="f2" cx="92" cy="26" r="11"/><path class="a-rec" d="M14 26 H42" fill="none" stroke="var(--amber)" stroke-width="2.2" stroke-linecap="round"/><path class="l" d="M54 22 h3 M64 22 h3 M86 22 h3 M96 22 h3"/></svg>
       <div class="eyebrow">R&#246;sterna</div>
       <h2>Det intressanta med de tre nya &#228;r vad de <em>inte</em> f&#229;r se.</h2>
       <p class="lead">En karakt&#228;r som h&#229;ller en hemlighet g&#246;r det inte f&#246;r att den blivit tillsagd att g&#246;ra det. En prompt &#228;r en f&#246;rhoppning. <strong>Regeln m&#229;ste ligga i vilket underlag r&#246;sten f&#229;r</strong> &#8212; s&#229; att det inte finns n&#229;got att r&#246;ja &#228;ven om den ville.</p>
@@ -988,6 +1117,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><rect class="g a-eq1" x="26" y="10" width="7" height="34" rx="2" opacity=".85"/><rect class="g a-eq2" x="42" y="10" width="7" height="34" rx="2" opacity=".85"/><rect class="g a-eq3" x="58" y="10" width="7" height="34" rx="2" opacity=".85"/><rect class="g a-eq4" x="74" y="10" width="7" height="34" rx="2" opacity=".85"/><rect class="g a-eq5" x="90" y="10" width="7" height="34" rx="2" opacity=".85"/></svg>
       <div class="eyebrow">Ljudet</div>
       <h2>Varje r&#246;st har sitt eget rum. Uppl&#228;saren har tystnad.</h2>
       <p>En b&#228;dd &#228;r inte en l&#229;t. Den ska inte h&#246;ras som musik, den ska h&#246;ras som att rummet har en f&#228;rg &#8212; och n&#228;r man m&#228;rker att den finns &#228;r den f&#246;r h&#246;g. Med fyra personer i etern gjorde <em>samma</em> slinga under alla fyra dem till samma program med olika uppl&#228;sare. B&#228;dden &#228;r det billigaste s&#228;ttet att s&#228;ga att rummet bytts: den h&#246;rs innan lyssnaren uppfattat ett enda ord.</p>
@@ -999,6 +1129,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><g class="a-bob"><ellipse class="f" cx="34" cy="38" rx="8" ry="6"/><path class="l" d="M42 38 V12 l14 4"/></g><rect class="f2" x="66" y="30" width="8" height="10"/><rect class="f2" x="78" y="22" width="8" height="18"/><rect class="f2" x="90" y="26" width="8" height="14"/><rect class="f2" x="102" y="14" width="8" height="26"/></svg>
       <div class="eyebrow">Musiken</div>
       <h2>En l&#229;t m&#229;ste finnas i v&#228;rlden innan den f&#229;r spelas.</h2>
       <p>En l&#229;t som bara &#228;r en ljudfil g&#246;r radion till en jukebox. En l&#229;t som &#228;r en <strong>entitet i kanon</strong> g&#246;r den till n&#229;got annat: d&#229; kan v&#228;rden ber&#228;tta vem som skrev den, var ombord hen bor, och att den legat p&#229; listan i tre veckor och fortfarande kl&#228;ttrar.</p>
@@ -1032,6 +1163,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M60 6 V46"/><path class="l3 a-flow" d="M14 18 H52"/><path class="l3" d="M46 14 L52 18 L46 22"/><path class="l3" d="M106 34 H72"/><path d="M64 30 l8 8 M72 30 l-8 8" fill="none" stroke="var(--bad)" stroke-width="1.5" stroke-linecap="round"/></svg>
       <div class="eyebrow">Gr&#228;nsen</div>
       <h2>Radion l&#228;ser v&#228;rlden. V&#228;rlden vet inte att radion finns.</h2>
       <p>Allt kanalen vet kommer genom <strong>en enda fil</strong>, och det kommer som frusna dataklasser &#8212; inte som databasrader. Det kostar n&#229;gra rader &#246;vers&#228;ttning per fr&#229;ga och ger tre saker: ett f&#246;nster som g&#229;r att st&#228;nga om simulatorn &#228;ndrar sig, en s&#228;ndning som inte kan ljuga av misstag, och m&#246;jligheten att k&#246;ra hela radion utan v&#228;rld alls.</p>
@@ -1048,6 +1180,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><circle class="l" cx="60" cy="26" r="17"/><circle class="a-rec" cx="60" cy="26" r="7" fill="var(--bad)"/></svg>
       <div class="eyebrow">Live</div>
       <h2>V&#228;rlden s&#228;nds medan den skrivs.</h2>
       <p class="lead">Radion s&#228;nds live p&#229; YouTube, p&#229; kanalen <strong>Ombra Prime</strong>. Det senaste programmet g&#229;r tills ett nytt finns, och hitlistan spelas i s&#228;ndningen.</p>
@@ -1059,6 +1192,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l a-s1" d="M26 42 H94"/><path class="l a-s2" d="M26 33 H94"/><path class="l a-s3" d="M26 24 H94"/><path class="l a-s4" d="M26 15 H94"/><path class="l2" d="M20 48 H100"/></svg>
       <div class="eyebrow">Minnet</div>
       <h2>Ingenting skrivs om i efterhand.</h2>
     </div>

@@ -468,6 +468,105 @@
     .slot .what { grid-column: 2 / -1; padding: 3px 16px 13px; }
     .slot .src  { grid-row: 1; grid-column: 3; }
   }
+
+  /* Linjeteckningarna (20 november 2026): ritade i sidans egna färger. */
+  .bild { margin: 40px 0 0; }
+  .bild svg { display: block; width: 100%; height: auto; }
+  .bild figcaption { margin-top: 12px; font: 500 12.5px/1.5 var(--sans); letter-spacing: .06em; color: var(--muted); }
+  .bild .l, .pikt .l { fill: none; stroke: var(--amber); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+  .bild .l2, .pikt .l2 { fill: none; stroke: var(--line-2); stroke-width: 1.1; stroke-linejoin: round; stroke-linecap: round; }
+  .bild .l3, .pikt .l3 { fill: none; stroke: var(--muted); stroke-width: 1.1; stroke-linejoin: round; stroke-linecap: round; }
+  .bild .f, .pikt .f { fill: rgba(242, 169, 59, .07); stroke: var(--amber); stroke-width: 1.4; stroke-linejoin: round; }
+  .bild .f2, .pikt .f2 { fill: var(--surface); stroke: var(--line-2); stroke-width: 1.1; stroke-linejoin: round; }
+  .bild .g, .pikt .g { fill: var(--amber-2); }
+  .bild .gr, .pikt .gr { fill: var(--good); }
+  .bild .lg, .pikt .lg { fill: none; stroke: var(--good); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .bild .t, .pikt .t { font: 600 12px var(--sans); letter-spacing: .16em; fill: var(--dim); }
+  .bild .tn, .pikt .tn { font: 600 12px var(--mono); fill: var(--amber); }
+  .bild .ts, .pikt .ts { font: 500 11px var(--sans); letter-spacing: .06em; fill: var(--muted); }
+
+  /* Teckningarna rör sig (20 november 2026). Bara för den som inte bett
+     webbläsaren om mindre rörelse. Allt går i långsamma varv. */
+  @media (prefers-reduced-motion: no-preference) {
+    .pikt *, .bild svg * { transform-box: fill-box; transform-origin: center; }
+    .a-spin   { animation: a-spin 9s linear infinite; }
+    .a-pulse  { animation: a-pulse 2.6s ease-in-out infinite; }
+    .a-glow   { animation: a-glow 3.4s ease-in-out infinite; }
+    .a-halo   { animation: a-halo 2.6s ease-in-out infinite; }
+    .a-flow   { stroke-dasharray: 4 5; animation: a-flow 1.4s linear infinite; }
+    .a-climb  { animation: a-climb 6s steps(1, end) infinite; }
+    .a-lift   { animation: a-lift 5s ease-in-out infinite; }
+    .a-beat   { stroke-dasharray: 150; animation: a-beat 5s ease-in-out infinite; }
+    .a-blink  { animation: a-blink 5s ease-in-out infinite; }
+    .a-s1, .a-s2, .a-s3, .a-s4, .a-s5 { animation: a-step 7.5s ease-in-out infinite; }
+    .a-s2 { animation-delay: .9s; } .a-s3 { animation-delay: 1.8s; }
+    .a-s4 { animation-delay: 2.7s; } .a-s5 { animation-delay: 3.6s; }
+    .a-p1, .a-p2, .a-p3, .a-p4, .a-p5 { animation: a-page 6s ease-in-out infinite; }
+    .a-p2 { animation-delay: .35s; } .a-p3 { animation-delay: .7s; }
+    .a-p4 { animation-delay: 1.05s; } .a-p5 { animation-delay: 1.4s; }
+    .a-book   { animation: a-book 6s ease-in-out infinite; }
+    .a-star   { animation: a-twinkle 4s ease-in-out infinite; }
+  }
+  @keyframes a-spin    { to { transform: rotate(360deg); } }
+  @keyframes a-pulse   { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: .55; } }
+  @keyframes a-glow    { 0%, 100% { opacity: .05; } 50% { opacity: .13; } }
+  @keyframes a-halo    { 0%, 100% { transform: scale(.9); opacity: .07; } 50% { transform: scale(1.25); opacity: .2; } }
+  @keyframes a-flow    { to { stroke-dashoffset: -18; } }
+  @keyframes a-climb   { 0% { transform: translate(0, 0); } 20% { transform: translate(44px, -12px); }
+                         40% { transform: translate(88px, -24px); } 60% { transform: translate(132px, -36px); }
+                         80%, 100% { transform: translate(176px, -48px); } }
+  @keyframes a-lift    { 0%, 15% { transform: translateY(51px); opacity: .25; } 45%, 85% { transform: translateY(0); opacity: 1; }
+                         100% { transform: translateY(51px); opacity: .25; } }
+  @keyframes a-beat    { 0% { stroke-dashoffset: 150; } 35%, 100% { stroke-dashoffset: 0; } }
+  @keyframes a-blink   { 0%, 30% { opacity: 1; } 45%, 100% { opacity: .15; } }
+  @keyframes a-step    { 0%, 8% { opacity: .22; } 20%, 78% { opacity: 1; } 100% { opacity: .22; } }
+  @keyframes a-page    { 0%, 10% { transform: translateX(0); opacity: 1; } 45% { transform: translateX(60px); opacity: 0; }
+                         46%, 80% { transform: translateX(0); opacity: 0; } 100% { opacity: 1; } }
+  @keyframes a-book    { 0%, 35% { opacity: .55; } 55%, 85% { opacity: 1; } 100% { opacity: .55; } }
+  @keyframes a-twinkle { 0%, 100% { opacity: .15; } 50% { opacity: .7; } }
+  .card .pikt { display: block; width: 100%; max-width: 260px; height: auto; margin: 0 0 14px; }
+  .card .pikt .l, .card .pikt .f { stroke-width: 1.5; }
+
+  /* Symbolerna på resten av sidan (20 november 2026). */
+  .step-side { display: grid; gap: 18px; min-width: 0; }
+  .step-side .pikt { display: block; width: 100%; max-width: 330px; height: auto; }
+  .emblem { display: block; width: 112px; height: auto; margin: 0 0 18px; }
+  section { position: relative; }
+  @media (prefers-reduced-motion: no-preference) {
+    /* En ljuspunkt vandrar längs linjen mellan avsnitten, som en signal. */
+    section + section::before {
+      content: ""; position: absolute; top: -2px; left: 0; width: 26px; height: 3px; border-radius: 3px;
+      background: linear-gradient(90deg, rgba(242,169,59,0), var(--amber-2));
+      box-shadow: 0 0 10px rgba(242,169,59,.55);
+      animation: a-skarv 13s linear infinite;
+    }
+    section:nth-of-type(3n)::before { animation-delay: -4.5s; }
+    section:nth-of-type(3n+1)::before { animation-delay: -9s; }
+    .a-draw   { stroke-dasharray: 420; animation: a-draw 5.5s ease-in-out infinite; }
+    .a-travel { animation: a-travel 6s linear infinite; }
+    .a-scan   { animation: a-scan 5s ease-in-out infinite; }
+    .a-bob    { animation: a-bob 4s ease-in-out infinite; }
+    .a-breathe { animation: a-breathe 4.5s ease-in-out infinite; }
+    .a-ring, .a-ring2, .a-ring3 { animation: a-ring 3.6s ease-out infinite; }
+    .a-ring2 { animation-delay: 1.2s; } .a-ring3 { animation-delay: 2.4s; }
+    .a-return { animation: a-return 6s ease-in-out infinite; }
+    .a-rec    { animation: a-rec 1.6s ease-in-out infinite; }
+    .a-eq1, .a-eq2, .a-eq3, .a-eq4, .a-eq5 { transform-origin: 50% 100%; animation: a-eq 1.5s ease-in-out infinite; }
+    .a-eq2 { animation-delay: -.3s; } .a-eq3 { animation-delay: -.75s; }
+    .a-eq4 { animation-delay: -.45s; } .a-eq5 { animation-delay: -1.05s; }
+    .a-grow   { transform-origin: 50% 100%; animation: a-grow 6s ease-in-out infinite; }
+  }
+  @keyframes a-skarv  { 0% { left: 0; opacity: 0; } 6% { opacity: .9; } 94% { opacity: .9; } 100% { left: calc(100% - 26px); opacity: 0; } }
+  @keyframes a-draw   { 0% { stroke-dashoffset: 420; } 55%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -420; } }
+  @keyframes a-travel { 0% { transform: translateX(0); opacity: 0; } 8%, 88% { opacity: 1; } 100% { transform: translateX(190px); opacity: 0; } }
+  @keyframes a-scan   { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(96px); } }
+  @keyframes a-bob    { 0%, 100% { transform: translateY(3px); } 50% { transform: translateY(-5px); } }
+  @keyframes a-breathe { 0%, 100% { transform: scale(.96); } 50% { transform: scale(1.05); } }
+  @keyframes a-ring   { 0% { transform: scale(.25); opacity: .9; } 100% { transform: scale(1); opacity: 0; } }
+  @keyframes a-return { 0%, 10% { transform: translateX(0); } 45%, 60% { transform: translateX(120px); } 95%, 100% { transform: translateX(0); } }
+  @keyframes a-rec    { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+  @keyframes a-eq     { 0%, 100% { transform: scaleY(.35); } 50% { transform: scaleY(1); } }
+  @keyframes a-grow   { 0%, 10% { transform: scaleY(.15); } 60%, 90% { transform: scaleY(1); } 100% { transform: scaleY(.15); } }
 </style>
 
 <script>
@@ -527,6 +626,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M14 44 H106"/><path class="f" d="M36 44 a24 22 0 0 1 48 0 Z"/><g class="a-grow"><path class="lg" d="M60 44 V28"/><path class="gr" d="M60 30 q-9 -2 -11 -10 q9 0 11 10 Z M60 30 q9 -2 11 -10 q-9 0 -11 10 Z"/></g></svg>
       <div class="eyebrow">The idea</div>
       <h2>The ship is given. The story is not.</h2>
       <p class="lead">Eight sectors and thirteen main characters are fixed and never change. Everything else &#8212; workshops, corridors, minor characters, conflicts &#8212; grows out of the scenes as they are written.</p>
@@ -537,6 +637,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l2" d="M14 26 H104"/><circle class="f a-s1" cx="14" cy="26" r="5"/><circle class="f a-s2" cx="32" cy="26" r="5"/><circle class="f a-s3" cx="50" cy="26" r="5"/><circle class="f a-s4" cx="68" cy="26" r="5"/><circle class="f a-s5" cx="86" cy="26" r="5"/><circle class="f a-s5" cx="104" cy="26" r="5"/></svg>
       <div class="eyebrow">The chain</div>
       <h2>From a number to a scene, in six steps.</h2>
       <p>Each link has its own job and leaves behind something the next one can use. Everything is kept, in order, so that any sentence in the chronicle can be traced back to the reading that caused it.</p>
@@ -549,7 +650,7 @@
           <h3>Reality is measured</h3>
           <p>A sensor reads something physical. Network response against a public host, the power meter in the house, a Raspberry Pi 5 with a Sense HAT and a particle sensor &#8212; air pressure, humidity, dust &#8212; a camera that sees a bird table, and a small ESP32 board that senses movement in the room without a camera, from how the wifi waves bounce. The raw value means nothing in itself &#8212; what counts is the deviation from a moving baseline. The air aboard follows the dust and the hull stress a falling air pressure. But most gauges do not read a sensor straight off; they read a <strong>derived value</strong>: how far the number stands from its own normal, how fast it changes, the imbalance between the three phases of the power, what share of the day something has moved. The water balance aboard follows how evenly the power runs, not the humidity. The camera is a peephole into The Pearl: whatever comes to the bird table is an animal in the dome. The reviewed crops are kept for two weeks on the simulator&#8217;s own computer and never published. An image with a person in it is never kept. A reviewer sees a small crop around the movement and says what it was. If it recognises a deer, that is one of the dome&#8217;s deer, and a magpie is one of its crows: every kind has a name of its own and a place in The Pearl. If it cannot tell, it stays a mystery, and a person in the picture never becomes anything at all. The movement is the pulse of the city: Metropolis sleeps when the house sleeps, wakes when it wakes, and fills with people when there is a party. The power, which switches on and off around the clock, is the work in The Crypt, where Oris and her machines build without anyone aboard knowing what. Once enough work has gathered they have finished something, and the shape of the power draw decides what: steady running makes something small and fine, heavy loads something large. The people aboard only notice the traces. And if the simulator stands still, that becomes an event too: days missing from the ship&#8217;s log.</p>
         </div>
-        <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l2" stroke-dasharray="3 5" d="M12 56 H248"/><path class="l a-draw" d="M12 56 C30 56 34 40 48 44 S66 62 82 58 S104 30 122 36 S146 70 164 60 S190 16 208 22 S232 50 248 46"/><circle class="g a-pulse" cx="208" cy="22" r="3.6"/><circle class="a-halo" cx="208" cy="22" r="14" fill="var(--amber)" opacity=".1"/></svg></div>
       </div>
 
       <div class="step">
@@ -558,7 +659,7 @@
           <h3>The number gets a meaning</h3>
           <p>A rule in a YAML file translates the deviation into something that happens aboard. This is where &#8212; and only where &#8212; meaning lives. No model involved; it is a threshold and a text.</p>
         </div>
-        <div class="step-data"><span class="k">rule</span> <span class="v">vitalis-frequencies-drift</span><br><span class="k">concept</span> <span class="v">&#8220;the frequencies drift apart&#8221;</span><br><span class="k">severity</span> <span class="v">2/5</span> &#183; <span class="k">domain</span> <span class="v">bio</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">rule</span> <span class="v">vitalis-frequencies-drift</span><br><span class="k">concept</span> <span class="v">&#8220;the frequencies drift apart&#8221;</span><br><span class="k">severity</span> <span class="v">2/5</span> &#183; <span class="k">domain</span> <span class="v">bio</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><rect class="f2" x="30" y="58" width="16" height="18"/><rect class="f2" x="58" y="50" width="16" height="26"/><rect class="f2" x="86" y="62" width="16" height="14"/><rect class="f2" x="114" y="46" width="16" height="30"/><rect class="f2" x="142" y="54" width="16" height="22"/><path class="l2" stroke-dasharray="3 5" d="M18 38 H200"/><rect class="f a-s3" x="170" y="20" width="16" height="56"/><path class="l3 a-flow" d="M196 30 H214"/><path class="l3" d="M208 26 L214 30 L208 34"/><circle class="a-halo" cx="234" cy="30" r="15" fill="var(--amber)" opacity=".1"/><path class="f a-pulse" d="M234 18 L246 30 L234 42 L222 30 Z"/></svg></div>
       </div>
 
       <div class="step">
@@ -567,7 +668,7 @@
           <h3>The director decides whether it becomes a scene</h3>
           <p>Most omens are stopped, and that is the point. Four gates: severity, rest between scenes, daily budget, zone focus. Omens that pass land in a waiting basket and compete with each other &#8212; the dark must not drown in the bright, and what just became a scene gets a minus. The winner goes to one of the active threads, at least six at a time, which are born and die in step with the scenes rather than the clock, and a weighted wheel draws which sector the scene lands in.</p>
         </div>
-        <div class="step-data"><span class="k">thread</span> <span class="v">Oris&#8217;s silence</span> <span class="k">(0.9 p)</span><br><span class="k">sector</span> <span class="v">03 EZ Aqua Core</span> <span class="k">(24 % chance)</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">thread</span> <span class="v">Oris&#8217;s silence</span> <span class="k">(0.9 p)</span><br><span class="k">sector</span> <span class="v">03 EZ Aqua Core</span> <span class="k">(24 % chance)</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l" d="M66 16 V36 M66 56 V76"/><path class="l" d="M108 16 V36 M108 56 V76"/><path class="l" d="M150 16 V36 M150 56 V76"/><path class="l" d="M192 16 V36 M192 56 V76"/><circle cx="46" cy="30" r="3.4" fill="var(--muted)" opacity=".6"/><circle cx="88" cy="64" r="3.4" fill="var(--muted)" opacity=".6"/><circle cx="130" cy="28" r="3.4" fill="var(--muted)" opacity=".6"/><circle class="g a-travel" cx="30" cy="46" r="4.4"/><path class="l2" stroke-dasharray="2 6" d="M22 46 H240"/></svg></div>
       </div>
 
       <div class="step">
@@ -576,7 +677,7 @@
           <h3>A person passes it on</h3>
           <p>Before the scene is written, someone aboard tells what they have heard. They were not there, they never see the instruments, and <strong>they are allowed to be wrong.</strong> It is the only place in the world where something may be untrue &#8212; and that is why it feels inhabited.</p>
         </div>
-        <div class="step-data"><span class="k">teller</span> <span class="v">Stifur Mandrattur, technician</span><br><span class="q">&#8220;&#8230;she woke at four and said it was creaking.&#8221;</span><br><span class="k">wrong about:</span> <span class="v">dismisses his sister&#8217;s observation</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">teller</span> <span class="v">Stifur Mandrattur, technician</span><br><span class="q">&#8220;&#8230;she woke at four and said it was creaking.&#8221;</span><br><span class="k">wrong about:</span> <span class="v">dismisses his sister&#8217;s observation</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><g class="a-s1"><circle class="f" cx="46" cy="40" r="13"/><path class="l" d="M28 76 q0 -20 18 -20 q18 0 18 20"/></g><g class="a-s2"><circle class="f" cx="130" cy="40" r="13"/><path class="l" d="M112 76 q0 -20 18 -20 q18 0 18 20"/></g><g class="a-s3"><circle class="f" cx="214" cy="40" r="13"/><path class="l" d="M196 76 q0 -20 18 -20 q18 0 18 20"/></g><path class="l3 a-flow" d="M64 34 q24 -16 48 0"/><path class="l3 a-flow" d="M148 34 q24 -16 48 0"/></svg></div>
       </div>
 
       <div class="step">
@@ -585,7 +686,7 @@
           <h3>The Chronicler writes</h3>
           <p>The model gets the rumour, the cast, the thread, the sheet for the one sector the wheel has drawn, what has happened there before, the gauges that deviate most &#8212; and its own latest openings, with a request not to repeat them. It does <em>not</em> know what the instruments showed. Two of the four places in the cast go to people who live in the sector. The others are visitors, and their cards say so.</p>
         </div>
-        <div class="step-data"><span class="k">model</span> <span class="v">Claude Opus</span> <span class="k">or a local model, via the switch</span><br><span class="k">written to</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">model</span> <span class="v">Claude Opus</span> <span class="k">or a local model, via the switch</span><br><span class="k">written to</span> <span class="v">chronicle/0342/&#8230;</span> <span class="k">append-only</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><rect class="f2" x="92" y="10" width="86" height="72" rx="2"/><path class="l a-s1" d="M104 26 H166"/><path class="l a-s2" d="M104 37 H152"/><path class="l a-s3" d="M104 48 H166"/><path class="l a-s4" d="M104 59 H152"/><path class="l a-s5" d="M104 70 H166"/><path class="l3" d="M196 62 L214 24 L220 27 L202 65 Z M196 62 l-2 9 l8 -6"/></svg></div>
       </div>
 
       <div class="step">
@@ -594,13 +695,14 @@
           <h3>The world grows</h3>
           <p>An archivist reads the scene and proposes what is new. A keeper decides what becomes true, merges duplicates and rejects what breaks the laws of the world. Only then does it really exist. The archivist also decides whether the scene changed something that lasts: something broke, someone moved, a decision was made. Then the sector gets a line in its memory, and the next scene there builds on it.</p>
         </div>
-        <div class="step-data"><span class="k">proposal</span> <span class="v">place &#183; Hydroponics Ring 4-C</span><br><span class="k">anchored in</span> <span class="v">sector 03</span> <span class="k">&#8212; mandatory</span></div>
+        <div class="step-side"><div class="step-data"><span class="k">proposal</span> <span class="v">place &#183; Hydroponics Ring 4-C</span><br><span class="k">anchored in</span> <span class="v">sector 03</span> <span class="k">&#8212; mandatory</span></div><svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l2" d="M40 60 L84 28"/><path class="l2" d="M84 28 L126 62"/><path class="l2" d="M126 62 L168 30"/><path class="l2" d="M40 60 L96 78"/><path class="l2" d="M96 78 L126 62"/><circle class="f2" cx="40" cy="60" r="6"/><circle class="f2" cx="84" cy="28" r="6"/><circle class="f2" cx="126" cy="62" r="6"/><circle class="f2" cx="168" cy="30" r="6"/><circle class="f2" cx="96" cy="78" r="6"/><path class="l a-flow" d="M168 30 L218 54"/><circle class="a-halo" cx="218" cy="54" r="16" fill="var(--amber)" opacity=".1"/><circle class="f a-pulse" cx="218" cy="54" r="7"/></svg></div>
       </div>
     </div>
   </section>
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l a-s1" d="M46 12 H74"/><path class="l a-s2" d="M34 20 H86"/><path class="l a-s3" d="M20 28 H100"/><path class="l a-s4" d="M34 36 H86"/><path class="l a-s5" d="M46 44 H74"/></svg>
       <div class="eyebrow">The ship</div>
       <h2>Eight sectors, top to bottom.</h2>
       <p>Ombra Prime is organised vertically. Each sector has a <strong>sheet</strong>: what it is, what is done there, what never belongs there, who gets in, how bright it is and how it feels for a person to stand there. Whoever writes a scene gets only the sheet for the sector the wheel has drawn, so that nothing else rubs off. That is why a scene in the Hangar tastes of metal and one in The Crypt tastes of ozone. Everyone aboard has a home sector. Away from it you are a visitor, and only Oris is everywhere.</p>
@@ -661,6 +763,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><rect class="f2" x="10" y="14" width="24" height="24" rx="2"/><rect class="f2" x="48" y="14" width="24" height="24" rx="2"/><rect class="f2" x="86" y="14" width="24" height="24" rx="2"/><path class="a-flow" d="M2 26 H118" fill="none" stroke="var(--cold)" stroke-width="1.5"/></svg>
       <div class="eyebrow">The systems</div>
       <h2>Sectors are places. Systems run through them.</h2>
       <p>A sector is a part of the ship: you are there. A <strong>system</strong> runs through the sectors or affects them: it works or it fails. Each system says what it is, which sectors it runs through and what of it is found there, which gauge tells how it fares, and what can go wrong.</p>
@@ -669,21 +772,25 @@
 
     <div class="cards">
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><rect class="f2" x="28" y="26" width="48" height="40" rx="2"/><rect class="f2" x="106" y="26" width="48" height="40" rx="2"/><rect class="f2" x="184" y="26" width="48" height="40" rx="2"/><path d="M8 46 C30 30 40 62 60 46 S100 30 118 46 S158 62 176 46 S216 30 252 46" fill="none" stroke="var(--cold)" stroke-width="1.6" stroke-linecap="round" class="a-flow"/></svg>
         <span class="mk">Sanguis Matris</span>
         <h3>The water&#8217;s way</h3>
         <p>The mother&#8217;s blood. One closed circuit through the whole ship: radiation turns the water to gel in the outer skin, the gel freezes to ice in the roof of The Pearl, the ice becomes mist, rain and lakes, and from there the water falls level by level through the ship, cleaned on the way, gathers at the bottom and is lifted up again.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><g class="a-breathe"><polygon class="f" points="161.2,28.0 161.2,64.0 130.0,82.0 98.8,64.0 98.8,28.0 130.0,10.0"/><polygon class="l2" points="149.1,35.0 149.1,57.0 130.0,68.0 110.9,57.0 110.9,35.0 130.0,24.0"/></g><circle class="g" cx="130" cy="46" r="3"/></svg>
         <span class="mk">The Aegis</span>
         <h3>The living shell</h3>
         <p>A mat of radiation-eating fungus under a ceramic shell. It turns radiation into current and heals itself, slowly.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><g class="a-bob"><ellipse class="f" cx="130" cy="42" rx="34" ry="9"/><path class="l" d="M114 36 a16 12 0 0 1 32 0"/></g><path class="l2 a-s1" d="M104 66 H156"/><path class="l2 a-s2" d="M112 74 H148"/><path class="l2 a-s3" d="M120 82 H140"/></svg>
         <span class="mk">Levitas Aequilibrium</span>
         <h3>Everything that flies</h3>
         <p>The anti-gravity every craft aboard runs on. The fuel comes from what lives in The Pearl, so a weak life flow is felt in the hangar.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><circle class="a-ring" cx="130" cy="46" r="38" fill="none" stroke="var(--cold)" stroke-width="1.4"/><circle class="a-ring2" cx="130" cy="46" r="38" fill="none" stroke="var(--cold)" stroke-width="1.4"/><circle class="a-ring3" cx="130" cy="46" r="38" fill="none" stroke="var(--cold)" stroke-width="1.4"/><circle cx="130" cy="46" r="5" fill="var(--cold)"/></svg>
         <span class="mk">The Breather</span>
         <h3>The machine</h3>
         <p>Built to breathe life into dead worlds. On the way there it breathes a fine mist into the air of the ship.</p>
@@ -700,6 +807,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M22 14 l-8 12 l8 12 M40 14 l8 12 l-8 12"/><path class="l3" d="M58 26 H70"/><circle class="a-halo" cx="92" cy="26" r="14" fill="var(--amber)" opacity=".1"/><path class="f a-pulse" d="M92 14 l3 9 l9 3 l-9 3 l-3 9 l-3 -9 l-9 -3 l9 -3 Z"/></svg>
       <div class="eyebrow">Honesty</div>
       <h2>What is AI, and what is not.</h2>
       <p>The most common question, and the most important. Most of the system is ordinary code and configuration. The models are used only where language actually has to be created &#8212; everything about <em>what is allowed to happen</em> is deterministic, auditable and free.</p>
@@ -763,6 +871,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="f" d="M60 6 L88 14 V28 Q88 42 60 48 Q32 42 32 28 V14 Z"/><path class="l" d="M50 27 l7 7 l13 -14"/></svg>
       <div class="eyebrow">What prevents drift</div>
       <h2>A world that writes itself has to be kept from contradicting itself.</h2>
       <p>That is the hard part. A model allowed to write freely for months will sooner or later let a dead person speak, move a sealed door or invent a ninth sector. Seven things stand in the way.</p>
@@ -770,36 +879,43 @@
 
     <div class="cards">
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><rect class="f2" x="70" y="14" width="74" height="64" rx="2"/><path class="l2" d="M82 30 H132 M82 42 H132 M82 54 H118"/><circle class="a-halo" cx="176" cy="52" r="20" fill="var(--amber)" opacity=".1"/><rect class="f" x="162" y="46" width="28" height="22" rx="2"/><path class="l" d="M168 46 v-8 a8 8 0 0 1 16 0 v8"/><circle class="g" cx="176" cy="57" r="2.4"/></svg>
         <span class="mk">The laws</span>
         <h3>The world&#8217;s physics are read-only</h3>
         <p>A handful of rules that no agent may break, and that no agent can change. They go into every prompt.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l" d="M72 46 Q130 6 188 46 Q130 86 72 46 Z"/><circle class="f" cx="130" cy="46" r="15"/><circle class="g a-pulse" cx="130" cy="46" r="5"/></svg>
         <span class="mk">The keeper</span>
         <h3>Only one instance writes canon</h3>
         <p>The agents propose, never more. The Keeper decides, merges duplicates and requires something to be mentioned twice before it becomes true. What the creator himself has written is locked: no agent may change it. New people get a first and a last name, and the first name points to them &#8212; or to nobody, if two share it.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><rect class="f a-s1" x="100" y="14" width="60" height="16" rx="2"/><rect class="f2 a-s2" x="78" y="38" width="104" height="16" rx="2"/><rect class="f2 a-s3" x="54" y="62" width="152" height="16" rx="2"/></svg>
         <span class="mk">The hierarchy</span>
         <h3>Everything knows where it belongs</h3>
         <p>A new place must be anchored in one of the eight sectors. If it cannot be, the proposal is dropped rather than becoming a homeless string. Objects, technology and organisms get the sector where the scene they were born in took place.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l2" d="M60 26 H200 M60 40 H200 M60 54 H200 M60 68 H170"/><g class="a-scan"><circle cx="80" cy="46" r="15" fill="var(--ground)" stroke="var(--amber)" stroke-width="1.5"/><path class="l" d="M91 57 L104 70"/></g></svg>
         <span class="mk">The reviewer</span>
         <h3>Repetition raises the alarm</h3>
         <p>Mechanical checks measure title templates, verbal tics, opening forms and zone bias. If the Chronicler writes the same scene again, it shows.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="f" d="M40 76 V44 L64 24 L88 44 V76 Z"/><path class="l2" d="M58 76 V58 H70 V76"/><path class="l2" stroke-dasharray="2 6" d="M96 62 H224"/><circle class="g a-return" cx="100" cy="62" r="4.4"/><rect class="f2" x="204" y="48" width="24" height="28" rx="2"/></svg>
         <span class="mk">Home</span>
         <h3>Everyone has a home sector</h3>
         <p>Each person belongs to one sector and may visit certain others. The cast follows it: two places in every scene go to those who live there, and someone who may not be in the sector is left out. That is how each sector becomes a world of its own, with its own people.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><path class="l2" d="M40 56 H220"/><circle class="f2" cx="40" cy="56" r="6"/><circle class="f2" cx="76" cy="56" r="6"/><circle class="f2" cx="112" cy="56" r="6"/><circle class="f2" cx="148" cy="56" r="6"/><circle class="f2" cx="184" cy="56" r="6"/><circle class="f2" cx="220" cy="56" r="6"/><path class="l a-flow" d="M220 50 Q150 4 76 50"/><circle class="a-halo" cx="76" cy="56" r="14" fill="var(--amber)" opacity=".1"/><circle class="f a-pulse" cx="76" cy="56" r="6"/></svg>
         <span class="mk">Memory</span>
         <h3>What happened has consequences</h3>
         <p>Each sector remembers at most ten larger things that happened there and still hold. The lines go along to the next scene in the sector. Something left unresolved comes back after a while as a later scene’s assignment.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" aria-hidden="true"><g class="a-spin"><path class="l" d="M130 14 a32 32 0 0 1 30 21"/><path class="l" d="M160 35 l-9 -2 M160 35 l2 -9"/><path class="l" d="M130 78 a32 32 0 0 1 -30 -21"/><path class="l" d="M100 57 l9 2 M100 57 l-2 9"/></g><rect class="f" x="122" y="38" width="16" height="16" rx="2"/></svg>
         <span class="mk">Reuse</span>
         <h3>The world counts what it returns to</h3>
         <p>After every scene the people, places and objects it mentioned are counted. Whoever has rested longest is first in line, so that the world uses what it already has instead of only inventing more.</p>
@@ -809,6 +925,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M20 46 H100"/><g class="a-grow"><path class="lg" d="M60 46 V20"/><path class="gr" d="M60 24 q-12 -3 -15 -13 q12 0 15 13 Z M60 24 q12 -3 15 -13 q-12 0 -15 13 Z"/></g></svg>
       <div class="eyebrow">What grows</div>
       <h2>The world gets deeper by itself.</h2>
       <p>A world that only gets bigger does not get better. So some things make it <strong>deeper</strong> instead: people who become clearer the more often the world returns to them, animals that breed, and things that were forgotten and come back.</p>
@@ -816,40 +933,48 @@
 
     <div class="cards">
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="Two kinds, a wheel, a new kind"><g transform="translate(48 50) scale(0.42)"><path class="l" d="M-28 16 L-31 66 M-17 19 L-15 66 M25 17 L21 42 L25 66 M35 11 L33 40 L39 66"/><path class="f" d="M-20 -18 L-38 -46 L-52 -40 L-40 -6 Z"/><ellipse class="f" cx="2" cy="0" rx="44" ry="20"/><ellipse class="f" cx="-54" cy="-50" rx="15" ry="8.5" transform="rotate(14 -54 -50)"/><path class="f" d="M-45 -56 q0 -18 9 -22 q3 12 -3 23 Z M-53 -58 q-6 -16 0 -23 q7 10 5 22 Z"/><circle class="g" cx="-67.5" cy="-47" r="1.8"/><circle cx="-55" cy="-52" r="1.6" fill="var(--amber)"/><path class="l" d="M45 -6 q9 -6 11 4"/></g><g transform="translate(104 52) scale(1.0 1.0)"><ellipse class="f" cx="0" cy="0" rx="10" ry="6.5"/><circle class="f" cx="-9" cy="-5" r="4.6"/><path class="l" d="M-13.5 -5 l-5 1.5 l5 1.5 M9 -1 l11 -4 M-2 6 v6 M3 6 v6"/></g><path class="l3" d="M78 50 h8 M82 46 v8"/><path class="l3 a-flow" d="M124 50 H150"/><path class="l3" d="M144 46 L150 50 L144 54"/><g class="a-spin"><circle class="l" cx="172" cy="50" r="15"/><path class="l2" d="M172 35 V65 M157 50 H187 M161.5 39.5 L182.5 60.5 M182.5 39.5 L161.5 60.5"/></g><path class="g" d="M172 30 l-4 -7 h8 Z"/><path class="l3 a-flow" d="M194 50 H216"/><path class="l3" d="M210 46 L216 50 L210 54"/><circle class="a-halo" cx="236" cy="50" r="16" fill="var(--amber)" opacity=".10"/><circle class="f" cx="236" cy="50" r="8"/><circle class="g a-pulse" cx="236" cy="50" r="3"/></svg>
         <span class="mk">The animals of the dome</span>
         <h3>The animals in The Pearl</h3>
         <p>The camera at the bird table is a peephole into the dome. Every animal it recognises is a kind in The Pearl, with a name of its own, and is entered in a <strong>stock book</strong>: how often the kind has come, and how many at once. Every night a wheel decides whether two of the day&#8217;s animals have had offspring. Then a new kind is entered, with those two as its parents, and it can become a parent itself another day. When many kinds come in a week it is felt all the way down in the city: the dome is where the life force is born.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="Five steps"><path class="l" d="M20 78 H64 V66 H108 V54 H152 V42 H196 V30 H240"/><circle cx="42" cy="68" r="3.2" fill="var(--amber)" opacity="0.30"/><circle cx="86" cy="56" r="3.9" fill="var(--amber)" opacity="0.47"/><circle cx="130" cy="44" r="4.6" fill="var(--amber)" opacity="0.65"/><circle cx="174" cy="32" r="5.3" fill="var(--amber)" opacity="0.82"/><circle cx="218" cy="20" r="6.0" fill="var(--amber)" opacity="1.00"/><circle class="g a-climb" cx="42" cy="68" r="4.6"/></svg>
         <span class="mk">The stair</span>
         <h3>People grow by being there</h3>
         <p>Everyone starts as a minor figure. Whoever the world returns to climbs: recurring, well known, carrying, and finally a main character. A step takes scenes, days and sectors, and it comes in bursts, one step at a time. Nobody decides who it will be. In the end the world has made its own main characters.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="The same person, ever clearer"><g class="a-s1"><circle cx="44" cy="46" r="17" fill="none" stroke="var(--amber)" stroke-width="1.5" opacity="0.4" stroke-dasharray="3 4"/></g><g class="a-s2"><circle cx="102" cy="46" r="17" fill="none" stroke="var(--amber)" stroke-width="1.5" opacity="0.65"/></g><g class="a-s3"><circle cx="160" cy="46" r="17" fill="rgba(242,169,59,.14)" stroke="var(--amber)" stroke-width="1.5" opacity="0.85"/></g><g class="a-s4"><circle cx="218" cy="46" r="17" fill="rgba(242,169,59,.42)" stroke="var(--amber)" stroke-width="1.5" opacity="1.0"/><polygon class="g" points="218.0,37.5 220.0,44.0 226.5,46.0 220.0,48.0 218.0,54.5 216.0,48.0 209.5,46.0 216.0,44.0"/></g><path class="l3 a-flow" d="M66 46 H80"/><path class="l3" d="M74 42 L80 46 L74 50"/><path class="l3 a-flow" d="M124 46 H138"/><path class="l3" d="M132 42 L138 46 L132 50"/><path class="l3 a-flow" d="M182 46 H196"/><path class="l3" d="M190 42 L196 46 L190 50"/></svg>
         <span class="mk">Depth</span>
         <h3>A person becomes clearer with every step</h3>
         <p>A minor figure is a sketch. Each step unlocks more: how she talks, what she wants, what she is afraid of, and what she would <strong>never</strong> do. Those who carry the story also get their defences and their way of being close to others, in the words of psychology itself, and a memory of what they have lived through. A biographer writes it from the scenes the person has been in and invents nothing. The terms are never spoken in a scene; they show in what the person does.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="A forgotten thing is brought back"><rect class="f2" x="26" y="56" width="26" height="26" rx="2"/><rect class="f2" x="70" y="56" width="26" height="26" rx="2"/><rect class="f2" x="114" y="56" width="26" height="26" rx="2"/><rect x="158" y="56" width="26" height="26" rx="2" fill="none" stroke="var(--muted)" stroke-width="1.1" stroke-dasharray="3 4"/><path class="l3" d="M171 50 V34 M167 39 L171 34 L175 39"/><g class="a-lift"><circle cx="171" cy="18" r="18" fill="var(--amber)" opacity=".10"/><rect class="f" x="158" y="5" width="26" height="26" rx="2"/></g><rect class="f2" x="202" y="56" width="26" height="26" rx="2"/></svg>
         <span class="mk">The forgotten</span>
         <h3>What the world forgot comes back</h3>
         <p>Most of what exists in the world is never mentioned again. So before every scene something is found that belongs in the sector but that nobody has touched for a long time, and a wheel decides whether it comes along: in the background, because it is needed, or because it is not working as it should.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="Five sermons become a chapter"><g class="a-p5"><rect class="f2" x="22" y="30" width="15" height="36" rx="1.5"/><path class="l2" d="M25 40 h9 M25 47 h9"/></g><g class="a-p4"><rect class="f2" x="42" y="26" width="15" height="36" rx="1.5"/><path class="l2" d="M45 36 h9 M45 43 h9"/></g><g class="a-p3"><rect class="f2" x="62" y="30" width="15" height="36" rx="1.5"/><path class="l2" d="M65 40 h9 M65 47 h9"/></g><g class="a-p2"><rect class="f2" x="82" y="26" width="15" height="36" rx="1.5"/><path class="l2" d="M85 36 h9 M85 43 h9"/></g><g class="a-p1"><rect class="f2" x="102" y="30" width="15" height="36" rx="1.5"/><path class="l2" d="M105 40 h9 M105 47 h9"/></g><path class="l3 a-flow" d="M130 48 H160"/><path class="l3" d="M154 44 L160 48 L154 52"/><g class="a-book"><path class="f" d="M176 28 q22 -8 30 2 q8 -10 30 -2 v42 q-22 -8 -30 2 q-8 -10 -30 -2 Z"/><path class="l" d="M206 30 V72"/><path class="l2" d="M184 40 h14 M184 48 h14 M184 56 h14 M214 40 h14 M214 48 h14"/></g></svg>
         <span class="mk">Scripture</span>
         <h3>The ship&#8217;s scripture grows</h3>
         <p>The confessor gives one sermon a day. When one of the books of the scripture has gathered five sermons, a monk writes the next chapter of that book. The scripture is old: he never writes about those who live aboard now.</p>
       </div>
       <div class="card">
+        <svg class="pikt" viewBox="0 0 260 92" role="img" aria-label="The gauge falls silent and is mended"><path class="l" d="M18 50 H52 L60 28 L70 70 L78 50 H96"/><path class="a-blink" d="M96 50 H160" fill="none" stroke="var(--bad)" stroke-width="1.4" stroke-dasharray="3 5" stroke-linecap="round"/><circle cx="128" cy="50" r="14" fill="var(--ground)" stroke="var(--cold)" stroke-width="1.4"/><path d="M122 50 h12 M128 44 v12" fill="none" stroke="var(--cold)" stroke-width="1.6" stroke-linecap="round"/><path class="l a-beat" d="M160 50 H176 L184 28 L194 70 L202 50 H242"/></svg>
         <span class="mk">The healer</span>
         <h3>The simulator looks after its own gauges</h3>
         <p>Once an hour every gauge is checked: that it answers and that it is actually counting. The simple thing is tried first. If that is not enough an agent is woken that may find the fault in the gauge&#8217;s code and mend it, within narrow limits, and that writes down what it did.</p>
       </div>
     </div>
+    <figure class="bild"><svg viewBox="0 0 1100 330" role="img" aria-label="The stair"><circle class="a-star" style="animation-delay:-2.5s" cx="812" cy="258" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.6s" cx="583" cy="272" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.6s" cx="985" cy="44" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-3.5s" cx="421" cy="40" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.1s" cx="243" cy="96" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.6s" cx="872" cy="52" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.8s" cx="151" cy="313" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.8s" cx="242" cy="316" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.2s" cx="1050" cy="177" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.5s" cx="205" cy="312" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-3.9s" cx="977" cy="102" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.7s" cx="1022" cy="91" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.2s" cx="662" cy="9" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.8s" cx="80" cy="120" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.9s" cx="350" cy="159" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.7s" cx="286" cy="303" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.4s" cx="446" cy="180" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.5s" cx="635" cy="11" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.8s" cx="684" cy="308" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-3.0s" cx="1016" cy="304" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.0s" cx="976" cy="87" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.4s" cx="819" cy="258" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.1s" cx="1033" cy="37" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.1s" cx="401" cy="55" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-3.7s" cx="599" cy="106" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-1.2s" cx="874" cy="205" r="1.2" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.8s" cx="1088" cy="59" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.3s" cx="659" cy="298" r="0.7" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-0.9s" cx="652" cy="267" r="0.9" fill="var(--amber-2)" opacity=".4"/><circle class="a-star" style="animation-delay:-2.6s" cx="166" cy="315" r="1.2" fill="var(--amber-2)" opacity=".4"/><path class="l" d="M60 270 H256 V236 H452 V202 H648 V168 H844 V134 H1040 "/><g class="a-s1"><g opacity="0.35"><circle cx="158.0" cy="174" r="15" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="3 4"/><path d="M138.0 270 V220 Q138.0 196 158.0 196 Q178.0 196 178.0 220 V270 Z" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="3 4" stroke-linejoin="round"/></g></g><text class="t" x="158.0" y="296" text-anchor="middle">MINOR FIGURE</text><text class="ts" x="158.0" y="314" text-anchor="middle">a sketch</text><g class="a-s2"><g opacity="0.55"><circle cx="354.0" cy="140" r="15" fill="none" stroke="var(--amber)" stroke-width="1.5"/><path d="M334.0 236 V186 Q334.0 162 354.0 162 Q374.0 162 374.0 186 V236 Z" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></g></g><text class="t" x="354.0" y="262" text-anchor="middle">RECURRING</text><text class="ts" x="354.0" y="280" text-anchor="middle">two traits, a way of talking</text><g class="a-s3"><g opacity="0.75"><circle cx="550.0" cy="106" r="15" fill="rgba(242,169,59,.10)" stroke="var(--amber)" stroke-width="1.5"/><path d="M530.0 202 V152 Q530.0 128 550.0 128 Q570.0 128 570.0 152 V202 Z" fill="rgba(242,169,59,.10)" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></g></g><text class="t" x="550.0" y="228" text-anchor="middle">WELL KNOWN</text><text class="ts" x="550.0" y="246" text-anchor="middle">wants, fears, would never</text><g class="a-s4"><g opacity="0.9"><circle cx="746.0" cy="72" r="15" fill="rgba(242,169,59,.22)" stroke="var(--amber)" stroke-width="1.5"/><path d="M726.0 168 V118 Q726.0 94 746.0 94 Q766.0 94 766.0 118 V168 Z" fill="rgba(242,169,59,.22)" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></g></g><circle cx="746.0" cy="72" r="9" fill="none" stroke="var(--amber-2)" stroke-width="1.1"/><text class="t" x="746.0" y="194" text-anchor="middle">CARRYING</text><text class="ts" x="746.0" y="212" text-anchor="middle">defences, memory</text><circle class="a-glow" cx="942.0" cy="56" r="64" fill="var(--amber)" opacity=".07"/><g class="a-s5"><g opacity="1.0"><circle cx="942.0" cy="38" r="15" fill="rgba(242,169,59,.42)" stroke="var(--amber)" stroke-width="1.5"/><path d="M922.0 134 V84 Q922.0 60 942.0 60 Q962.0 60 962.0 84 V134 Z" fill="rgba(242,169,59,.42)" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></g></g><circle cx="942.0" cy="38" r="9" fill="none" stroke="var(--amber-2)" stroke-width="1.1"/><polygon class="g" points="942.0,31.0 943.7,36.3 949.0,38.0 943.7,39.7 942.0,45.0 940.3,39.7 935.0,38.0 940.3,36.3"/><text class="t" x="942.0" y="160" text-anchor="middle">MAIN CHARACTER</text><text class="ts" x="942.0" y="178" text-anchor="middle">the whole person</text></svg><figcaption>The stair. The more often the world returns to a person, the clearer she becomes.</figcaption></figure>
   </section>
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M60 46 V22"/><circle class="g" cx="60" cy="20" r="3.4"/><path class="l a-s1" d="M50 12 a12 12 0 0 0 0 16 M70 12 a12 12 0 0 1 0 16"/><path class="l a-s2" d="M40 8 a21 21 0 0 0 0 24 M80 8 a21 21 0 0 1 0 24"/><path class="l a-s3" d="M30 4 a30 30 0 0 0 0 32 M90 4 a30 30 0 0 1 0 32"/></svg>
       <div class="eyebrow">The face to the outside</div>
       <h2>Mara Rox broadcasts what has happened.</h2>
       <p>The ship&#8217;s news anchor writes a broadcast script when enough has gathered &#8212; not by the clock, but by content. The script knows which scenes it has already covered, so the same event is never broadcast twice.</p>
@@ -862,6 +987,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="f" d="M30 20 L56 10 L82 20 V40 L56 48 L30 40 Z"/><path class="l2" d="M30 20 L56 28 L82 20 M56 28 V48"/><path class="l3 a-flow" d="M88 28 H112"/><path class="l3" d="M106 24 L112 28 L106 32"/></svg>
       <div class="eyebrow">Outputs</div>
       <h2>The world grows for its own sake. What comes out of it should be usable.</h2>
       <p>A broadcast to record, a book to read, an episode to cut. That is why nothing leaves the system as a document someone has to interpret &#8212; it leaves as a <strong>package</strong>: a folder where every file has a job, and a manifest that says which.</p>
@@ -885,6 +1011,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><g class="a-book"><path class="f" d="M24 12 q22 -8 36 2 q14 -10 36 -2 v32 q-22 -8 -36 2 q-14 -10 -36 -2 Z"/><path class="l" d="M60 14 V46"/><path class="l2" d="M32 22 h18 M32 30 h18 M70 22 h18 M70 30 h18"/></g></svg>
       <div class="eyebrow">The book</div>
       <h2>The Chronicler stands in the room. The Novelist knows how it turned out.</h2>
       <p>When enough scenes have gathered, a second writer comes in and writes a chapter about what happened. It reads exactly the same scenes that are already written &#8212; but it writes <em>backwards</em>, and that is the whole reason it exists.</p>
@@ -912,6 +1039,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M60 48 L52 20 H68 Z M60 20 V10"/><circle class="g" cx="60" cy="9" r="3"/><path class="l a-s1" d="M44 2 a14 14 0 0 0 0 16 M76 2 a14 14 0 0 1 0 16"/><path class="l a-s2" d="M35 2 a22 22 0 0 0 0 18 M85 2 a22 22 0 0 1 0 18"/><path class="l a-s3" d="M26 2 a30 30 0 0 0 0 20 M94 2 a30 30 0 0 1 0 20"/></svg>
       <div class="eyebrow">The radio</div>
       <h2>Ombra Prime Radio &#8212; a glimpse into the world.</h2>
       <p class="lead">The ship already had two ways of telling about itself, and both are about the main characters &#8212; they are the ones in the scenes. The radio does the opposite. It is the only format where <strong>someone with no part in the plot gets to talk for nine minutes.</strong></p>
@@ -955,6 +1083,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><circle class="f2" cx="28" cy="26" r="11"/><circle class="f2" cx="60" cy="26" r="11"/><circle class="f2" cx="92" cy="26" r="11"/><path class="a-rec" d="M14 26 H42" fill="none" stroke="var(--amber)" stroke-width="2.2" stroke-linecap="round"/><path class="l" d="M54 22 h3 M64 22 h3 M86 22 h3 M96 22 h3"/></svg>
       <div class="eyebrow">The voices</div>
       <h2>The interesting thing about the three new ones is what they <em>may not</em> see.</h2>
       <p class="lead">A character who keeps a secret does not do so because it has been told to. A prompt is a hope. <strong>The rule has to lie in what material the voice gets</strong> &#8212; so that there is nothing to reveal even if it wanted to.</p>
@@ -986,6 +1115,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><rect class="g a-eq1" x="26" y="10" width="7" height="34" rx="2" opacity=".85"/><rect class="g a-eq2" x="42" y="10" width="7" height="34" rx="2" opacity=".85"/><rect class="g a-eq3" x="58" y="10" width="7" height="34" rx="2" opacity=".85"/><rect class="g a-eq4" x="74" y="10" width="7" height="34" rx="2" opacity=".85"/><rect class="g a-eq5" x="90" y="10" width="7" height="34" rx="2" opacity=".85"/></svg>
       <div class="eyebrow">The sound</div>
       <h2>Every voice has its own room. The reader has silence.</h2>
       <p>A bed is not a song. It should not be heard as music, it should be heard as the room having a colour &#8212; and when you notice it is there, it is too loud. With four people on air, the <em>same</em> loop under all four made them the same programme with different readers. The bed is the cheapest way to say the room has changed: it is heard before the listener has caught a single word.</p>
@@ -997,6 +1127,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><g class="a-bob"><ellipse class="f" cx="34" cy="38" rx="8" ry="6"/><path class="l" d="M42 38 V12 l14 4"/></g><rect class="f2" x="66" y="30" width="8" height="10"/><rect class="f2" x="78" y="22" width="8" height="18"/><rect class="f2" x="90" y="26" width="8" height="14"/><rect class="f2" x="102" y="14" width="8" height="26"/></svg>
       <div class="eyebrow">The music</div>
       <h2>A song has to exist in the world before it may be played.</h2>
       <p>A song that is only an audio file turns the radio into a jukebox. A song that is an <strong>entity in canon</strong> turns it into something else: then the host can tell who wrote it, where aboard they live, and that it has been on the chart for three weeks and is still climbing.</p>
@@ -1030,6 +1161,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l" d="M60 6 V46"/><path class="l3 a-flow" d="M14 18 H52"/><path class="l3" d="M46 14 L52 18 L46 22"/><path class="l3" d="M106 34 H72"/><path d="M64 30 l8 8 M72 30 l-8 8" fill="none" stroke="var(--bad)" stroke-width="1.5" stroke-linecap="round"/></svg>
       <div class="eyebrow">The boundary</div>
       <h2>The radio reads the world. The world does not know the radio exists.</h2>
       <p>Everything the channel knows comes through <strong>a single file</strong>, and it comes as frozen data classes &#8212; not as database rows. It costs a few lines of translation per question and gives three things: a window that can be closed if the simulator changes, a broadcast that cannot lie by mistake, and the possibility of running the whole radio with no world at all.</p>
@@ -1046,6 +1178,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><circle class="l" cx="60" cy="26" r="17"/><circle class="a-rec" cx="60" cy="26" r="7" fill="var(--bad)"/></svg>
       <div class="eyebrow">Live</div>
       <h2>The world is broadcast while it is being written.</h2>
       <p class="lead">The radio is broadcast live on YouTube, on the channel <strong>Ombra Prime</strong>. The latest show runs until a new one exists, and the chart plays in the broadcast.</p>
@@ -1057,6 +1190,7 @@
 
   <section class="reveal">
     <div class="col">
+      <svg class="pikt emblem" viewBox="0 0 120 52" aria-hidden="true"><path class="l a-s1" d="M26 42 H94"/><path class="l a-s2" d="M26 33 H94"/><path class="l a-s3" d="M26 24 H94"/><path class="l a-s4" d="M26 15 H94"/><path class="l2" d="M20 48 H100"/></svg>
       <div class="eyebrow">Memory</div>
       <h2>Nothing is rewritten afterwards.</h2>
     </div>
