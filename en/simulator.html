@@ -547,13 +547,13 @@
         <div class="step-k">Signal<b>every 10&#8211;30 s</b></div>
         <div>
           <h3>Reality is measured</h3>
-          <p>A sensor reads something physical. Network response against a public host, the power meter in the house, a Raspberry Pi 5 with a Sense HAT and a particle sensor &#8212; air pressure, humidity, dust &#8212; a webcam looking out through a kitchen window at a bird table, and a small ESP32 board that senses movement in the room without a camera, from how the wifi waves bounce. The raw value means nothing in itself &#8212; what counts is the deviation from a moving baseline. The air aboard follows the dust and the hull stress a falling air pressure. But most gauges do not read a sensor straight off; they read a <strong>derived value</strong>: how far the number stands from its own normal, how fast it changes, the imbalance between the three phases of the power, what share of the day something has moved. The water balance aboard follows how evenly the power runs, not the humidity. The camera is the ship&#8217;s lookout: when something comes to the bird table, something is outside the hull. The reviewed crops are kept for two weeks on the simulator&#8217;s own computer and never published. An image with a person in it is never kept. A reviewer sees a small crop around the movement and says what it was. If it recognises a deer, that is a comet; a squirrel is an object caught in the ship&#8217;s wake; a crow is an unknown probe. If it cannot tell, it stays a mystery, and a person in the picture never becomes anything at all. The movement is the pulse of the city: Metropolis sleeps when the house sleeps, wakes when it wakes, and fills with people when there is a party. The power, which switches on and off around the clock, is the work in The Crypt, where Oris and her machines build without anyone aboard knowing what. Once enough work has gathered they have finished something, and the shape of the power draw decides what: steady running makes something small and fine, heavy loads something large. The people aboard only notice the traces. And if the simulator stands still, that becomes an event too: days missing from the ship&#8217;s log.</p>
+          <p>A sensor reads something physical. Network response against a public host, the power meter in the house, a Raspberry Pi 5 with a Sense HAT and a particle sensor &#8212; air pressure, humidity, dust &#8212; a camera that sees a bird table, and a small ESP32 board that senses movement in the room without a camera, from how the wifi waves bounce. The raw value means nothing in itself &#8212; what counts is the deviation from a moving baseline. The air aboard follows the dust and the hull stress a falling air pressure. But most gauges do not read a sensor straight off; they read a <strong>derived value</strong>: how far the number stands from its own normal, how fast it changes, the imbalance between the three phases of the power, what share of the day something has moved. The water balance aboard follows how evenly the power runs, not the humidity. The camera is a peephole into The Pearl: whatever comes to the bird table is an animal in the dome. The reviewed crops are kept for two weeks on the simulator&#8217;s own computer and never published. An image with a person in it is never kept. A reviewer sees a small crop around the movement and says what it was. If it recognises a deer, that is one of the dome&#8217;s deer, and a magpie is one of its crows: every kind has a name of its own and a place in The Pearl. If it cannot tell, it stays a mystery, and a person in the picture never becomes anything at all. The movement is the pulse of the city: Metropolis sleeps when the house sleeps, wakes when it wakes, and fills with people when there is a party. The power, which switches on and off around the clock, is the work in The Crypt, where Oris and her machines build without anyone aboard knowing what. Once enough work has gathered they have finished something, and the shape of the power draw decides what: steady running makes something small and fine, heavy loads something large. The people aboard only notice the traces. And if the simulator stands still, that becomes an event too: days missing from the ship&#8217;s log.</p>
         </div>
         <div class="step-data"><span class="k">key</span> <span class="v">net.uplink.jitter</span><br><span class="k">value</span> <span class="v">18.44</span> &#183; <span class="k">zscore</span> <span class="v">+1.9</span></div>
       </div>
 
       <div class="step">
-        <div class="step-k">Omen<b>50 rules</b></div>
+        <div class="step-k">Omen<b>72 rules</b></div>
         <div>
           <h3>The number gets a meaning</h3>
           <p>A rule in a YAML file translates the deviation into something that happens aboard. This is where &#8212; and only where &#8212; meaning lives. No model involved; it is a threshold and a text.</p>
@@ -694,7 +694,7 @@
       <div class="eyebrow">Chance</div>
       <h3 style="font-size:22px;margin:6px 0 10px">Wheels that can be filled.</h3>
       <p>Some things should not be possible to work out. They are settled by <strong>wheels</strong>: a list of slots, each with a weight and a text. Chance picks a slot, and the text goes to whoever writes the scene. Adding a slot is adding a thing that can happen. The same slot never falls twice in a row.</p>
-      <p>The most important wheel belongs to <strong>The Crypt</strong>. The power use of the house is Oris and her machines at work, and when enough work has gathered they have finished something. Nobody aboard is told what it was; people only notice a sign. Then the wheel turns: most works stay secret, some become rumours, and now and then one <strong>turns up in another sector</strong> with no sender, so that something entirely new enters the world as a surprise. Another wheel spreads rumours while a thing is still being made, and a third decides what people say it was when the lookout saw something it could not make out.</p>
+      <p>The most important wheel belongs to <strong>The Crypt</strong>. The power use of the house is Oris and her machines at work, and when enough work has gathered they have finished something. Nobody aboard is told what it was; people only notice a sign. Then the wheel turns: most works stay secret, some become rumours, and now and then one <strong>turns up in another sector</strong> with no sender, so that something entirely new enters the world as a surprise. Another wheel spreads rumours while a thing is still being made, and a third decides what people say it was when the lookout saw something it could not make out. A fourth brings back what the world has forgotten, and a fifth decides whether two animals in The Pearl have offspring.</p>
     </div>
   </section>
 
@@ -712,7 +712,7 @@
         </thead>
         <tbody>
           <tr><td>Sensor &#8594; signal</td><td><span class="tag code">No</span></td><td class="who">measurement + moving baseline</td></tr>
-          <tr><td>Signal &#8594; omen</td><td><span class="tag code">No</span></td><td class="who">50 rules in YAML</td></tr>
+          <tr><td>Signal &#8594; omen</td><td><span class="tag code">No</span></td><td class="who">72 rules in YAML</td></tr>
           <tr><td>The gate: does it become a scene?</td><td><span class="tag code">No</span></td><td class="who">Director &#8212; code</td></tr>
           <tr><td>Thread choice and sector draw</td><td><span class="tag code">No</span></td><td class="who">scoring + weighted chance</td></tr>
           <tr><td>The stakes: whose scene is this</td><td><span class="tag ai">Yes</span></td><td class="who">Director &#8594; Claude Haiku</td></tr>
@@ -726,7 +726,7 @@
           <tr><td>Proposal &#8594; truth</td><td><span class="tag code">No</span></td><td class="who">Keeper &#8212; rules and thresholds</td></tr>
           <tr><td>Review of form: titles, verbal tics, repetition</td><td><span class="tag code">No</span></td><td class="who">Watcher &#8212; mechanical checks</td></tr>
           <tr><td>Review of content: contradictions with the laws</td><td><span class="tag ai">Yes</span></td><td class="who">Watcher &#8594; Claude Haiku, every sixth hour</td></tr>
-          <tr><td>The lookout: is something moving at the bird table?</td><td><span class="tag code">No</span></td><td class="who">image difference on a small computer by the window &#8212; only numbers leave it</td></tr>
+          <tr><td>The lookout: is something moving at the bird table?</td><td><span class="tag code">No</span></td><td class="who">the camera itself says when something moves &#8212; only numbers go on</td></tr>
           <tr><td>The lookout: what was it?</td><td><span class="tag ai">Yes</span></td><td class="who">a reviewer sees a crop &#183; mystery or recognised, never a person</td></tr>
           <tr><td>Who may be in the scene</td><td><span class="tag code">No</span></td><td class="who">home and visits per person, and whoever has rested longest goes first</td></tr>
           <tr><td>Where a new thing belongs</td><td><span class="tag code">No</span></td><td class="who">the sector where the scene took place, unless something else is said</td></tr>
@@ -747,7 +747,11 @@
           <tr><td>Counting what was not said</td><td><span class="tag ai">Yes</span></td><td class="who">Whistleblower &#8594; Claude Opus</td></tr>
           <tr><td>Songs and artists</td><td><span class="tag ai">Yes</span></td><td class="who">Songwriter &#8594; Claude Opus</td></tr>
           <tr><td>The voices on air</td><td><span class="tag ai">Yes</span></td><td class="who">ElevenLabs v4 for Lisa, Mara, Haldis and Ivo &#183; MiniMax speech-2.8-hd for the reader, the callers and the adverts</td></tr>
-          <tr><td>Music and jingles</td><td><span class="tag ai">Yes</span></td><td class="who">MiniMax Music 3 at fal.ai &#8212; paid per song, the price on the button</td></tr>
+          <tr><td>Music and jingles</td><td><span class="tag ai">Yes</span></td><td class="who">every other song at Google (Lyria 3.5), every other at fal.ai (MiniMax Music 3) &#8212; paid per song, the price on the button</td></tr>
+          <tr><td>The images</td><td><span class="tag ai">Yes</span></td><td class="who">Google Nano Banana 2.1 &#8212; made together with the show</td></tr>
+          <tr><td>The stair: who climbs</td><td><span class="tag code">No</span></td><td class="who">counting scenes, days and sectors</td></tr>
+          <tr><td>A person&#8217;s depth and memory</td><td><span class="tag ai">Yes</span></td><td class="who">The Biographer &#8594; Claude Opus, from the scenes the person has been in</td></tr>
+          <tr><td>The cross in The Pearl</td><td><span class="tag code">No</span></td><td class="who">a wheel, once a night</td></tr>
           <tr><td>Mixing, fades, levels</td><td><span class="tag code">No</span></td><td class="who">ffmpeg &#8212; measured, not guessed</td></tr>
         </tbody>
       </table>
@@ -799,6 +803,47 @@
         <span class="mk">Reuse</span>
         <h3>The world counts what it returns to</h3>
         <p>After every scene the people, places and objects it mentioned are counted. Whoever has rested longest is first in line, so that the world uses what it already has instead of only inventing more.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="col">
+      <div class="eyebrow">What grows</div>
+      <h2>The world gets deeper by itself.</h2>
+      <p>A world that only gets bigger does not get better. So some things make it <strong>deeper</strong> instead: people who become clearer the more often the world returns to them, animals that breed, and things that were forgotten and come back.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="mk">The animals of the dome</span>
+        <h3>The animals in The Pearl</h3>
+        <p>The camera at the bird table is a peephole into the dome. Every animal it recognises is a kind in The Pearl, with a name of its own, and is entered in a <strong>stock book</strong>: how often the kind has come, and how many at once. Every night a wheel decides whether two of the day&#8217;s animals have had offspring. Then a new kind is entered, with those two as its parents, and it can become a parent itself another day. When many kinds come in a week it is felt all the way down in the city: the dome is where the life force is born.</p>
+      </div>
+      <div class="card">
+        <span class="mk">The stair</span>
+        <h3>People grow by being there</h3>
+        <p>Everyone starts as a minor figure. Whoever the world returns to climbs: recurring, well known, carrying, and finally a main character. A step takes scenes, days and sectors, and it comes in bursts, one step at a time. Nobody decides who it will be. In the end the world has made its own main characters.</p>
+      </div>
+      <div class="card">
+        <span class="mk">Depth</span>
+        <h3>A person becomes clearer with every step</h3>
+        <p>A minor figure is a sketch. Each step unlocks more: how she talks, what she wants, what she is afraid of, and what she would <strong>never</strong> do. Those who carry the story also get their defences and their way of being close to others, in the words of psychology itself, and a memory of what they have lived through. A biographer writes it from the scenes the person has been in and invents nothing. The terms are never spoken in a scene; they show in what the person does.</p>
+      </div>
+      <div class="card">
+        <span class="mk">The forgotten</span>
+        <h3>What the world forgot comes back</h3>
+        <p>Most of what exists in the world is never mentioned again. So before every scene something is found that belongs in the sector but that nobody has touched for a long time, and a wheel decides whether it comes along: in the background, because it is needed, or because it is not working as it should.</p>
+      </div>
+      <div class="card">
+        <span class="mk">Scripture</span>
+        <h3>The ship&#8217;s scripture grows</h3>
+        <p>The confessor gives one sermon a day. When one of the books of the scripture has gathered five sermons, a monk writes the next chapter of that book. The scripture is old: he never writes about those who live aboard now.</p>
+      </div>
+      <div class="card">
+        <span class="mk">The healer</span>
+        <h3>The simulator looks after its own gauges</h3>
+        <p>Once an hour every gauge is checked: that it answers and that it is actually counting. The simple thing is tried first. If that is not enough an agent is woken that may find the fault in the gauge&#8217;s code and mend it, within narrow limits, and that writes down what it did.</p>
       </div>
     </div>
   </section>
@@ -871,7 +916,7 @@
       <h2>Ombra Prime Radio &#8212; a glimpse into the world.</h2>
       <p class="lead">The ship already had two ways of telling about itself, and both are about the main characters &#8212; they are the ones in the scenes. The radio does the opposite. It is the only format where <strong>someone with no part in the plot gets to talk for nine minutes.</strong></p>
       <p>Mara Rox reads her own news, in her own voice. Straight after, Ivo Brekke counts what she left out. Then Lisa Lusis weighs the two against each other and says what she believes; Mara is her daughter, and she does not always take her side. Lisa takes a call from someone working the night shift, plays two songs from the chart and reads out the positions. In between run adverts for things that actually exist aboard. Everything she says comes from canon &#8212; and nothing she says is written back.</p>
-      <p>Besides Mara, <strong>three more voices have segments of their own</strong>, with their own agents, their own voices and their own background: a logbook keeper who reads the latest novel chapter verbatim, a confessor who holds a verse of the ship&#8217;s scripture up against how the week has felt, and a stores clerk who counts what was <em>not</em> said. A show is now just under half an hour.</p>
+      <p>Besides Mara, <strong>three more voices have segments of their own</strong>, with their own agents, their own voices and their own background: a logbook keeper who reads the latest novel chapter verbatim, a confessor who holds a verse of the ship&#8217;s scripture up against how the week has felt, and a stores clerk who counts what was <em>not</em> said. A show is now about twenty minutes, and goes out in the evening.</p>
       <p><strong>A show always takes the latest</strong> &#8212; Mara&#8217;s latest broadcast, the latest scenes, the novel&#8217;s latest chapter, the chart as it stands. And a new one is made only when there is something new to tell: new news and a new chapter. The chart is the week’s, and the same in all of the week’s shows. <strong>It is never a rerun.</strong> The button that makes the show lights up only then, with the price on it.</p>
       <p>Lisa, Mara, Haldis and Ivo have voices at ElevenLabs. Lisa&#8217;s can sigh, laugh quietly and pause where the script says so; the other two read more calmly, like people not used to a microphone. The reader, the callers and the adverts have MiniMax voices, and a man who calls in gets a man&#8217;s voice.</p>
     </div>
@@ -1026,7 +1071,7 @@
 
   <footer class="end">
     Ombra Prime Simulator &#183; Python &#183; sensor data: household power, network latency, dust, air pressure, humidity, movement and whatever moves at a bird table &#8212; from the house, a Raspberry Pi 5 and an ESP32 board<br>
-    The world: Claude Opus and Claude Haiku &#183; The radio: Claude Opus, ElevenLabs v4 and MiniMax speech-2.8-hd &#183; Music: MiniMax Music 3 at fal.ai &#183; Live: YouTube, @ombraprime
+    The world: Claude Opus and Claude Haiku &#183; The radio: Claude Opus, ElevenLabs v4 and MiniMax speech-2.8-hd &#183; Music: Google Lyria 3.5 and MiniMax Music 3 at fal.ai &#183; Images: Google Nano Banana 2.1 &#183; Live: YouTube, @ombraprime
   </footer>
 </div>
 
